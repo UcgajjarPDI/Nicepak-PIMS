@@ -27,8 +27,8 @@ BEGIN
 	c.[CMPNY_ST]as ST,
 	c.[CMPNY_ZIP]as ZIP, 
 	c.CMPNY_SGMNT_ID,
-	'YES' as  PDI_CUSTOMER,
-	CONVERT(varchar, CAST(cs.[TOTAL SALES PRIOR YEAR] AS money), 1) AS SALES_AMT,
+	c.BUYER_INDICATOR as BI,
+	CONVERT(varchar, CAST( ROUND(cs.[TOTAL SALES PRIOR YEAR],0) AS money), 1) AS SALES_AMT,
 	'MDM' as source
     FROM [CMPNY].[COMPANY] c
 	LEFT JOIN CMPNY.CMPNY_SALES cs ON cs.CMPNY_ID = c.CMPNY_ID
@@ -42,7 +42,3 @@ BEGIN
  
    -- SET @MSG  = '';
  END
- 
- 
-    
---END

@@ -3,13 +3,13 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-      <link href="Styles/main.css" rel="stylesheet" />
+    <link href="Styles/main.css" rel="stylesheet" />
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ScriptManager>
-    <table style="        width: 100%;">
+    <table style="width: 100%;">
         <tr>
             <td>
                 <div style="text-align: right">
@@ -105,7 +105,15 @@
                 <asp:GridView ID="gd1" EnableViewState="true" runat="server" PageSize="10" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 100%; grid-area: auto;">
 
                     <Columns>
+                        <asp:TemplateField>
+                            <ItemTemplate>
 
+                                <asp:Image ID="img_eb" runat="server" Visible='<%# IIf(Eval("BI").Equals("Y"), "True", "False") %>'
+                                    ClientIDMode="Static" ImageUrl="~/img/buyer_icon.PNG"
+                                    Width="20px" Height="20px" />
+
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="ID">
                             <ItemTemplate>
                                 <asp:Label ID="COMPANY_ID" runat="server" Text='<%# Eval("COMPANY_ID") %>'></asp:Label>
@@ -144,11 +152,7 @@
                                 <asp:Label ID="Zip" runat="server" Text='<%# Eval("ZIP") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="PDI Customer">
-                            <ItemTemplate>
-                                <asp:Label ID="pdi_cust" runat="server" Text='<%# Eval("PDI_CUSTOMER") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
+
                         <asp:TemplateField HeaderText="Sales Amt.">
                             <ItemTemplate>
                                 <asp:Label ID="sales" runat="server" Text='<%# Eval("SALES_AMT") %>'></asp:Label>
