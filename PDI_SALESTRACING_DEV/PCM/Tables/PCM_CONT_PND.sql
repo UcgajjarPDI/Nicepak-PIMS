@@ -1,0 +1,11 @@
+﻿CREATE TABLE [PCM].[PCM_CONT_PND] (
+    [CNT_PND_ID]    INT          IDENTITY (1, 1) NOT NULL,
+    [CNT_NR]        VARCHAR (20) NOT NULL,
+    [INIT_USR_NM]   VARCHAR (20) NOT NULL,
+    [CNT_INIT_DT]   DATE         NULL,
+    [CNT_RVW_DL_DT] DATE         NULL,
+    [CNT_TYP_CD]    VARCHAR (20) NOT NULL,
+    [CNT_STAT_CD]   VARCHAR (20) NOT NULL,
+    [PDI_GROUP_ID]  INT          NULL
+);
+

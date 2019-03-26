@@ -1,0 +1,7 @@
+﻿CREATE TABLE [TRC].[SALES_PERIOD_ADMIN] (
+    [SLS_PERIOD_TYP]      VARCHAR (20) NULL,
+    [SLS_PERIOD]          VARCHAR (10) NULL,
+    [EFF_DT]              DATE         NULL,
+    [SLS_PERIOD_DSPLY_NM] VARCHAR (20) NULL
+);
+

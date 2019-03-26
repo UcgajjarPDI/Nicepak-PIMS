@@ -1,0 +1,17 @@
+﻿CREATE TABLE [PCM].[PCM_USER] (
+    [USR_ID]       INT            NOT NULL,
+    [USR_LOGIN_NM] NVARCHAR (255) NULL,
+    [USR_FULL_NM]  NVARCHAR (255) NULL,
+    [GREET_NM]     NVARCHAR (255) NULL,
+    [PWD]          NVARCHAR (255) NULL,
+    [EMAIL]        NVARCHAR (255) NULL,
+    [PCM_ROLE]     NVARCHAR (255) NULL,
+    [ORG_ROLE]     NVARCHAR (255) NULL,
+    [TERR_ID]      NVARCHAR (255) NULL,
+    [REGION_ID]    NVARCHAR (255) NULL,
+    [ACTIVE_IN]    CHAR (1)       NULL,
+    [ROLE_ID_FK]   INT            NULL,
+    [CREAT_TS]     DATETIME       NULL,
+    [LAST_MOD_TS]  DATETIME       NULL
+);
+

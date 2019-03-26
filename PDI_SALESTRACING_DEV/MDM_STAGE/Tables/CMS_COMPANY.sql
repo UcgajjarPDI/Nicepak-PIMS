@@ -1,0 +1,26 @@
+﻿CREATE TABLE [MDM_STAGE].[CMS_COMPANY] (
+    [STAGE_CMS_CMPNY_ID] INT           IDENTITY (1, 1) NOT NULL,
+    [SRC_CMPNY_ID]       INT           NULL,
+    [CMPNY_NM]           VARCHAR (255) NOT NULL,
+    [CMPNY_ALT_NM]       VARCHAR (255) NULL,
+    [ALT_NM_TYP]         VARCHAR (20)  NULL,
+    [CMPNY_ADDR_1]       VARCHAR (255) NULL,
+    [CMPNY_ADDR_2]       VARCHAR (255) NULL,
+    [CMPNY_CITY]         VARCHAR (255) NULL,
+    [CMPNY_ST]           CHAR (2)      NULL,
+    [CMPNY_ZIP]          VARCHAR (10)  NOT NULL,
+    [CMPNY_CNTRY]        CHAR (3)      NULL,
+    [CMPNY_TYP_ID]       SMALLINT      NULL,
+    [NPI_NR]             VARCHAR (50)  NULL,
+    [SUFFIX]             VARCHAR (20)  NULL,
+    [REC_EFF_DT]         DATE          NULL,
+    [ACT_IN]             CHAR (1)      NULL,
+    [MI]                 CHAR (1)      NULL,
+    [MIDDLE_NAME]        VARCHAR (50)  NULL,
+    [LAST_NAME]          VARCHAR (50)  NULL,
+    [FIRST_NAME]         VARCHAR (50)  NULL,
+    [STAT_CD]            TINYINT       NULL,
+    [ST_NM]              VARCHAR (255) NULL,
+    [DIR]                VARCHAR (10)  NULL
+);
+

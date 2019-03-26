@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [CONT]
+    AUTHORIZATION [NICEPAK\htarafder];
+

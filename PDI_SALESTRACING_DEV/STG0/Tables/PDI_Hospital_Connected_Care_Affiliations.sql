@@ -1,0 +1,11 @@
+﻿CREATE TABLE [STG0].[PDI_Hospital_Connected_Care_Affiliations] (
+    [HOSPITAL_ID]       VARCHAR (MAX) NULL,
+    [HOSPITAL_NAME]     VARCHAR (MAX) NULL,
+    [CC_DHC_ID]         VARCHAR (MAX) NULL,
+    [CC_ACCOUNT_NAME]   VARCHAR (MAX) NULL,
+    [CC_CITY]           VARCHAR (MAX) NULL,
+    [CC_STATE]          VARCHAR (MAX) NULL,
+    [CC_FIRM_TYPE]      VARCHAR (MAX) NULL,
+    [CURRENT_TIMESTAMP] DATETIME      DEFAULT (getdate()) NOT NULL
+);
+

@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [PROD]
+    AUTHORIZATION [NICEPAK\htarafder];
+

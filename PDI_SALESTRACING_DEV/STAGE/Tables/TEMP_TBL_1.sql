@@ -1,0 +1,7 @@
+﻿CREATE TABLE [STAGE].[TEMP_TBL_1] (
+    [SRC_ID] INT           NOT NULL,
+    [STR_1]  VARCHAR (255) NOT NULL,
+    [STR_2]  VARCHAR (255) NULL,
+    [STR_3]  VARCHAR (255) NULL
+);
+

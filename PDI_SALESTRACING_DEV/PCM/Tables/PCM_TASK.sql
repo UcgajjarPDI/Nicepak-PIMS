@@ -1,0 +1,9 @@
+﻿CREATE TABLE [PCM].[PCM_TASK] (
+    [TASK_ID]     INT          NULL,
+    [TASK_NM]     VARCHAR (50) NULL,
+    [TASK_DESC]   VARCHAR (50) NULL,
+    [ACTIVE_IN]   CHAR (1)     NULL,
+    [CREAT_TS]    DATETIME     NULL,
+    [LAST_MOD_TS] DATETIME     NULL
+);
+

@@ -1,0 +1,5 @@
+﻿CREATE TABLE [STAGE].[TEMP_NEW_CONT] (
+    [CNT_NR]             VARCHAR (20) NOT NULL,
+    [SRC_REC_LST_MOD_DT] BIGINT       NULL
+);
+

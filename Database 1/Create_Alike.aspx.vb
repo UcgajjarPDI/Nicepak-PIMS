@@ -2,9 +2,6 @@
 Public Class WebForm4
     Inherits Page
 
-
-
-
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
         If Not IsPostBack Then
@@ -27,8 +24,6 @@ Public Class WebForm4
             'define parameter -- the parameter name have to exactly how it is in the store dprocedure
             Dim Param As SqlParameter = cmd.Parameters.AddWithValue("@CNT_NR", Session("CNT").ToString)
             Dim Param1 As SqlParameter = cmd.Parameters.AddWithValue("@UNM", Session("user").ToString)
-
-
 
             cmd.Parameters.Add("@Initiator", SqlDbType.VarChar, 50)
             cmd.Parameters("@Initiator").Direction = ParameterDirection.Output
@@ -74,9 +69,7 @@ Public Class WebForm4
                     gd1.DataSource = ds
                     gd1.DataBind()
 
-
                 End If
-
 
             Finally
                 'close the connection
@@ -111,17 +104,12 @@ Public Class WebForm4
 
                 Dim ds As DataSet = New DataSet
                 adapter.Fill(ds)
-
-
-
             Finally
                 'close the connection
                 If (Not conn1 Is Nothing) Then
                     conn1.Close()
                 End If
             End Try
-
-
         End Using
 
     End Sub
@@ -131,7 +119,4 @@ Public Class WebForm4
 
     End Sub
 
-    Protected Sub gd1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles gd1.SelectedIndexChanged
-
-    End Sub
 End Class

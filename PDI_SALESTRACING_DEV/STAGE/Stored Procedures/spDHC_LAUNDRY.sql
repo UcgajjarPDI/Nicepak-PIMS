@@ -1,0 +1,32 @@
+﻿CREATE PROCEDURE [STAGE].[spDHC_LAUNDRY] 
+@ID INT = NULL
+WITH EXEC AS CALLER
+AS
+BEGIN  
+
+  -------------------- CLEANSE NAME -----------------------------------
+
+  EXEC [STAGE].[spDHC_CLEANSE];
+  
+  -------------------- CLEANSE ADDRESS --------------------------------
+  
+  TRUNCATE TABLE STAGE.TEMP_ADDR_LAUNDRY;
+  
+  INSERT INTO STAGE.TEMP_ADDR_LAUNDRY( SRCE_DATA_ID, ADDR1, ADDR2, CITY, STATE, ZIP )
+  SELECT DHC_CO_ID, DHC_CO_ADDR_1, DHC_CO_ADDR_2, DHC_CO_CITY, DHC_CO_ST, DHC_CO_ZIP
+  FROM STAGE.DHC_COMPANY ;
+
+--  EXEC [STAGE].[spNAD_LAUNDRY];
+
+  EXEC [STAGE].[spNAD_LAUNDRY_LITE];
+
+  UPDATE T
+    SET T.DHC_CO_ADDR_1 = UPPER(S.UPD_ADDR1),
+     T.DHC_CO_ADDR_2 = UPPER(S.UPD_ADDR2),
+     T.UPDT_CO_CITY = UPPER(S.CITY)
+  FROM STAGE.DHC_COMPANY  T
+  JOIN STAGE.TEMP_ADDR_LAUNDRY S ON T.DHC_CO_ID = S.SRCE_DATA_ID;
+  
+  -------------------------------------------------------------------------------------
+  
+    END;

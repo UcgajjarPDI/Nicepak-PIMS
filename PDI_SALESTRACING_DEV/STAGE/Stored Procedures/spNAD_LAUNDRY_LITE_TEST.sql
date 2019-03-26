@@ -1,0 +1,329 @@
+﻿CREATE PROCEDURE [STAGE].[spNAD_LAUNDRY_LITE_TEST] 
+@ID INT = NULL
+WITH EXEC AS CALLER
+AS
+BEGIN  
+
+-- First load the ID, Name and addresses to temp laundry table for cleaning 
+-- Take comment out once we are done with developing the stored proc
+
+-- If both Addr1 and Addr2 is same then delete Addr2 
+  UPDATE STAGE.TEMP_ADDR_LAUNDRY
+    SET ADDR2 = NULL
+  WHERE ADDR1 = ADDR2
+  AND SRCE_DATA_ID = ISNULL(@ID ,SRCE_DATA_ID);
+
+-- Remove all extra spaces from the fields
+UPDATE STAGE.TEMP_ADDR_LAUNDRY
+  SET 
+    ORIG_NM = STAGE.fnRemoveSpace_SpChar(ORIG_NM), 
+    ADDR1 = STAGE.fnRemoveSpace_SpChar(ADDR1), 
+    ADDR2 = STAGE.fnRemoveSpace_SpChar(ADDR2)
+    WHERE SRCE_DATA_ID = ISNULL(@ID ,SRCE_DATA_ID );
+      
+
+  
+-- Change all string numbers to numeric. It will help to find street numbers in next step
+  UPDATE C
+  SET  ADDR1 =
+    CONVERT(VARCHAR(10),N.NBR_NUM)+' '+ RIGHT(C.ADDR1 ,LEN(C.ADDR1)-charindex(' ',C.ADDR1 ))
+  FROM 
+    STAGE.TEMP_ADDR_LAUNDRY C, 
+    REF.NBR_CNVRTR N
+  WHERE 
+    C.ADDR1 IS NOT NULL AND charindex(' ',C.ADDR1) > 0
+    AND ISNUMERIC(LEFT(C.ADDR1,charindex(' ',C.ADDR1)-1)) = 0
+    AND LEFT(C.ADDR1,charindex(' ',C.ADDR1)-1) = N.NBR_STR 
+    AND SRCE_DATA_ID = ISNULL(@ID ,SRCE_DATA_ID );
+ 
+ -------------------------------------------------------------------------------------------------------------
+    /*
+  UPDATE C
+    SET  ADDR2 =
+    CONVERT(VARCHAR(10),N.NBR_NUM)+' '+ RIGHT(C.ADDR2 ,LEN(C.ADDR2)-charindex(' ',C.ADDR2 ))
+  FROM 
+    STAGE.TEMP_ADDR_LAUNDRY C, 
+    REF.NBR_CNVRTR N
+  WHERE 
+    C.ADDR2 IS NOT NULL AND charindex(' ',C.ADDR2) > 0
+    AND ISNUMERIC(LEFT(C.ADDR2,charindex(' ',C.ADDR2)-1)) = 0
+    AND LEFT(C.ADDR2,charindex(' ',C.ADDR2)-1) = N.NBR_STR 
+    AND SRCE_DATA_ID = ISNULL(@ID ,SRCE_DATA_ID ); 
+*/
+-- Grab numbers from Addr1 and Addr 2 - and populate to str_nr
+
+  UPDATE STAGE.TEMP_ADDR_LAUNDRY
+    SET 
+      ST_NR_1 = STAGE.fnFirstWord(ADDR1)
+  WHERE ISNUMERIC(STAGE.fnFirstWord(ADDR1)) = 1
+  AND SRCE_DATA_ID = ISNULL(@ID ,SRCE_DATA_ID );
+   
+  UPDATE STAGE.TEMP_ADDR_LAUNDRY 
+    SET ST_1 = STAGE.fnSecondPart(ADDR1,Len(ST_NR_1)+1)
+  WHERE Len(ST_NR_1)>0;
+
+-- Move SUITE, FLOOR etc number etc from ADDR1
+  -- Take out floors from Addr Line 1
+-------------------------------------------------------------------------------------
+
+--BEGIN
+  UPDATE T
+    SET 
+    --ADDR_2_CNDT = ADDR_STD,
+    ADDR1 = STAGE.fnGet_FirstPart(ADDR1,CHARINDEX(' '+A.ADDR_VAR, ADDR1))
+    --,ST_1 = STAGE.fnGet_FirstPart(ST_1,CHARINDEX(' '+A.ADDR_VAR, ST_1))
+  FROM STAGE.TEMP_ADDR_LAUNDRY T
+  JOIN REF.ADDR_STD A ON ST_1 LIKE '% '+A.ADDR_VAR+'%'
+  WHERE CAT LIKE 'ADDR2%'
+  AND ADDR_TYP = 'FLOOR';
+  -- END
+  
+  UPDATE T
+    SET
+      ADDR_2_CNDT = ADDR_STD, 
+      ADDR1 = NULL  , 
+      ST_1 = NULL            
+  FROM STAGE.TEMP_ADDR_LAUNDRY T
+  JOIN REF.ADDR_STD A ON ST_1 LIKE A.ADDR_VAR+'%'
+  WHERE ST_1 IS NOT NULL AND CAT LIKE 'ADDR2%'
+  AND ADDR_TYP = 'FLOOR'; 
+  
+  -- Take out floors from Addr Line 2
+  
+  UPDATE T
+    SET 
+    ADDR_2_CNDT = ADDR_STD,
+    ADDR1 = STAGE.fnGet_FirstPart(ADDR1,CHARINDEX(' '+A.ADDR_VAR, ADDR1)),
+    ST_2 = STAGE.fnGet_FirstPart(ST_2,CHARINDEX(' '+A.ADDR_VAR, ST_2))
+  FROM STAGE.TEMP_ADDR_LAUNDRY T
+  JOIN REF.ADDR_STD A ON ST_2 LIKE '% '+A.ADDR_VAR+'%'
+  WHERE CAT LIKE 'ADDR2%'
+  AND ADDR_TYP = 'FLOOR';
+
+  UPDATE T
+    SET
+      ADDR_2_CNDT = ADDR_STD, ADDR1 = NULL  , 
+      ST_2 = NULL            
+  FROM STAGE.TEMP_ADDR_LAUNDRY T
+  JOIN REF.ADDR_STD A ON ST_2 LIKE A.ADDR_VAR+'%'
+  WHERE ST_2 IS NOT NULL AND CAT LIKE 'ADDR2%'
+  AND ADDR_TYP = 'FLOOR';
+  
+
+  
+  
+  -- Do the same for Addr Line 2 
+  UPDATE T
+    SET
+      ADDR_2_CNDT = CASE  WHEN A.CAT = 'ADDR2_KEEP' THEN RIGHT( ADDR2 ,LEN( ADDR2)-charindex(A.ADDR_VAR, ADDR2)+1)
+                          WHEN A.CAT = 'ADDR2_REMOVE' THEN NULL END,
+      ST_2 = NULL ,ADDR2 = NULL
+  FROM STAGE.TEMP_ADDR_LAUNDRY T
+  JOIN REF.ADDR_STD A ON  ADDR2 LIKE A.ADDR_VAR+'%' AND charindex(A.ADDR_VAR, ADDR2)>0
+  WHERE 
+  ADDR2 IS NOT NULL 
+  AND A.CAT LIKE 'ADDR2%';
+  
+  -- Remove junk or what should be in address 2, but is inside addr1 or 2
+  
+  UPDATE T
+    SET 
+      ADDR_2_CNDT = CASE  WHEN A.CAT = 'ADDR2_KEEP' THEN RIGHT(ADDR1 ,LEN(ADDR1)-charindex(A.ADDR_VAR,ADDR1)+1)
+                          WHEN A.CAT= 'ADDR2_REMOVE' THEN NULL END,
+      ADDR1 = STAGE.fnGet_FirstPart(ADDR1,CHARINDEX(' '+A.ADDR_VAR, ADDR1)),    --- REMOVE THIS ONE IF NOT NEEDED
+      ST_1 = STAGE.fnGet_FirstPart(ST_1 ,CHARINDEX(' '+A.ADDR_VAR, ST_1)) 
+  FROM STAGE.TEMP_ADDR_LAUNDRY T
+  JOIN REF.ADDR_STD A ON ADDR1 LIKE '% '+A.ADDR_VAR+'%'  AND charindex(A.ADDR_VAR,ADDR1)>0
+  WHERE 
+  ADDR1 IS NOT NULL 
+  AND A.CAT LIKE 'ADDR2%'; 
+  
+  UPDATE T
+    SET 
+      ADDR_2_CNDT = CASE  WHEN A.CAT = 'ADDR2_KEEP' THEN RIGHT(ADDR2 ,LEN(ADDR2)-charindex(A.ADDR_VAR,ADDR2)+1)
+                          WHEN A.CAT= 'ADDR2_REMOVE' THEN NULL END,
+      ADDR2 = STAGE.fnGet_FirstPart(ADDR2,CHARINDEX(' '+A.ADDR_VAR, ADDR2)),    --- REMOVE THIS ONE IF NOT NEEDED
+      ST_2 = STAGE.fnGet_FirstPart(ST_2 ,CHARINDEX(' '+A.ADDR_VAR, ST_2)) 
+  FROM STAGE.TEMP_ADDR_LAUNDRY T
+  JOIN REF.ADDR_STD A ON ADDR2 LIKE '% '+A.ADDR_VAR+'%'  AND charindex(A.ADDR_VAR,ADDR2)>0
+  WHERE 
+  ADDR2 IS NOT NULL 
+  AND A.CAT LIKE 'ADDR2%';
+     
+    -- MAKE THE ADDR2 STANDARD - Suite to STE, Building to BLDG
+    
+    UPDATE E
+      SET ADDR_2_CNDT = REPLACE(ADDR_2_CNDT,LEFT(ADDR_2_CNDT,charindex(' ',ADDR_2_CNDT)),A.ADDR_STD)
+    FROM STAGE.TEMP_ADDR_LAUNDRY E
+    JOIN REF.ADDR_STD A ON LTRIM(RTRIM(LEFT(ADDR_2_CNDT,charindex(' ',ADDR_2_CNDT)))) = A.ADDR_VAR
+    WHERE ADDR_2_CNDT IS NOT NULL 
+    AND CAT = 'ADDR2_KEEP'
+      ;
+    -- This will take care of Floor
+    UPDATE E
+      SET ADDR_2_CNDT = A.ADDR_STD
+    FROM STAGE.TEMP_ADDR_LAUNDRY E
+    JOIN REF.ADDR_STD A ON LTRIM(RTRIM(ADDR_2_CNDT)) = A.ADDR_VAR
+    WHERE 
+    ADDR_2_CNDT IS NOT NULL
+    AND CAT = 'ADDR2_KEEP';
+
+------------------------------------------------------------
+--- FIX ROADWAY - DIRECTION ETC
+--------------------------------------------------------------
+
+-- Find the street type and street name
+--  EXEC [STAGE].[spCLEANSE_FOR_ROADWAY];
+
+    
+    UPDATE T 
+      SET 
+        ST_TYP_1 = A.ADDR_STD, 
+        ST_NM_1 = STAGE.fnGet_FirstPart(T.ST_1, LEN(T.ST_1)-LEN(A.ADDR_VAR)),
+        ADDR_SRC_CNFD = 100, ADDR_SRCE = 1
+    FROM STAGE.TEMP_ADDR_LAUNDRY T
+    JOIN REF.ADDR_STD A ON LTRIM(RTRIM(STAGE.fnLastWord(T.ST_1))) = LTRIM(RTRIM(A.ADDR_VAR)) AND A.CAT IN ('Location','Roadway')
+    WHERE T.ST_1 IS NOT NULL ;
+
+
+    
+    UPDATE T 
+      SET 
+        ST_TYP_1 = A.ADDR_STD, 
+        ST_NM_1 = STAGE.fnGet_FirstPart(T.ST_1, CHARINDEX(' '+A.ADDR_VAR+' ', ST_1)),
+        SUFFIX = LTRIM(STAGE.fnSecondPart(ST_1, CHARINDEX(' '+A.ADDR_VAR+' ', ST_1)+LEN(A.ADDR_VAR)+1)),
+        ADDR_SRC_CNFD = 100, ADDR_SRCE = 1
+    FROM STAGE.TEMP_ADDR_LAUNDRY T
+    JOIN REF.ADDR_STD A ON T.ST_1 LIKE '% '+A.ADDR_VAR+' %' AND A.CAT = 'Roadway'
+    WHERE T.ST_1 IS NOT NULL 
+    AND ADDR_SRCE IS NULL
+    AND LTRIM(RTRIM(A.ADDR_VAR)) <> 'ST';
+    
+    
+    UPDATE STAGE.TEMP_ADDR_LAUNDRY 
+      SET 
+        ST_TYP_1 = 'ST', 
+        ST_NM_1 = RTRIM(LEFT(ST_1,STAGE.fnFind_Rdwy_Pos(ST_1,'ST'))),
+        SUFFIX = LTRIM(RIGHT(ST_1, LEN(ST_1)-STAGE.fnFind_Rdwy_Pos(ST_1,'ST')-LEN('ST'))),
+        ADDR_SRC_CNFD = 100, ADDR_SRCE = 1
+    WHERE ST_1 LIKE '% ST %'
+      AND ST_1 IS NOT NULL
+      AND ADDR_SRCE IS NULL;
+    
+    
+    UPDATE T 
+      SET 
+        ST_TYP_1 = A.ADDR_STD, 
+        ST_NM_1 = NULL,
+        SUFFIX = LTRIM(RTRIM(STAGE.fnSecondPart(ST_1, LEN(A.ADDR_VAR)+1))),
+        ADDR_SRC_CNFD = 100, ADDR_SRCE = 1
+    FROM STAGE.TEMP_ADDR_LAUNDRY T
+    JOIN REF.ADDR_STD A ON STAGE.fnFirstWord(ST_1) = A.ADDR_VAR 
+    WHERE A.CAT = 'Roadway'
+      AND ST_1 IS NOT NULL
+      AND ADDR_SRCE IS NULL
+      AND STAGE.fnFirstWord(ST_1) <> 'ST';
+ 
+
+-- MAKE FINAL UPDATED ADDRESS
+-- NEED TO FIX ST_1, AND/OR SUFFIX FOR DORECTIONS N, W, 
+
+  UPDATE T
+    SET T.SUFFIX = REPLACE(SUFFIX,A.ADDR_VAR, A.ADDR_STD) ,
+    SUFFIX_VLD_IN  = 'Y'
+  FROM STAGE.TEMP_ADDR_LAUNDRY T
+  JOIN REF.ADDR_STD A ON LTRIM(RTRIM(SUFFIX)) = A.ADDR_VAR
+  WHERE SUFFIX IS NOT NULL 
+  AND ADDR_TYP = 'DIRECTION';
+  
+  UPDATE T
+    SET T.SUFFIX = REPLACE(SUFFIX,A.ADDR_VAR, A.ADDR_STD),
+    SUFFIX_VLD_IN  = 'Y'
+  FROM STAGE.TEMP_ADDR_LAUNDRY T
+  JOIN REF.ADDR_STD A ON LTRIM(RTRIM(STAGE.fnFirstWord(SUFFIX))) = A.ADDR_VAR
+  WHERE SUFFIX IS NOT NULL 
+  AND CAT = 'Roadway';
+  
+   UPDATE STAGE.TEMP_ADDR_LAUNDRY
+    SET SUFFIX_VLD_IN  = 'Y'
+  FROM STAGE.TEMP_ADDR_LAUNDRY T
+  WHERE ISNUMERIC(LTRIM(RTRIM(STAGE.fnFirstWord(SUFFIX)))) = 1
+  AND LEFT(LTRIM(RTRIM(SUFFIX)),1) NOT IN ('-','+','$');
+  
+  UPDATE T
+    SET T.SUFFIX = REPLACE(SUFFIX,A.ADDR_VAR, A.ADDR_STD) 
+  FROM STAGE.TEMP_ADDR_LAUNDRY T
+  JOIN REF.ADDR_STD A ON LTRIM(RTRIM(SUFFIX)) LIKE '% '+A.ADDR_VAR
+  WHERE SUFFIX IS NOT NULL 
+  AND ADDR_TYP = 'DIRECTION'
+  AND ST_NR_1 IS NOT NULL
+  AND SUFFIX_VLD_IN  = 'Y';
+
+  -- REMOVE BUILDING SUITES ETC FROM SUFFIX FOR VALID SUFFIXES
+  UPDATE T
+    SET ADDR_2_CNDT = CASE WHEN ADDR_2_CNDT IS NULL THEN ADDR_STD ELSE ADDR_2_CNDT END,
+    SUFFIX = STAGE.fnGet_FirstPart(SUFFIX,CHARINDEX(' '+A.ADDR_VAR, SUFFIX))
+  FROM STAGE.TEMP_ADDR_LAUNDRY T
+  JOIN REF.ADDR_STD A ON SUFFIX LIKE '% '+A.ADDR_VAR+'%'
+  WHERE CAT LIKE 'ADDR2%'
+  AND ADDR_TYP = 'FLOOR'
+  AND SUFFIX_VLD_IN  = 'Y';
+
+  UPDATE T
+    SET 
+      ADDR_2_CNDT = CASE  WHEN A.CAT = 'ADDR2_KEEP' AND ADDR_2_CNDT IS NULL 
+                          THEN RIGHT(SUFFIX,LEN(SUFFIX)-charindex(A.ADDR_VAR,SUFFIX)+1) 
+                          ELSE ADDR_2_CNDT  END,
+      SUFFIX = STAGE.fnGet_FirstPart(SUFFIX,CHARINDEX(' '+A.ADDR_VAR, SUFFIX))
+  FROM STAGE.TEMP_ADDR_LAUNDRY T
+  JOIN REF.ADDR_STD A ON SUFFIX LIKE '% '+A.ADDR_VAR+'%'  AND charindex(A.ADDR_VAR,SUFFIX)>0
+  WHERE 
+  ADDR1 IS NOT NULL 
+  AND A.CAT LIKE 'ADDR2%'
+  AND SUFFIX_VLD_IN  = 'Y';
+  
+      -- MAKE THE ADDR2 STANDARD - Suite to STE, Building to BLDG
+    
+    UPDATE E
+      SET ADDR_2_CNDT = REPLACE(ADDR_2_CNDT,LEFT(ADDR_2_CNDT,charindex(' ',ADDR_2_CNDT)),A.ADDR_STD)
+    FROM STAGE.TEMP_ADDR_LAUNDRY E
+    JOIN REF.ADDR_STD A ON LTRIM(RTRIM(LEFT(ADDR_2_CNDT,charindex(' ',ADDR_2_CNDT)))) = A.ADDR_VAR
+    WHERE ADDR_2_CNDT IS NOT NULL 
+    AND CAT = 'ADDR2_KEEP'
+      ;
+    -- This will take care of Floor
+    UPDATE E
+      SET ADDR_2_CNDT = A.ADDR_STD
+    FROM STAGE.TEMP_ADDR_LAUNDRY E
+    JOIN REF.ADDR_STD A ON LTRIM(RTRIM(ADDR_2_CNDT)) = A.ADDR_VAR
+    WHERE 
+    ADDR_2_CNDT IS NOT NULL
+    AND CAT = 'ADDR2_KEEP';
+    
+    ----------------------------------------------------------------
+
+  UPDATE STAGE.TEMP_ADDR_LAUNDRY 
+    SET UPD_ADDR1 = STAGE.fnRemoveSpace (ST_NR_1+' '+ST_NM_1+' '+ST_TYP_1 
+        + ' '+CASE WHEN SUFFIX_VLD_IN  = 'Y' THEN SUFFIX ELSE '' END)
+  WHERE ADDR_SRCE = 1  ;
+  
+  
+  UPDATE STAGE.TEMP_ADDR_LAUNDRY 
+    SET UPD_ADDR2 = STAGE.fnRemoveSpace (ADDR_2_CNDT)  --- WE dont need this second filed, we could save it to upd_addr2 from begining
+  WHERE ADDR_2_CNDT IS NOT NULL;
+  
+  UPDATE STAGE.TEMP_ADDR_LAUNDRY 
+    SET UPD_ADDR1 = STAGE.fnRemoveSpace (ST_NR_1+' '+ST_1)
+  WHERE ST_NR_1 IS NOT NULL AND UPD_ADDR1 IS NULL  ;
+  
+
+  
+  UPDATE T 
+    SET T.CITY = Z.City
+  FROM STAGE.TEMP_ADDR_LAUNDRY T
+  JOIN REF.ZIP_CODE Z ON LEFT(LTRIM(T.ZIP),5) = Z.Zipcode AND Z.LocationType = 'PRIMARY'
+  WHERE T.CITY=Z.City;  
+  
+ 
+
+  END;

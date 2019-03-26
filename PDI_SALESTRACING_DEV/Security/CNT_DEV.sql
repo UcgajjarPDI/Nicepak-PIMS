@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [CNT_DEV]
+    AUTHORIZATION [NICEPAK\htarafder];
+

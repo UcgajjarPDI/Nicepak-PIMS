@@ -1,0 +1,10 @@
+﻿CREATE TABLE [MDM_STAGE].[TEMP_NM_LAUNDRY] (
+    [SRC_ID]       INT           NOT NULL,
+    [ORIG_NM]      VARCHAR (255) NULL,
+    [UPD_NM]       VARCHAR (255) NULL,
+    [ALT_NM]       VARCHAR (255) NULL,
+    [DUP_NM]       VARCHAR (255) NULL,
+    [ALT_NM_TYP]   VARCHAR (20)  NULL,
+    [SPTL_STAT_CD] VARCHAR (10)  NULL
+);
+

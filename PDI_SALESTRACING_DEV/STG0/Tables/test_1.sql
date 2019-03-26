@@ -1,0 +1,4 @@
+﻿CREATE TABLE [STG0].[test_1] (
+    [PDI_CMPNY_ID] INT NULL
+);
+

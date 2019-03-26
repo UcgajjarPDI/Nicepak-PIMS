@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [REPORT]
+    AUTHORIZATION [NICEPAK\Krunal.Trivedi];
+

@@ -1,0 +1,27 @@
+﻿CREATE TABLE [STG0].[GPO_MEMBER] (
+    [GPO_CMPNY_ID]          VARCHAR (MAX) NULL,
+    [SRC_GPO_MEMBER_ID]     VARCHAR (MAX) NULL,
+    [SRC_GPO_MEMBER_ALT_ID] VARCHAR (MAX) NULL,
+    [MMBR_NM]               VARCHAR (MAX) NULL,
+    [MMBR_ADDR_1]           VARCHAR (MAX) NULL,
+    [MMBR_ADDR_2]           VARCHAR (MAX) NULL,
+    [MMBR_CITY]             VARCHAR (MAX) NULL,
+    [MMBR_ST]               VARCHAR (MAX) NULL,
+    [MMBR_ZIP]              VARCHAR (10)  NULL,
+    [MMBR_CNTRY]            VARCHAR (MAX) NULL,
+    [GLN_NR]                VARCHAR (MAX) NULL,
+    [HIN_NR]                VARCHAR (MAX) NULL,
+    [DEA_NR]                VARCHAR (MAX) NULL,
+    [NPI_NR]                VARCHAR (MAX) NULL,
+    [MMBR_EFF_DT]           DATE          NULL,
+    [MMBR_EXP_DT]           DATE          NULL,
+    [MMB_ACT_STAT_CD]       VARCHAR (MAX) NULL,
+    [MMBR_STATUS]           VARCHAR (MAX) NULL,
+    [GPO_MEMBER_PARENT_ID]  VARCHAR (MAX) NULL,
+    [GPO_MEMBER_PARENT_NM]  VARCHAR (MAX) NULL,
+    [GPO_MEMBER_LIC_NR]     VARCHAR (MAX) NULL,
+    [MMBR_SGMNT]            VARCHAR (MAX) NULL,
+    [GPO_NM]                VARCHAR (MAX) NULL,
+    [CURRENT TIMESTAMP]     VARCHAR (MAX) DEFAULT (getdate()) NOT NULL
+);
+

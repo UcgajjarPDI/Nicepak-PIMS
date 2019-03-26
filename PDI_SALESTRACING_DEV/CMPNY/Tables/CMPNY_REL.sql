@@ -1,0 +1,10 @@
+﻿CREATE TABLE [CMPNY].[CMPNY_REL] (
+    [CMPNY_ID]     INT        NOT NULL,
+    [REL_CMPNY_ID] INT        NOT NULL,
+    [REL_TYPE_ID]  INT        NOT NULL,
+    [ZIP_DISTANCE] FLOAT (53) NULL,
+    [REC_STAT_IN]  CHAR (1)   NOT NULL,
+    [REC_EFF_DT]   DATE       NOT NULL,
+    [REC_EXP_DT]   DATE       NOT NULL
+);
+

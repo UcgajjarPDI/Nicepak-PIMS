@@ -1,6 +1,5 @@
 ﻿Imports System.Data.SqlClient
 
-
 Public Class Pending_Contracts
     Inherits Page
 
@@ -12,7 +11,6 @@ Public Class Pending_Contracts
         Page_name.Text = "Pending Contracts"
         Main_Menu.Text = "Contract Management"
     End Sub
-
 
     Private Sub GetItemsData()
         Dim CS As String = ConfigurationManager.ConnectionStrings("Con2").ConnectionString
@@ -43,7 +41,4 @@ Public Class Pending_Contracts
 
     End Sub
 
-    Protected Sub gd2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles gd2.SelectedIndexChanged
-
-    End Sub
 End Class

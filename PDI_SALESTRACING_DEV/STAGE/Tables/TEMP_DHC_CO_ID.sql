@@ -1,0 +1,4 @@
+﻿CREATE TABLE [STAGE].[TEMP_DHC_CO_ID] (
+    [DHC_CO_ID] INT NOT NULL
+);
+

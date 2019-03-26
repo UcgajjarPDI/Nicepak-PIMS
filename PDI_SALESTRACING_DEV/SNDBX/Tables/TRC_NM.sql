@@ -1,0 +1,5 @@
+﻿CREATE TABLE [SNDBX].[TRC_NM] (
+    [TRC_CMPNY_ID] INT           NOT NULL,
+    [TRC_NM]       VARCHAR (100) NULL
+);
+

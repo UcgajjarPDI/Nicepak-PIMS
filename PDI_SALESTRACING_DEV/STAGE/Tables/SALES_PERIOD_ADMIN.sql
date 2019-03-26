@@ -1,0 +1,6 @@
+﻿CREATE TABLE [STAGE].[SALES_PERIOD_ADMIN] (
+    [SLS_PERIOD_TYP] VARCHAR (20) NULL,
+    [SLS_PERIOD]     INT          NULL,
+    [EFF_DT]         DATE         NULL
+);
+

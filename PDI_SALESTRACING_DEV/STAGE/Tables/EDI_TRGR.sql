@@ -1,0 +1,6 @@
+﻿CREATE TABLE [STAGE].[EDI_TRGR] (
+    [EDI_TRGR_ID_PK] INT          NOT NULL,
+    [EDI_TRGR_CD]    SMALLINT     NULL,
+    [EDI_TRGR_DES]   VARCHAR (20) NOT NULL
+);
+

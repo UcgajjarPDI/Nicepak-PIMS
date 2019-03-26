@@ -1,0 +1,25 @@
+﻿CREATE TABLE [STG0].[PDI_COMPANY] (
+    [COMPANYID]         VARCHAR (MAX) NULL,
+    [COMPANYTYPE]       VARCHAR (MAX) NULL,
+    [COMPANYNAME]       VARCHAR (MAX) NULL,
+    [ADDRESS1]          VARCHAR (MAX) NULL,
+    [ADDRESS2]          VARCHAR (MAX) NULL,
+    [CITY]              VARCHAR (MAX) NULL,
+    [STATECODE]         VARCHAR (MAX) NULL,
+    [ZIPCODE]           VARCHAR (MAX) NULL,
+    [ZIPPLUS4]          VARCHAR (MAX) NULL,
+    [HIN]               VARCHAR (MAX) NULL,
+    [GLN]               VARCHAR (MAX) NULL,
+    [DEA]               VARCHAR (MAX) NULL,
+    [ADMISSIONS]        VARCHAR (MAX) NULL,
+    [BEDS_CENSUS]       VARCHAR (MAX) NULL,
+    [BEDS_CENSUS_CCU]   VARCHAR (MAX) NULL,
+    [BEDS_CENSUS_ICU]   VARCHAR (MAX) NULL,
+    [OUTPATIENT]        VARCHAR (MAX) NULL,
+    [OPERATINGROOMS]    VARCHAR (MAX) NULL,
+    [TotalPatientDays]  VARCHAR (MAX) NULL,
+    [IPSurgeries]       VARCHAR (MAX) NULL,
+    [OPSurgeries]       VARCHAR (MAX) NULL,
+    [CURRENT_TIMESTAMP] DATETIME      DEFAULT (getdate()) NOT NULL
+);
+

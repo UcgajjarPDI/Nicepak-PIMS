@@ -1,0 +1,5 @@
+﻿CREATE SEQUENCE [dbo].[MyDemoSequence]
+    AS SMALLINT
+    START WITH 1
+    INCREMENT BY 1;
+

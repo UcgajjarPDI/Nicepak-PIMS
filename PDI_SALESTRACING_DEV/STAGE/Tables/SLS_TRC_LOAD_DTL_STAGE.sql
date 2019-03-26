@@ -1,0 +1,11 @@
+﻿CREATE TABLE [STAGE].[SLS_TRC_LOAD_DTL_STAGE] (
+    [LOAD_ID]      INT          IDENTITY (301, 1) NOT NULL,
+    [DIST_ID]      VARCHAR (15) NULL,
+    [DIST_TRC_NM]  VARCHAR (15) NULL,
+    [SALES_PERIOD] VARCHAR (10) NULL,
+    [RECVD_DTE]    INT          NULL,
+    [LOAD_STAT]    VARCHAR (20) NULL,
+    [REC_CNT]      INT          NULL,
+    [SRC_FILE_TYP] CHAR (3)     NULL
+);
+

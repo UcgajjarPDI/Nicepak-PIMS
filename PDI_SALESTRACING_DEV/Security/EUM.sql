@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [EUM]
+    AUTHORIZATION [dbo];
+

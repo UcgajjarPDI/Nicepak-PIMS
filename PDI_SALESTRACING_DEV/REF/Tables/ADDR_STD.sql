@@ -1,0 +1,9 @@
+﻿CREATE TABLE [REF].[ADDR_STD] (
+    [ADDR_TYP]   VARCHAR (50)  NULL,
+    [ADDR_VAR]   VARCHAR (50)  NULL,
+    [ADDR_STD]   VARCHAR (400) NULL,
+    [CAT]        VARCHAR (50)  NULL,
+    [SUB_CAT]    VARCHAR (20)  NULL,
+    [REC_ACT_IN] CHAR (1)      NULL
+);
+

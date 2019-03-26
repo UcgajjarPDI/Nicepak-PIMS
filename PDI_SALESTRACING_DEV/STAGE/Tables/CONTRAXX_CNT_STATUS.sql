@@ -1,0 +1,16 @@
+﻿CREATE TABLE [STAGE].[CONTRAXX_CNT_STATUS] (
+    [CNT_NR]            VARCHAR (20)  NOT NULL,
+    [CNT_EFF_DT_NR]     INT           NULL,
+    [CNT_EXP_DT_NR]     INT           NULL,
+    [CNT_APPRV_DT]      INT           NULL,
+    [CNT_TYP_CD]        VARCHAR (20)  NULL,
+    [CNT_STATUS_CODE]   VARCHAR (40)  NULL,
+    [CNT_DESC]          VARCHAR (MAX) NULL,
+    [BUYER_GRP_CNT_NR]  VARCHAR (40)  NULL,
+    [CNT_TIER_LVL]      VARCHAR (20)  NULL,
+    [LAST_MOD_DT_NR]    BIGINT        NULL,
+    [GRP_NM]            VARCHAR (100) NULL,
+    [CNT_EXTND_DT]      INT           NULL,
+    [CURRENT TIMESTAMP] VARCHAR (50)  CONSTRAINT [DF_STAGE_CONTRAXX_CNT_STATUS_1] DEFAULT (getdate()) NOT NULL
+);
+

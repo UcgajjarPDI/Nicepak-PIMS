@@ -1,0 +1,56 @@
+﻿CREATE PROCEDURE [STAGE].[spLOAD_ZIP_DATA]
+WITH EXEC AS CALLER
+AS
+BEGIN  
+
+-- update govrnment table with latitude, longitude 
+  UPDATE Z1 SET
+    Z1.Lat = Z2.Latitude , 
+    Z1.[Long] = Z2.Longitude
+  FROM STG0.ZIP_CODE Z1
+  JOIN STG0.zip_code_v2 Z2 ON Z1.Zipcode = Z2.ZipCode
+  WHERE Z2.Latitude > 0;
+  
+  
+  INSERT INTO STG0.ZIP_CODE ( Zipcode, ZipCodeType, City, State, LocationType, Lat, [Long], Country)
+  SELECT DISTINCT Z2.ZipCode, 'STANDARD', Z2.City, Z2.State, 'PRIMARY', Z2.Latitude, Z2.Longitude, 'US'
+  FROM STG0.zip_code_v2 Z2
+  JOIN REF.STATE_LIST S ON Z2.State = S.ST AND S.ST_TYP = 'STATE'
+  LEFT JOIN STG0.ZIP_CODE Z1 ON  Z2.ZipCode = Z1.Zipcode
+  WHERE Z1.Zipcode IS NULL
+  AND Z2.City NOT IN ('PARCEL RETURN SERVICE','NORTH POLE');
+  
+  UPDATE STG0.ZIP_CODE SET LAT = 27.2675,[Long] =82.4835WHERE Zipcode ='34249';
+  UPDATE STG0.ZIP_CODE SET LAT = 33.1401,[Long] =96.8967WHERE Zipcode ='75036';
+  UPDATE STG0.ZIP_CODE SET LAT = 37.9811,[Long] =121.3084WHERE Zipcode ='95214';
+  UPDATE STG0.ZIP_CODE SET LAT = 44.8929,[Long] =92.9083WHERE Zipcode ='55131';
+  UPDATE STG0.ZIP_CODE SET LAT = 34.0274,[Long] =118.3886WHERE Zipcode ='90134';
+  UPDATE STG0.ZIP_CODE SET LAT = 33.3985,[Long] =86.8364WHERE Zipcode ='35270';
+  UPDATE STG0.ZIP_CODE SET LAT = 36.3119,[Long] =94.2756WHERE Zipcode ='72713';
+  UPDATE STG0.ZIP_CODE SET LAT = 48.1335,[Long] =103.6335WHERE Zipcode ='58803';
+  UPDATE STG0.ZIP_CODE SET LAT = 32.9148,[Long] =97.072WHERE Zipcode ='75059';
+  UPDATE STG0.ZIP_CODE SET LAT = 33.1858,[Long] =96.6839WHERE Zipcode ='75072';
+  UPDATE STG0.ZIP_CODE SET LAT = 36.5048,[Long] =92.9835WHERE Zipcode ='72643';
+  UPDATE STG0.ZIP_CODE SET LAT = 32.9409,[Long] =96.9549WHERE Zipcode ='75064';
+  UPDATE STG0.ZIP_CODE SET LAT = 35.8375,[Long] =106.349WHERE Zipcode ='87547';
+  UPDATE STG0.ZIP_CODE SET LAT = 39.7439,[Long] =86.1618WHERE Zipcode ='46288';
+  UPDATE STG0.ZIP_CODE SET LAT = 39.491,[Long] =119.6378WHERE Zipcode ='89437';
+
+  INSERT INTO STG0.ZIP_CODE ( Zipcode, ZipCodeType, City, State, LocationType, Lat, [Long], Country)
+  SELECT DISTINCT Z2.ZipCode, 'STANDARD', Z2.City, Z2.State, 'ACCEPTABLE', Z2.Latitude, Z2.Longitude, 'US'
+  FROM STG0.zip_code_v2 Z2
+  JOIN REF.STATE_LIST S ON Z2.State = S.ST AND S.ST_TYP = 'STATE'
+  LEFT JOIN STG0.ZIP_CODE Z1 ON  Z2.City = Z1.city
+  WHERE Z1.city IS NULL
+  AND Z2.City NOT IN ('PARCEL RETURN SERVICE','NORTH POLE');
+
+  -- Finally load to reference table
+  TRUNCATE TABLE REF.ZIP_CODE;
+  
+  INSERT INTO REF.ZIP_CODE (  Zipcode, City, State, Latitude, Longitude, ZipCodeType, LocationType, TaxReturnsFiled, EstimatedPopulation, TotalWages)
+  SELECT 
+  Zipcode, City, State, TRY_CONVERT(DECIMAL(28,10),Lat) LAT, TRY_CONVERT(DECIMAL(28,10),[Long]), ZipCodeType, LocationType, CONVERT(INT,TaxReturnsFiled), TRY_CONVERT(INT,EstimatedPopulation), TRY_CONVERT(INT,TotalWages)
+  FROM STG0.ZIP_CODE Z
+  JOIN REF.STATE_LIST S ON Z.State = S.ST AND S.ST_TYP = 'STATE';
+ 
+ END;

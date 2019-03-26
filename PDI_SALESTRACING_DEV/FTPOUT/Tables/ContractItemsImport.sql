@@ -1,0 +1,9 @@
+﻿CREATE TABLE [FTPOUT].[ContractItemsImport] (
+    [CONTID]          VARCHAR (50)   NOT NULL,
+    [ITEMID]          VARCHAR (30)   NOT NULL,
+    [CONTITEMEFFDATE] DATE           NOT NULL,
+    [CONTITEMEXPDATE] DATE           NOT NULL,
+    [CONTCOST]        NVARCHAR (50)  NULL,
+    [GROUPADMINFEE]   DECIMAL (4, 2) NULL
+);
+

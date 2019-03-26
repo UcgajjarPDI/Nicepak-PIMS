@@ -1,0 +1,9 @@
+﻿CREATE TABLE [PCM].[PCM_ROLE] (
+    [ROLE_ID]     INT          NULL,
+    [ROLE_NM]     VARCHAR (50) NULL,
+    [ROLE_DESC]   VARCHAR (50) NULL,
+    [ACTIVE_IN]   CHAR (1)     NULL,
+    [CREATE_TS]   DATETIME     NULL,
+    [LAST_MOD_TS] DATETIME     NULL
+);
+

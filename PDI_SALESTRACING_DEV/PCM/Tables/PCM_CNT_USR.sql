@@ -1,0 +1,9 @@
+﻿CREATE TABLE [PCM].[PCM_CNT_USR] (
+    [CNT_USR_ID]  INT          IDENTITY (1, 1) NOT NULL,
+    [CNT_NR]      VARCHAR (20) NULL,
+    [USR_ID]      VARCHAR (20) NULL,
+    [ACTIVE_IN]   CHAR (1)     NULL,
+    [CREAT_TS]    DATETIME     NULL,
+    [LAST_MOD_TS] DATETIME     NULL
+);
+

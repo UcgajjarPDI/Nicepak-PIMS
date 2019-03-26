@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [PDI_MDM]
+    AUTHORIZATION [dbo];
+

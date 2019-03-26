@@ -1,0 +1,25 @@
+﻿CREATE TABLE [STAGE].[DHC_COMPANY_AFFLT] (
+    [DHC_CO_ID]           INT           NOT NULL,
+    [DHC_CO_NM_1]         VARCHAR (255) NULL,
+    [DHC_CO_NM_2]         VARCHAR (255) NULL,
+    [DHC_CO_NM_2_TYP]     VARCHAR (20)  NULL,
+    [DHC_CO_ADDR_1]       VARCHAR (255) NULL,
+    [DHC_CO_ADDR_2]       VARCHAR (255) NULL,
+    [DHC_CO_CITY]         VARCHAR (255) NULL,
+    [UPDT_CO_CITY]        VARCHAR (50)  NULL,
+    [DHC_CO_ST]           CHAR (2)      NULL,
+    [DHC_CO_ZIP]          VARCHAR (10)  NULL,
+    [DHC_CO_CNTRY]        CHAR (3)      NULL,
+    [DHC_CO_CAT_CD]       VARCHAR (100) NULL,
+    [DHC_CO_SUB_CAT]      VARCHAR (255) NULL,
+    [DHC_NTWRK_ID]        INT           NULL,
+    [DHC_NTWRK_PARENT_ID] INT           NULL,
+    [NPI_NR]              VARCHAR (50)  NULL,
+    [ADDR_IN]             CHAR (1)      NULL,
+    [CURRENT TIMESTAMP]   DATETIME      NULL,
+    [ORIG_CITY]           VARCHAR (100) NULL,
+    [ORIG_ST]             CHAR (2)      NULL,
+    [ORIG_ZIP]            VARCHAR (10)  NULL,
+    [MATCH_MTHD]          VARCHAR (10)  NULL
+);
+

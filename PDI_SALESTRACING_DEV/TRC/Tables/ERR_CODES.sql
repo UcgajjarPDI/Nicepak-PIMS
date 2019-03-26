@@ -1,0 +1,5 @@
+﻿CREATE TABLE [TRC].[ERR_CODES] (
+    [ERR_CD]   VARCHAR (6)   NULL,
+    [ERR_DESC] VARCHAR (255) NULL
+);
+

@@ -1,0 +1,2 @@
+﻿CREATE USER [NICEPAK\cdalal] FOR LOGIN [NICEPAK\cdalal];
+

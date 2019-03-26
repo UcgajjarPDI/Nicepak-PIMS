@@ -1,0 +1,149 @@
+﻿CREATE PROCEDURE [STAGE].[spTRC_VLDTN_ERROR_EDI] @vSalesPeriod VARCHAR(10)
+WITH EXEC AS CALLER
+AS
+BEGIN
+
+-- Reset errod code column --
+
+UPDATE [PDI_SALESTRACING_TEST].STAGE.SALES_TRACING_VALDN
+SET [ERROR CODE] = NULL
+WHERE [SALES PERIOD] = @vSalesPeriod;
+
+-- Missing Records --
+
+UPDATE [PDI_SALESTRACING_TEST].STAGE.SALES_TRACING_VALDN
+SET [ERROR CODE] = 'Missing Records'
+WHERE [SAF Sales Amt] IS NULL
+AND [SALES PERIOD] = @vSalesPeriod
+AND SALES_CALC_IN = 'Y';
+
+-- Zero Priced Item --
+
+UPDATE [PDI_SALESTRACING_TEST].STAGE.SALES_TRACING_VALDN
+SET [ERROR CODE] = 'Zero Price Item'
+WHERE 
+[CONT CS Price] = 0 AND 
+[Updated Price Type] = 'CONT' AND
+ABS([SAF Sales Amt]) > 0
+AND [TRC Prod ID] IN (SELECT DISTINCT [ITEM_NO] 
+FROM PDI_SALESTRACING.FTPOUT.CompanyItemsImport
+WHERE UPPER([ITEM_DESCRIPTION]) LIKE '%BRACKET%')
+AND [ERROR CODE] IS NULL
+AND [SALES PERIOD] = @vSalesPeriod;
+
+UPDATE [PDI_SALESTRACING_TEST].STAGE.SALES_TRACING_VALDN
+SET [ERROR CODE] = 'Zero Price Item'
+WHERE 
+[TRC Contract Price] = 0 AND [TRC List Price] = 0 
+AND ABS([SAF Sales Amt]) > 0
+AND [TRC Prod ID] IN (SELECT DISTINCT [ITEM_NO] 
+FROM PDI_SALESTRACING.FTPOUT.CompanyItemsImport
+WHERE UPPER([ITEM_DESCRIPTION]) LIKE '%BRACKET%')
+AND [ERROR CODE] IS NULL
+AND [SALES PERIOD] = @vSalesPeriod;
+
+-- Expired Contract --
+
+UPDATE S
+SET S.[CONT Exp Date] = C.[Exp Date],
+S.[ERROR CODE] = 'Expired Contract'
+FROM [PDI_SALESTRACING_TEST].STAGE.SALES_TRACING_VALDN S
+JOIN (SELECT [Contract ID], ITEMID, MAX([Exp Date]) AS [Exp Date]
+      FROM [PDI_SALESTRACING_TEST].[STAGE].[CONT_PRICE]
+      GROUP BY [Contract ID], ITEMID) C
+    ON (S.[Updated Contract ID] = C.[Contract ID]
+    AND S.[TRC Prod ID] = C.ITEMID
+    AND S.[Invoice Date] > DATEADD(m,1,C.[Exp Date]) )
+WHERE S.[TRC Price Type] = 'CONT' 
+AND S.[Updated Price Type] = 'LIST'
+AND S.[ERROR CODE] IS NULL
+AND S.[SALES PERIOD] = @vSalesPeriod;
+
+--- INVALID CONTRACT ID -- 
+
+UPDATE S
+SET 
+S.[ERROR CODE] = 'Invalid Contract ID'
+FROM [PDI_SALESTRACING_TEST].[STAGE].[SALES_TRACING_VALDN] S
+LEFT JOIN [PDI_SALESTRACING_TEST].[STAGE].[CONT_PRICE] C
+    ON S.[Updated Contract ID] = C.[Contract ID]
+WHERE S.[TRC Price Type] = 'CONT'
+AND S.[Updated Price Type] = 'LIST'
+AND C.[Contract ID] IS NULL
+AND S.[ERROR CODE] IS NULL
+AND S.[SALES PERIOD] = @vSalesPeriod;
+
+--- INVALID PRODUCT IN THE CONTRACT
+
+UPDATE S
+SET -- S.[Updated Price Type] = 'LIST',
+S.[ERROR CODE] = 'Invalid Product in Contract'
+FROM [PDI_SALESTRACING_TEST].[STAGE].[SALES_TRACING_VALDN] S
+LEFT JOIN 
+  (SELECT DISTINCT [Contract ID], ITEMID
+  FROM [PDI_SALESTRACING_TEST].[STAGE].[CONT_PRICE]
+  WHERE [Contract ID] IN
+    (SELECT DISTINCT [TRC Contract ID] 
+    FROM [PDI_SALESTRACING_TEST].[STAGE].[SALES_TRACING_VALDN]
+    WHERE [TRC Price Type] = 'CONT'
+    AND [Updated Price Type] = 'LIST')) C
+    ON S.[TRC Contract ID] = C.[Contract ID]
+    AND S.[TRC Prod ID] = C.ITEMID
+WHERE [TRC Price Type] = 'CONT'
+AND S.[Updated Price Type] = 'LIST'
+AND C.ITEMID IS NULL
+AND S.[ERROR CODE] IS NULL
+AND S.[SALES PERIOD] = @vSalesPeriod;
+
+-- Contract Price High  --
+
+UPDATE [PDI_SALESTRACING_TEST].STAGE.SALES_TRACING_VALDN
+SET [ERROR CODE] = 'Contract Price High'
+WHERE (([SAF Sales Amt]/[SAF Qty]) - [Updated CS Price] ) > 0.01 -- 1 FOR ROUNDING ERROR
+AND ABS([Updated Sales Amt] - [SAF Sales Amt]) > 0.02
+AND [Updated Price Type] = 'CONT'
+AND [CONT CS Price] > 0
+AND [ERROR CODE] IS NULL
+AND [SALES PERIOD] = @vSalesPeriod;
+
+-- Contract Grace Period
+
+UPDATE [PDI_SALESTRACING_TEST].STAGE.SALES_TRACING_VALDN
+SET [ERROR CODE] = 'Contract Grace Period'
+WHERE [ERROR CODE] = 'Contract Price High'
+AND [Invoice Date] BETWEEN [CONT Exp Date] AND DATEADD(m,1,[CONT Exp Date])
+AND [SALES PERIOD] = @vSalesPeriod;
+
+-- Contract Price Low  --
+
+UPDATE [PDI_SALESTRACING_TEST].STAGE.SALES_TRACING_VALDN
+SET [ERROR CODE] = 'Contract Price Low'
+WHERE (([SAF Sales Amt]/[SAF Qty]) - [Updated CS Price] ) < -0.01 -- 1 FOR ROUNDING ERROR
+AND ABS([Updated Sales Amt] - [SAF Sales Amt]) > 0.02
+AND [Updated Price Type] = 'CONT'
+AND [CONT CS Price] > 0
+AND [ERROR CODE] IS NULL
+AND [SALES PERIOD] = @vSalesPeriod;
+
+
+-- LIST PRICE VARIANCE --
+
+UPDATE [PDI_SALESTRACING_TEST].STAGE.SALES_TRACING_VALDN
+SET [ERROR CODE] = 'List Price Different'
+WHERE ABS(([SAF Sales Amt]/[SAF Qty]) - [Updated CS Price] ) > 0.01 -- 1 FOR ROUNDING ERROR
+AND ABS([Updated Sales Amt] - [SAF Sales Amt]) > 0.02
+AND [Updated Price Type] = 'LIST'
+AND [LIST CS Price] > 0
+AND [ERROR CODE] IS NULL
+AND [SALES PERIOD] = @vSalesPeriod;
+
+-- ROUNDING ERROR --
+
+UPDATE [PDI_SALESTRACING_TEST].STAGE.SALES_TRACING_VALDN
+SET [ERROR CODE] = 'Rounding/ Other Error'
+WHERE ABS([Updated Sales Amt] - [SAF Sales Amt]) > 0.02
+AND [ERROR CODE] IS NULL
+AND [SALES PERIOD] = @vSalesPeriod;
+ 
+  
+END

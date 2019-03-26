@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [MDM_STAGE]
+    AUTHORIZATION [NICEPAK\htarafder];
+

@@ -1,0 +1,26 @@
+﻿CREATE TABLE [STAGE].[DIM_GROUP] (
+    [GROUP_KEY]                  INT          NOT NULL,
+    [GROUP_ID]                   VARCHAR (50) NOT NULL,
+    [GROUP_NAME]                 VARCHAR (70) NOT NULL,
+    [GROUP_TYPE]                 NCHAR (3)    NOT NULL,
+    [GPO_AFFILIATION_ID]         VARCHAR (20) NULL,
+    [GPO_AFFILIATION_NAME]       VARCHAR (50) NULL,
+    [PARENT_GROUP_ID]            VARCHAR (50) NULL,
+    [PARENT_GROUP_NAME]          VARCHAR (70) NULL,
+    [MAJOR_ACCOUNT_INDICATOR_YN] CHAR (1)     NULL,
+    [MARKET_CLASS]               VARCHAR (50) NULL,
+    [ADDRESS_1]                  VARCHAR (50) NULL,
+    [ADDRESS_2]                  VARCHAR (50) NULL,
+    [CITY]                       VARCHAR (50) NULL,
+    [STATE]                      NCHAR (2)    NULL,
+    [ZIP]                        VARCHAR (15) NULL,
+    [COUNTRY]                    VARCHAR (15) NULL,
+    [CURRENT_INDICATOR]          CHAR (1)     NULL,
+    [EFF_DATE]                   DATE         NOT NULL,
+    [EXP_DATE]                   DATE         NOT NULL,
+    [UPDATE_BY]                  VARCHAR (20) NOT NULL,
+    [REPORT_GROUP]               VARCHAR (25) NULL,
+    [ETL_AUDIT_KEY]              INT          NOT NULL,
+    [CURRENT TIMESTAMP]          DATETIME     NOT NULL
+);
+

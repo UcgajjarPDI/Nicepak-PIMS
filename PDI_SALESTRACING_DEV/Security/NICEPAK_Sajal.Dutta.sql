@@ -1,0 +1,2 @@
+﻿CREATE USER [NICEPAK\Sajal.Dutta] FOR LOGIN [NICEPAK\Sajal.Dutta];
+

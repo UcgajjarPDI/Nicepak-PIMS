@@ -1,0 +1,6 @@
+﻿CREATE TABLE [STAGE].[SALES_PERIOD] (
+    [SALES_PERIOD] INT          NOT NULL,
+    [LOAD_IN]      CHAR (1)     NULL,
+    [STATUS]       VARCHAR (20) NULL
+);
+

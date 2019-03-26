@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [GEOM]
+    AUTHORIZATION [NICEPAK\Krunal.Trivedi];
+

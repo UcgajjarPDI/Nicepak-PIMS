@@ -1,0 +1,6 @@
+﻿CREATE TABLE [STAGE].[PDI_MAX_TO_DEFHC_CROSSWALK] (
+    [HOSPITAL_ID] INT           NULL,
+    [FIRM_TYPE]   VARCHAR (MAX) NULL,
+    [CompanyId]   INT           NULL
+);
+
