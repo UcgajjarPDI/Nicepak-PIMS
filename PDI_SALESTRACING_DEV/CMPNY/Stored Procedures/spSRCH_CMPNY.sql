@@ -17,7 +17,7 @@ BEGIN
 --SET @CO_ADDR  = '%'+@CO_ADDR+'%';
 --SET @CO_CITY  = '%'+@CO_CITY+'%';
 --SET @CO_ST  = '%'+@CO_ST+'%';
-
+    
   SELECT 
     c.[CMPNY_ID]as COMPANY_ID, 
 	c.[CMPNY_NM] as CMPNY_NM,
