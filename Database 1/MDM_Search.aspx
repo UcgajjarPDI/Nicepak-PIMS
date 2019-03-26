@@ -3,60 +3,13 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script type="text/javascript"> 
-
-
-        function OnClientPopulating(sender, e) {
-            sender._element.className = "loading";
-        }
-        function OnClientCompleted(sender, e) {
-            sender._element.className = "";
-        }
-    </script>
-    <style>
-        .loading {
-            background-image: url(img/loader.gif);
-            background-position: right;
-            background-repeat: no-repeat;
-        }
-
-        .completionList {
-            border: solid 1px #444444;
-            margin: 0px;
-            padding: 2px;
-            height: 100px;
-            overflow: auto;
-            background-color: #FFFFFF;
-        }
-
-        .listItem {
-            color: #1C1C1C;
-        }
-
-        .itemHighlighted {
-            background-color: #ffc0c0;
-        }
-
-        .autocomplete_completionListElement {
-            margin: 0px !important;
-            background-color: inherit;
-            color: windowtext;
-            border: buttonshadow;
-            border-width: 1px;
-            border-style: solid;
-            cursor: 'default';
-            overflow: auto;
-            height: auto;
-            text-align: left;
-            list-style-type: none;
-        }
-    </style>
+      <link href="Styles/main.css" rel="stylesheet" />
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ScriptManager>
-    <table style="width: 100%;">
+    <table style="        width: 100%;">
         <tr>
             <td>
                 <div style="text-align: right">
