@@ -12,25 +12,7 @@
             sender._element.className = "";
         }
     </script>
-    <style>
-        .completionList {
-            border: solid 1px #444444;
-            margin: 0px;
-            padding: 2px;
-            height: 100px;
-            overflow: auto;
-            background-color: #FFFFFF;
-        }
-
-        .listItem {
-            color: #1C1C1C;
-        }
-
-        .itemHighlighted {
-            background-color: #ffc0c0;
-        }
-    </style>
-
+    <link href="Styles/main.css" rel="stylesheet" />    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ToolkitScriptManager1" runat="server">
