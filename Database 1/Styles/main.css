@@ -1,0 +1,31 @@
+﻿
+.Curved {
+    font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+    color: black;
+    font-size: 14px;
+    width: 200px;
+}
+
+.completionList {
+    border: solid 1px #444444;
+    margin: 0px;
+    padding: 2px;
+    height: 100px;
+    overflow: auto;
+    background-color: #FFFFFF;
+}
+.listItem {
+    color: #1C1C1C;
+}
+
+.itemHighlighted {
+    background-color: #ffc0c0;
+}
+
+.divTableCell {
+    display: table-cell;
+    font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+    color: black;
+    font-size: 14px;
+    padding: 1px 5px 1px 5px;
+}

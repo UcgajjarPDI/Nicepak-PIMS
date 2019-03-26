@@ -1,0 +1,192 @@
+﻿
+    body {
+        width: 90%; margin:0px;
+    }
+
+#dataTable {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    border-collapse: collapse;
+    align-self: center;
+    width: 50%;
+}
+
+    #dataTable td, #dataTable th {
+        border: 1px solid #ddd;
+        padding: 4px;
+    }
+
+    #dataTable tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #dataTable tr:hover {
+        background-color: #ddd;
+    }
+
+    #dataTable th {
+        padding-top: 6px;
+        padding-bottom: 6px;
+        text-align: left;
+        background-color: #4169E1;
+        color: white;
+    }
+
+    input[type=text], input[type=password] {
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+
+.input {
+    border: 1px solid #ccc;
+    padding: 6px 6px 6px 6px;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    margin: 8px 0;
+    width:100%;
+}
+
+.center {
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+}
+
+.button {
+    background: white;
+    border: solid 1px grey;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: #001563;
+    height: 25px;
+    cursor: pointer;
+}
+
+    .button:hover {
+        background: white;
+        border: solid 1px grey;
+        font-family: "Trebuchet MS",Arial, sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+        color: lightskyblue;
+        height: 25px;
+        cursor: 
+    }
+
+.hoverbutton {
+    background-color: lightskyblue;
+    cursor: default;
+}
+
+
+.static {
+    color: #000099;
+    background-color: #CCCCCC;
+    border: solid 1px grey;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: #001563;
+    height: 25px;
+    cursor: pointer;
+}
+.button_1 {
+    background: #843C0C;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    height: 25px;
+    width:30px;
+    cursor: pointer;
+}
+
+.mydatagrid {
+    width: 80%;
+    border: solid 2px black;
+    min-width: 80%;
+}
+
+.header {
+    background-color: #646464;
+    font-family: Arial;
+    color: White;
+    border: none 0px transparent;
+    height: 25px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.rows {
+    background-color: #fff;
+    font-family: Arial;
+    font-size: 14px;
+    color: #000;
+    min-height: 25px;
+    text-align: left;
+    border: none 0px transparent;
+}
+
+    .rows:hover {
+        background-color: #ff8000;
+        font-family: Arial;
+        color: #fff;
+        text-align: left;
+    }
+
+.selectedrow {
+    background-color: #ff8000;
+    font-family: Arial;
+    color: #fff;
+    font-weight: bold;
+    text-align: left;
+}
+
+.mydatagrid a /** FOR THE PAGING ICONS  **/ {
+    background-color: Transparent;
+    padding: 5px 5px 5px 5px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+    .mydatagrid a:hover /** FOR THE PAGING ICONS  HOVER STYLES**/ {
+        background-color: #000;
+        color: #fff;
+    }
+
+.mydatagrid span /** FOR THE PAGING ICONS CURRENT PAGE INDICATOR **/ {
+    background-color: #c9c9c9;
+    color: #000;
+    padding: 5px 5px 5px 5px;
+}
+
+.pager {
+    background-color: #646464;
+    font-family: Arial;
+    color: White;
+    height: 30px;
+    text-align: left;
+}
+
+.mydatagrid td {
+    padding: 5px;
+}
+
+.mydatagrid th {
+    padding: 5px;
+}
