@@ -211,17 +211,16 @@ Public Class MDM_Search
 
     Private Sub gd1_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles gd1.RowCommand
         Dim rowIndex As Integer = Convert.ToInt32(e.CommandArgument)
+        Dim pageSize As Integer = gd1.PageSize
+        Dim pageIndex As Integer = gd1.PageIndex
+
+        Dim newRowIndex As Integer = 0
+
+        If pageIndex > 0 Then
+            newRowIndex = pageIndex * pageSize
+            rowIndex = rowIndex - newRowIndex
+        End If
         If e.CommandName = "select" Then
-            Dim pageSize As Integer = gd1.PageSize
-            Dim pageIndex As Integer = gd1.PageIndex
-
-            Dim newRowIndex As Integer = 0
-
-            If pageIndex > 0 Then
-                newRowIndex = pageIndex * pageSize
-                rowIndex = rowIndex - newRowIndex
-            End If
-
             'row.Cells(CellIndex).Text
             Dim CompanyID As String = CType(gd1.Rows(rowIndex).FindControl("COMPANY_ID"), Label).Text
             Response.Redirect("MDM_Network.aspx?id=" + CompanyID.ToString)

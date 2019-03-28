@@ -113,9 +113,9 @@
         <tr>
             <td>
                 <div style="text-align: right">
-                    <input type="button" value="Verify" style="width: 100px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; background-color: #808080; color: #FFFFFF;" onclick="window.location = 'Master_Data.aspx'" />
-                    <input id="3" type="button" value="Find Match" style="width: 100px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; color: WHITE; background-color: #A40000;" onclick="window.location = 'Master_Data_Find.aspx'" />
-                    <input id="4" type="button" value="MDM Search" style="width: 100px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; color: WHITE; background-color: #808080;" onclick="window.location = 'MDM_Search.aspx'" />
+                    <input type="button" value="Verify" style="width: 100px; font-family: Helvetica; border: none; cursor: pointer; background-color: #808080; color: #FFFFFF;" onclick="window.location = 'Master_Data.aspx'" />
+                    <input id="3" type="button" value="Find Match" style="width: 100px; font-family: Helvetica; border: none; cursor: pointer; color: WHITE; background-color: #A40000;" onclick="window.location = 'Master_Data_Find.aspx'" />
+                    <input id="4" type="button" value="MDM Search" style="width: 100px; font-family: Helvetica; border: none; cursor: pointer; color: WHITE; background-color: #808080;" onclick="window.location = 'MDM_Search.aspx'" />
                 </div>
             </td>
         </tr>
@@ -126,11 +126,11 @@
         <ContentTemplate>
 
             <div id="popup" style="width: 85%">
-                <p runat="server" id="Un_label" style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: red; font-size: 20px; text-align: left;">Unmatched Company</p>
+                <p runat="server" id="Un_label" style="font-family: Helvetica; color: red; font-size: 20px; text-align: left;">Unmatched Company</p>
 
-                <asp:GridView ID="gd_un" EnableViewState="true" runat="server" PageSize="5" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 100%; grid-area: auto;">
-
-
+                <asp:GridView ID="gd_un" EnableViewState="true" runat="server" PageSize="5" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 100%; grid-area: auto;">
+                     <RowStyle BackColor="White" ForeColor="DarkBlue" Font-Names="Helvetica" Font-Size="14px" />
+            <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
                     <Columns>
                         <asp:TemplateField HeaderText="">
                             <ItemTemplate>
@@ -149,14 +149,8 @@
                             <ItemTemplate>
                                 <asp:Label ID="Name_1" runat="server" Text='<%# Eval("CMPNY_NM") %>'></asp:Label><br />
                                 <asp:HiddenField ID="DISTACCTID" runat="server" Value='<%# Eval("DISTACCTID") %>' />
-                                <%-- <asp:Label ID="Name_2" runat="server" Text= '<%# IIf(Eval("CMPNY_ALT_NM") & "" <> "", "A.K.A  " + Eval("CMPNY_ALT_NM"), "") %>' Visible='<%# IIf(Eval("CMPNY_ALT_NM") & "" <> "", "True", "False") %>' ></asp:Label>--%>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <%-- <asp:TemplateField HeaderText="Alter Name">
-            <ItemTemplate>
-                <asp:Label ID="Name_2" runat="server" Text='<%# Eval("COMPANY_ALT_NM") %>'></asp:Label>
-            </ItemTemplate>
-        </asp:TemplateField>--%>
                         <asp:TemplateField HeaderText="Address">
                             <ItemTemplate>
                                 <asp:Label ID="Address" runat="server" Text='<%# Eval("ADDR_1") %>'></asp:Label>
@@ -195,14 +189,13 @@
 
                     <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                     <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                    <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
                     <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                 </asp:GridView>
 
-                <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: red; font-size: 20px; text-align: left;">Search For:</p>
+                <p style="font-family: Helvetica; color: red; font-size: 20px; text-align: left;">Search For:</p>
 
-                <table style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif;">
+                <table style="font-family: Helvetica;">
                     <tr>
                         <td>Company name</td>
                         <td>Address</td>
@@ -271,15 +264,16 @@
                     </tr>
                 </table>
                 <br />
-                <asp:Label ID="ERR" runat="server" Style="background-color: #A40000; border: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: white; font: bold;" Visible="false">asd</asp:Label>
+                <asp:Label ID="ERR" runat="server" Style="background-color: #A40000; border: none; font-family: Helvetica; color: white; font: bold;" Visible="false">asd</asp:Label>
                 <br />
 
 
 
-                <%-- <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: red; font-size: 24px; text-align: left;">Search For:</p>--%>
+                <%-- <p style="font-family: Helvetica; color: red; font-size: 24px; text-align: left;">Search For:</p>--%>
 
-                <asp:GridView ID="gd1" EnableViewState="true" runat="server" PageSize="5" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 100%; grid-area: auto;">
-
+                <asp:GridView ID="gd1" EnableViewState="true" runat="server" PageSize="5" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 100%; grid-area: auto;">
+ <RowStyle BackColor="White" ForeColor="DarkBlue" Font-Names="Helvetica" Font-Size="14px" />
+            <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
 
                     <Columns>
                         <asp:TemplateField HeaderText="">
@@ -349,12 +343,12 @@
 
                     <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                     <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                    <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
                     <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                 </asp:GridView>
-                <asp:GridView ID="gd2" EnableViewState="true" runat="server" PageSize="5" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 100%; grid-area: auto;">
-
+                <asp:GridView ID="gd2" EnableViewState="true" runat="server" PageSize="5" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 100%; grid-area: auto;">
+                     <RowStyle BackColor="White" ForeColor="DarkBlue" Font-Names="Helvetica" Font-Size="14px" />
+            <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
 
                     <Columns>
                         <asp:TemplateField HeaderText="">
@@ -424,21 +418,20 @@
 
                     <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                     <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                    <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
                     <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                 </asp:GridView>
 
-                <div style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: red; font-size: 24px;">
-                    <asp:Label ID="err3" runat="server" Style="background-color: #A40000; border: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: white; font: bold;" Visible="false"></asp:Label>
+                <div style="font-family: Helvetica; color: red; font-size: 24px;">
+                    <asp:Label ID="err3" runat="server" Style="background-color: #A40000; border: none; font-family: Helvetica; color: white; font: bold;" Visible="false"></asp:Label>
                     <div style="text-align: right;">
                         <asp:Button ID="Button2" Visible="false" runat="server" Text="Match" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Height="25px" Width="150px" />
                     </div>
                 </div>
 
-                <p runat="server" id="manual_label" style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: red; font-size: 20px; text-align: left;">Manual Input</p>
+                <p runat="server" id="manual_label" style="font-family: Helvetica; color: red; font-size: 20px; text-align: left;">Manual Input</p>
 
-                <table runat="server" id="manual_tabel" style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif;">
+                <table runat="server" id="manual_tabel" style="font-family: Helvetica;">
                     <tr>
                         <td>Company name</td>
                         <td>Address</td>
@@ -480,7 +473,7 @@
                     </tr>
                 </table>
                 <br />
-                <asp:Label ID="err2" runat="server" Style="background-color: #A40000; border: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: white; font: bold;" Visible="false"></asp:Label>
+                <asp:Label ID="err2" runat="server" Style="background-color: #A40000; border: none; font-family: Helvetica; color: white; font: bold;" Visible="false"></asp:Label>
 
 
                 <br />

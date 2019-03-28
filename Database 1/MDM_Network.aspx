@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site1.Master" CodeBehind="MDM_Network.aspx.vb" Inherits="Database_1.MDM_Network" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="Styles/main.css" rel="stylesheet" media="screen" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -10,8 +11,10 @@
     <table class="ui-accordion">
         <tr>
             <td style="width: 70%; vertical-align: top;">
-                <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: red; font-size: 20px; text-align: left;">Company</p>
-                <asp:GridView ID="gd_company" EmptyDataText="No records Found" EnableViewState="true" runat="server" PageSize="5" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 100%; grid-area: auto;">
+                <p style="font-family: Helvetica; color: red; font-size: 20px; text-align: left;">Company</p>
+                <asp:GridView ID="gd_company" EmptyDataText="No records Found" EnableViewState="true" runat="server" PageSize="5" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" CssClass="gridStyle">
+                    <RowStyle BackColor="White" ForeColor="DarkBlue" Font-Names="Helvetica" Font-Size="14px" />
+                    <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
@@ -22,7 +25,6 @@
                         <asp:TemplateField HeaderText="Name">
                             <ItemTemplate>
                                 <asp:Label ID="Name" runat="server" Width="200px" Text='<%# Eval("CMPNY_NM") %>'></asp:Label><br />
-
                             </ItemTemplate>
                         </asp:TemplateField>
 
@@ -57,14 +59,14 @@
 
                     <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                     <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                    <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
                     <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                 </asp:GridView>
 
-                <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: red; font-size: 20px; text-align: left;">IDN</p>
-                <asp:GridView ID="gd_IDN" EmptyDataText="No records Found" EnableViewState="true" runat="server" PageSize="5" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 100%; grid-area: auto;">
-
+                <p style="font-family: Helvetica; color: red; font-size: 20px; text-align: left;">IDN</p>
+                <asp:GridView ID="gd_IDN" EmptyDataText="No records Found" EnableViewState="true" runat="server" PageSize="5" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" CssClass="gridStyle">
+                    <RowStyle BackColor="White" ForeColor="DarkBlue" Font-Names="Helvetica" Font-Size="14px" />
+                    <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
 
                     <Columns>
                         <asp:TemplateField>
@@ -116,15 +118,15 @@
 
                     <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                     <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                    <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
                     <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                 </asp:GridView>
 
 
-                <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: red; font-size: 20px; text-align: left;">Org. Parent</p>
-                <asp:GridView ID="gd_parent" EmptyDataText="No records Found" EnableViewState="true" runat="server" PageSize="5" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 100%; grid-area: auto;">
-
+                <p style="font-family: Helvetica; color: red; font-size: 20px; text-align: left;">Org. Parent</p>
+                <asp:GridView ID="gd_parent" EmptyDataText="No records Found" EnableViewState="true" runat="server" PageSize="5" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" CssClass="gridStyle">
+                    <RowStyle BackColor="White" ForeColor="DarkBlue" Font-Names="Helvetica" Font-Size="14px" />
+                    <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
 
                     <Columns>
                         <asp:TemplateField>
@@ -176,13 +178,13 @@
 
                     <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                     <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                    <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
                     <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                 </asp:GridView>
-                <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: red; font-size: 20px; text-align: left;">Subsidiaries</p>
-                <asp:GridView ID="gd_child" EmptyDataText="No records Found" EnableViewState="true" runat="server" PageSize="5" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 100%; grid-area: auto;">
-
+                <p style="font-family: Helvetica; color: red; font-size: 20px; text-align: left;">Subsidiaries</p>
+                <asp:GridView ID="gd_child" EmptyDataText="No records Found" EnableViewState="true" runat="server" PageSize="5" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" CssClass="gridStyle">
+                    <RowStyle BackColor="White" ForeColor="DarkBlue" Font-Names="Helvetica" Font-Size="14px" />
+                    <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
 
                     <Columns>
                         <asp:TemplateField>
@@ -234,14 +236,14 @@
 
                     <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                     <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                    <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
                     <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                 </asp:GridView>
-                <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: red; font-size: 20px; text-align: left;">In Network</p>
-                <asp:GridView ID="gd_network" EmptyDataText="No records Found" EnableViewState="true" runat="server" PageSize="5" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 100%; grid-area: auto;">
+                <p style="font-family: Helvetica; color: red; font-size: 20px; text-align: left;">In Network</p>
+                <asp:GridView ID="gd_network" EmptyDataText="No records Found" EnableViewState="true" runat="server" PageSize="5" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" CssClass="gridStyle">
 
-
+                    <RowStyle BackColor="White" ForeColor="DarkBlue" Font-Names="Helvetica" Font-Size="14px" />
+                    <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
@@ -292,15 +294,15 @@
 
                     <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                     <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                    <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
                     <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                 </asp:GridView>
 
 
-                <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: red; font-size: 20px; text-align: left;">Affiliation</p>
-                <asp:GridView ID="gd_aff" EmptyDataText="No records Found" EnableViewState="true" runat="server" PageSize="5" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 100%; grid-area: auto;">
-
+                <p style="font-family: Helvetica; color: red; font-size: 20px; text-align: left;">Affiliation</p>
+                <asp:GridView ID="gd_aff" EmptyDataText="No records Found" EnableViewState="true" runat="server" PageSize="5" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" CssClass="gridStyle">
+                    <RowStyle BackColor="White" ForeColor="DarkBlue" Font-Names="Helvetica" Font-Size="14px" />
+                    <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
 
                     <Columns>
                         <asp:TemplateField>
@@ -352,14 +354,13 @@
 
                     <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                     <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                    <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
                     <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                 </asp:GridView>
             </td>
             <td style="width: 30%; vertical-align: top; padding-left: 5px">
                 <div style="text-align: right">
-                    <input type="button" value="Back" style="width: 100px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; color: WHITE; background-color: #A40000;" onclick="window.location = 'MDM_Search.aspx'" />
+                    <input type="button" value="Back" style="width: 100px; font-family: Helvetica; border: none; cursor: pointer; color: WHITE; background-color: #A40000;" onclick="window.location = 'MDM_Search.aspx'" />
                 </div>
                 <br />
                 <br />

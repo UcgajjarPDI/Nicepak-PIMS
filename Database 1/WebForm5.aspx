@@ -134,7 +134,7 @@
     Search:
     <asp:TextBox ID="txtSearch" runat="server" Width="200px" />
     <hr />
-    <asp:GridView ID="gvCustomers" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="5" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 100%; grid-area: auto;">
+    <asp:GridView ID="gvCustomers" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="5" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 100%; grid-area: auto;">
         <Columns>
             <asp:BoundField HeaderStyle-Width="150px" DataField="CMPNY_NM" HeaderText="NAME"
                 ItemStyle-CssClass="CMPNY_NM" />
@@ -146,7 +146,7 @@
         </Columns>
         <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
         <%--<PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />--%>
-        <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
+        <RowStyle Font-Names="Helvetica"  Font-Size="14px"/>
         <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
     </asp:GridView>
     <br />

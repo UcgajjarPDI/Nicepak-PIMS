@@ -16,10 +16,10 @@
         <td>
     <div >
           <div style="text-align:center; border-bottom:medium;border-bottom-color:gray; border-bottom-style:solid ">
-          <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif;  color:#843C0C;font-size:24px;">New Contract Request</p>
+          <p style="font-family: Helvetica;  color:#843C0C;font-size:24px;">New Contract Request</p>
               
           </div>
-          <table style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif;" class="auto-style1">
+          <table style="font-family: Helvetica;" class="auto-style1">
               <tr >
                   <td >Initiator: </td>
                   <td >
@@ -82,8 +82,8 @@
 
    <div style="text-align:left">
            <%-- <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="4"  DataKeyNames="CNT_NR"  BorderStyle="None" BorderWidth="1px" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" >--%>
-              <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif;  color:#843C0C;font-size:24px;">Code Request</p> 
-        <asp:GridView ID="gd1" runat="server"  AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="5"  DataKeyNames="CNT_NR" BorderStyle="None" BorderWidth="1px" style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; "    >
+              <p style="font-family: Helvetica;  color:#843C0C;font-size:24px;">Code Request</p> 
+        <asp:GridView ID="gd1" runat="server"  AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="5"  DataKeyNames="CNT_NR" BorderStyle="None" BorderWidth="1px" style="font-family: Helvetica; "    >
             <Columns>
                     <asp:TemplateField>
                        
@@ -169,7 +169,7 @@
    
     <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left"  VerticalAlign="Middle"  Wrap="FALSE"  />
     <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-            <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif"  />
+            <RowStyle Font-Names="Helvetica"  />
     <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
    
             </asp:GridView>

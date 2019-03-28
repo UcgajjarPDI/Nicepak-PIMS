@@ -1,6 +1,6 @@
 ﻿
 .Curved {
-    font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+    font-family: Helvetica;
     color: black;
     font-size: 14px;
     width: 200px;
@@ -24,11 +24,44 @@
 
 .divTableCell {
     display: table-cell;
-    font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+    font-family: Helvetica;
     color: black;
     font-size: 14px;
     padding: 1px 5px 1px 5px;
 }
 .itemHighlighted {
     background-color: #ffc0c0;
+}
+.modalBackground {
+    background-color: Black;
+    filter: alpha(opacity=90);
+    opacity: 0.8;
+}
+
+.modalPopup {
+    background-color: #FFFFFF;
+    border-width: 3px;
+    border-style: solid;
+    border-color: black;
+    padding-top: 10px;
+    padding-left: 10px;
+    width: 900px;
+    height: 900px;
+    font-family: Helvetica;
+}
+.pTitleStyles {
+    font-family: Helvetica;
+    color: #843C0C;
+    font-size: 14px;
+}
+.pLabelStyles {
+    font-family: Helvetica;
+    color: black;
+    font-size: 14px;
+}
+.gridStyle {
+    font-family: Helvetica;
+    font-size: 14px;
+    grid-area: auto;
+    width: 100%
 }

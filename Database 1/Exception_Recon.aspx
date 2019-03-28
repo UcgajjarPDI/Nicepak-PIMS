@@ -29,59 +29,7 @@
 
         });
 
-        //        $("#btnShowPopUp").live("click", function () {
-
-        //        $("#popup").dialog({
-        //            title: "Displaying GridView Data",
-        //            width: 600,
-        //            hide:false,
-
-        //            buttons: {
-        ////            if you want close button use below code
-        ////                Close: function () {
-        ////                    $(this).dialog('close');
-        ////                }
-        //            }
-        //            });
-        //            return false;
-        //            //$(document).ready(function () {
-
-
-        //    });
-        //            //function pop(cnt, prod) {
-
-        //            //      $.session.set("contr", (cnt));
-        //            //$.session.set("produ", (prod));
-        //            //    $.session.get("contr");
-        //            //}
-
-        //        $(document).ready(function () {
-        // $(".opener").click(function () {
-        //          $(".popup").dialog("open");
-        //          return false;
-        //      });
-        //  });
-        //        function popup1(cnt, prod) {
-        //            $("#lb1").text(cnt);
-        //            $("#lb2").text(prod);
-        //            $("#popup").dialog({
-
-        //                title: "show",
-        //                width: "800px",
-        //                height: "800px",
-        //                modal=true,
-        //                buttons: {
-        //                    close: function () { $(this).dialog('close');}
-
-        //                }
-
-
-
-        //            })
-
-
-
-        //        }
+      
         function CompareConfirm() {
             var str1 = "abc";
             var str2 = "def";
@@ -131,7 +79,7 @@
             /* show a hand cursor on hover; some argue that we
       should keep the default arrow cursor for buttons */
             cursor: pointer;
-            font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+            font-family: Helvetica;
         }
 
 
@@ -140,7 +88,7 @@
             display: inline-block;
             text-align: center;
             text-decoration: none;
-            font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+            font-family: Helvetica;
             /* create a small space when buttons wrap on 2 lines */
             margin: 2px 0;
             /* invisible border (will be colored on hover/focus) */
@@ -184,7 +132,7 @@
             padding-left: 10px;
             width: 800px;
             height: 800px;
-            font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+            font-family: Helvetica;
         }
     </style>
 
@@ -225,10 +173,10 @@
             <table style="width: 100%">
                 <tr>
                     <td>
-                        <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: #843C0C; font-size: 24px;">Expired Contract </p>
+                        <p style="font-family: Helvetica; color: #843C0C; font-size: 24px;">Expired Contract </p>
                     </td>
                     <td>
-                        <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: black; font-size: 20px; text-align: right;">Sales Period:<asp:Label runat="server" ID="sales_period"></asp:Label></p>
+                        <p style="font-family: Helvetica; color: black; font-size: 20px; text-align: right;">Sales Period:<asp:Label runat="server" ID="sales_period"></asp:Label></p>
                     </td>
                 </tr>
 
@@ -236,7 +184,7 @@
             <asp:UpdatePanel ID="up1" runat="server">
                 <ContentTemplate>
 
-                    <asp:GridView ID="gd1" EnableViewState="true" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 100%; grid-area: auto;">
+                    <asp:GridView ID="gd1" EnableViewState="true" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 100%; grid-area: auto;">
                         <RowStyle BackColor="White" ForeColor="DarkBlue" />
                         <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
 
@@ -311,7 +259,7 @@
 
                         <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                         <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                        <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
+                        <RowStyle Font-Names="Helvetica"  Font-Size="14px"/>
                         <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                     </asp:GridView>
@@ -332,12 +280,12 @@
                 </ajaxToolkit:ModalPopupExtender>
 
 
-                <asp:Panel ID="Panel1" ClientIDMode="Static" runat="server" CssClass="modalPopup" align="center" Style="display: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif;" ScrollBars="Auto">
+                <asp:Panel ID="Panel1" ClientIDMode="Static" runat="server" CssClass="modalPopup" align="center" Style="display: none; font-family: Helvetica;" ScrollBars="Auto">
                     <div id="popup">
 
                         <asp:UpdatePanel ID="pop1gd1" runat="server" style="text-align: left">
                             <ContentTemplate>
-                                <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: #843C0C; font-size: 24px;">
+                                <p style="font-family: Helvetica; color: #843C0C; font-size: 24px;">
                                     Contract for 
                                     <asp:Label ID="Lb1" runat="server" Text="Label"></asp:Label>
                                     with Item
@@ -347,7 +295,7 @@
 
                                 <br />
 
-                                <asp:GridView ID="pop1" EnableViewState="true" runat="server" ClientIDMode="Static" PageSize="5" AllowPaging="true" OnPageIndexChanging="pop1_PageIndexChanging" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 80%; grid-area: auto;">
+                                <asp:GridView ID="pop1" EnableViewState="true" runat="server" ClientIDMode="Static" PageSize="5" AllowPaging="true" OnPageIndexChanging="pop1_PageIndexChanging" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 80%; grid-area: auto;">
 
 
                                     <Columns>
@@ -392,7 +340,7 @@
 
                                     <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                                     <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                                    <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
+                                    <RowStyle Font-Names="Helvetica"  Font-Size="14px"/>
                                     <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                                 </asp:GridView>
@@ -411,8 +359,8 @@
                         <asp:UpdatePanel ID="UpdatePanel5" runat="server" style="text-align: left">
                             <ContentTemplate>
                                 <br />
-                                <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: #843C0C; font-size: 24px;">Seacrh All</p>
-                                <asp:GridView ID="pop2" EnableViewState="true" runat="server" ClientIDMode="Static" PageSize="5" AllowPaging="true" OnPageIndexChanging="pop2_PageIndexChanging" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 80%; grid-area: auto;">
+                                <p style="font-family: Helvetica; color: #843C0C; font-size: 24px;">Seacrh All</p>
+                                <asp:GridView ID="pop2" EnableViewState="true" runat="server" ClientIDMode="Static" PageSize="5" AllowPaging="true" OnPageIndexChanging="pop2_PageIndexChanging" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 80%; grid-area: auto;">
 
 
                                     <Columns>
@@ -457,7 +405,7 @@
 
                                     <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                                     <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                                    <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
+                                    <RowStyle Font-Names="Helvetica"  Font-Size="14px"/>
                                     <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                                 </asp:GridView>
@@ -507,15 +455,15 @@
                     <table style="width: 100%">
                         <tr>
                             <td>
-                                <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: #843C0C; font-size: 24px;">Product Not In Contract </p>
+                                <p style="font-family: Helvetica; color: #843C0C; font-size: 24px;">Product Not In Contract </p>
                             </td>
                             <td>
-                                <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: black; font-size: 20px; text-align: right;"></p>
+                                <p style="font-family: Helvetica; color: black; font-size: 20px; text-align: right;"></p>
                             </td>
                         </tr>
 
                     </table>
-                    <asp:GridView ID="gd2" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" AllowPaging="true" PageSize="10" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 80%;">
+                    <asp:GridView ID="gd2" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" AllowPaging="true" PageSize="10" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 80%;">
                         <Columns>
                             <asp:TemplateField>
                                 <HeaderTemplate>
@@ -595,7 +543,7 @@
 
                         <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                         <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                        <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
+                        <RowStyle Font-Names="Helvetica"  Font-Size="14px"/>
                         <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                     </asp:GridView>
@@ -623,7 +571,7 @@
             PopupControlID="Panel2" DropShadow="true"
             BackgroundCssClass="modalBackground" CancelControlID="Button7">
         </ajaxToolkit:ModalPopupExtender>
-        <asp:Panel ID="Panel2" ClientIDMode="Static" runat="server" CssClass="modalPopup" align="center" Style="display: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif;" ScrollBars="Auto">
+        <asp:Panel ID="Panel2" ClientIDMode="Static" runat="server" CssClass="modalPopup" align="center" Style="display: none; font-family: Helvetica;" ScrollBars="Auto">
             <div id="popup2">
 
 
@@ -631,7 +579,7 @@
                 <asp:UpdatePanel ID="UpdatePanel4" runat="server" style="text-align: left">
                     <ContentTemplate>
 
-                        <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: #843C0C; font-size: 24px;">
+                        <p style="font-family: Helvetica; color: #843C0C; font-size: 24px;">
                             Contract for 
                             <asp:Label ID="lb3" ClientIDMode="Static" runat="server"></asp:Label>
                             with Item
@@ -642,7 +590,7 @@
                         <br />
                         <asp:Label ID="hidgd3" runat="server" Text="Label" Visible="false"></asp:Label>
                         <asp:Label ID="hidgd4" runat="server" Text="Label" Visible="false"></asp:Label>
-                        <asp:GridView ID="prod_up_pop1" EnableViewState="true" runat="server" ClientIDMode="Static" PageSize="5" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 80%; grid-area: auto;">
+                        <asp:GridView ID="prod_up_pop1" EnableViewState="true" runat="server" ClientIDMode="Static" PageSize="5" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 80%; grid-area: auto;">
 
 
                             <Columns>
@@ -687,7 +635,7 @@
 
                             <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                             <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                            <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
+                            <RowStyle Font-Names="Helvetica"  Font-Size="14px"/>
                             <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                         </asp:GridView>
@@ -702,8 +650,8 @@
                             <asp:Button ID="Button8" runat="server" Text="Submit" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Width="150px" OnClientClick="return confirm('Please confirm');" />
                         </div>
                         <br />
-                        <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: #843C0C; font-size: 24px;">Seacrh All</p>
-                        <asp:GridView ID="prod_up_pop2" EnableViewState="true" runat="server" ClientIDMode="Static" PageSize="5" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 80%; grid-area: auto;">
+                        <p style="font-family: Helvetica; color: #843C0C; font-size: 24px;">Seacrh All</p>
+                        <asp:GridView ID="prod_up_pop2" EnableViewState="true" runat="server" ClientIDMode="Static" PageSize="5" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 80%; grid-area: auto;">
 
 
                             <Columns>
@@ -748,7 +696,7 @@
 
                             <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                             <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                            <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
+                            <RowStyle Font-Names="Helvetica"  Font-Size="14px"/>
                             <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                         </asp:GridView>
@@ -780,16 +728,16 @@
                     <table style="width: 100%">
                         <tr>
                             <td>
-                                <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: #843C0C; font-size: 24px;">Unknown Product </p>
+                                <p style="font-family: Helvetica; color: #843C0C; font-size: 24px;">Unknown Product </p>
                             </td>
                             <td>
-                                <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: black; font-size: 20px; text-align: right;"></p>
+                                <p style="font-family: Helvetica; color: black; font-size: 20px; text-align: right;"></p>
                             </td>
                         </tr>
 
                     </table>
 
-                    <asp:GridView ID="gd3" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" AllowPaging="true" PageSize="10" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 80%;">
+                    <asp:GridView ID="gd3" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" AllowPaging="true" PageSize="10" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 80%;">
                         <Columns>
                             <asp:TemplateField>
                                 <HeaderTemplate>
@@ -858,7 +806,7 @@
 
                         <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                         <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                        <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
+                        <RowStyle Font-Names="Helvetica"  Font-Size="14px"/>
                         <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                     </asp:GridView>
@@ -886,15 +834,16 @@
                 <table style="width: 100%">
                     <tr>
                         <td>
-                            <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: #843C0C; font-size: 24px;">Unknown Contract </p>
+                            <p style="font-family: Helvetica; color: #843C0C; font-size: 24px;">Unknown Contract </p>
                         </td>
                         <td>
-                            <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: black; font-size: 20px; text-align: right;"></p>
+                            <p style="font-family: Helvetica; color: black; font-size: 20px; text-align: right;"></p>
                         </td>
                     </tr>
 
                 </table>
-                <asp:GridView ID="gd4" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" AllowPaging="true" PageSize="10" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 80%;">
+                <asp:GridView ID="gd4" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" AllowPaging="true" PageSize="10" 
+                    BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 80%;">
                     <Columns>
                         <asp:TemplateField>
                             <HeaderTemplate>
@@ -958,7 +907,7 @@
 
                     <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                     <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                    <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
+                    <RowStyle Font-Names="Helvetica"  Font-Size="14px"/>
                     <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                 </asp:GridView>

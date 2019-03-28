@@ -47,9 +47,9 @@
                 <tr>
                     <td>
                         <div style="text-align: right">
-                            <input type="button" value="Verify" style="width: 100px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; background-color: #A40000; color: WHITE;" onclick="window.location = 'Master_Data.aspx'" />
-                            <input id="3" type="button" value="Find Match" style="width: 100px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; color: #FFFFFF; background-color: #808080;" onclick="window.location = 'Master_Data_Find.aspx';" />
-                            <input id="4" type="button" value="MDM Search" style="width: 100px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; color: WHITE; background-color: #808080;" onclick="window.location = 'MDM_Search.aspx'" />
+                            <input type="button" value="Verify" style="width: 100px; font-family: Helvetica; border: none; cursor: pointer; background-color: #A40000; color: WHITE;" onclick="window.location = 'Master_Data.aspx'" />
+                            <input id="3" type="button" value="Find Match" style="width: 100px; font-family: Helvetica; border: none; cursor: pointer; color: #FFFFFF; background-color: #808080;" onclick="window.location = 'Master_Data_Find.aspx';" />
+                            <input id="4" type="button" value="MDM Search" style="width: 100px; font-family: Helvetica; border: none; cursor: pointer; color: WHITE; background-color: #808080;" onclick="window.location = 'MDM_Search.aspx'" />
                         </div>
                     </td>
                 </tr>
@@ -58,13 +58,13 @@
                         <table style="width=40%;">
                             <tr>
                                 <td>
-                                    <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: #843C0C; font-size: 24px;">Territory:&nbsp
-                                        <asp:DropDownList ID="drop_ter" runat="server" AutoPostBack="true" Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" Font-Size="20px" ForeColor="#843C0C"></asp:DropDownList>&nbsp </p>
+                                    <p style="font-family: Helvetica; color: #843C0C; font-size: 24px;">Territory:&nbsp
+                                        <asp:DropDownList ID="drop_ter" runat="server" AutoPostBack="true" Font-Names="Helvetica" Font-Size="20px" ForeColor="#843C0C"></asp:DropDownList>&nbsp </p>
                                 </td>
                                 <td>
-                                    <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: #843C0C; font-size: 24px;">
+                                    <p style="font-family: Helvetica; color: #843C0C; font-size: 24px;">
                                         Filter:
-                  <asp:DropDownList ID="drp_Filter" runat="server" Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" Font-Size="20px" ForeColor="#843C0C">
+                  <asp:DropDownList ID="drp_Filter" runat="server" Font-Names="Helvetica" Font-Size="20px" ForeColor="#843C0C">
                       <asp:ListItem Text="--Select--" Value="" Selected="true"></asp:ListItem>
                       <asp:ListItem Text="Matched" Value="Correct"></asp:ListItem>
                       <asp:ListItem Text="Corrected" Value="Corrected"></asp:ListItem>
@@ -74,7 +74,7 @@
                                     </p>
                                 </td>
                                 <td>
-                                    <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; font-size: 24px;">
+                                    <p style="font-family: Helvetica; font-size: 24px;">
                                         <asp:Button ID="btn_drop" runat="server" Text="Submit" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Width="100px" Height="26px" /></p>
                                 </td>
                     </td>
@@ -83,7 +83,7 @@
             </tr>
             <tr>
                 <td>
-                    <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: red; font-size: 24px;">
+                    <p style="font-family: Helvetica; color: red; font-size: 24px;">
                         <asp:Label ID="Lbl_Error" runat="server" EnableViewState="false"></asp:Label>
                     </p>
                 </td>
@@ -91,7 +91,7 @@
             <tr>
                 <td>
 
-                    <asp:GridView ID="gd1" runat="server" AutoGenerateColumns="false" PageSize="10" AllowPaging="true" GridLines="Horizontal" CellPadding="5" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 100%; grid-area: auto;">
+                    <asp:GridView ID="gd1" runat="server" AutoGenerateColumns="false" PageSize="10" AllowPaging="true" GridLines="Horizontal" CellPadding="5" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 100%; grid-area: auto;">
                         <RowStyle BackColor="White" ForeColor="DarkBlue" />
                         <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
                         <Columns>
@@ -146,8 +146,6 @@
 
                         <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                         <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                        <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
-
 
                     </asp:GridView>
                     <br />

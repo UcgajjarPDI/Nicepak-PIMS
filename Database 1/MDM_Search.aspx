@@ -3,7 +3,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="Styles/main.css" rel="stylesheet" />
+    <link href="Styles/main.css" rel="stylesheet" media="screen" />
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -13,17 +13,17 @@
         <tr>
             <td>
                 <div style="text-align: right">
-                    <input type="button" value="Verify" style="width: 100px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; color: WHITE; background-color: #A40000;" onclick="window.location = 'Master_Data.aspx'" />
-                    <input id="3" type="button" value="Find Match" style="width: 100px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; color: WHITE; background-color: #A40000;" onclick="window.location = 'Master_Data_Find.aspx'" />
-                    <input id="4" type="button" value="MDM Search" style="width: 100px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; color: WHITE; background-color: #808080;" onclick="window.location = 'MDM_Search.aspx'" />
+                    <input type="button" value="Verify" style="width: 100px; font-family: Helvetica; border: none; cursor: pointer; color: WHITE; background-color: #A40000;" onclick="window.location = 'Master_Data.aspx'" />
+                    <input id="3" type="button" value="Find Match" style="width: 100px; font-family: Helvetica; border: none; cursor: pointer; color: WHITE; background-color: #A40000;" onclick="window.location = 'Master_Data_Find.aspx'" />
+                    <input id="4" type="button" value="MDM Search" style="width: 100px; font-family: Helvetica; border: none; cursor: pointer; color: WHITE; background-color: #808080;" onclick="window.location = 'MDM_Search.aspx'" />
                 </div>
             </td>
         </tr>
     </table>
 
-    <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: red; font-size: 24px; text-align: left;">Match for:</p>
+    <p style="font-family: Helvetica; color: red; font-size: 24px; text-align: left;">Match for:</p>
     <br />
-    <table style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif;">
+    <table style="font-family: Helvetica;">
         <tr>
             <td>Company name</td>
             <td>Address</td>
@@ -92,7 +92,7 @@
         </tr>
     </table>
     <br />
-    <asp:Label ID="ERR" runat="server" Style="background-color: #A40000; border: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: white; font: bold;" Visible="false">asd</asp:Label>
+    <asp:Label ID="ERR" runat="server" Style="background-color: #A40000; border: none; font-family: Helvetica; color: white; font: bold;" Visible="false">asd</asp:Label>
     <br />
 
     <br />
@@ -102,8 +102,11 @@
         <tr>
             <td style="width: 70%; vertical-align: top;">
 
-                <asp:GridView ID="gd1" EnableViewState="true" runat="server" PageSize="10" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 100%; grid-area: auto;">
-
+                <asp:GridView ID="gd1" EnableViewState="true" runat="server" PageSize="10" AllowPaging="true" 
+                    AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" 
+                    BorderStyle="None" BorderWidth="1px" CssClass="gridStyle">
+                    <RowStyle BackColor="White" ForeColor="DarkBlue" Font-Names="Helvetica" Font-Size="14px" />
+                    <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
@@ -184,7 +187,6 @@
 
                     <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                     <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                    <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
                     <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                 </asp:GridView>

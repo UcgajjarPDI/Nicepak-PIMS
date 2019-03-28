@@ -22,9 +22,7 @@ Public Class MDM_Network
             gd_child_company_load(id)
             gd_aff_company_load(id)
 
-
         End If
-
 
     End Sub
 
@@ -36,10 +34,10 @@ Public Class MDM_Network
         Using conn1 As New SqlConnection(CS)
 
             Dim cmd1 As SqlCommand = New SqlCommand("SELECT C.CMPNY_ID, 'SELF' as relation , C.CMPNY_NM,  C.CMPNY_ADDR_1, C.CMPNY_CITY, C.CMPNY_ST,
-C.CMPNY_ZIP,C.BUYER_INDICATOR as  PDI_CUSTOMER 
-,CONVERT(varchar, CAST( ROUND(cs.[TOTAL SALES PRIOR YEAR],0) AS money), 1) AS SALES_AMT
- from cmpny.company C  
- LEFT JOIN CMPNY.CMPNY_SALES cs ON cs.CMPNY_ID = c.CMPNY_ID 
+            C.CMPNY_ZIP,C.BUYER_INDICATOR as  PDI_CUSTOMER 
+            ,CONVERT(varchar, CAST( ROUND(cs.[TOTAL SALES PRIOR YEAR],0) AS money), 1) AS SALES_AMT
+             from cmpny.company C  
+             LEFT JOIN CMPNY.CMPNY_SALES cs ON cs.CMPNY_ID = c.CMPNY_ID 
                                                         WHERE C.CMPNY_ID =" + id.ToString, conn1)
 
             Try
@@ -49,10 +47,8 @@ C.CMPNY_ZIP,C.BUYER_INDICATOR as  PDI_CUSTOMER
                 Dim ds As DataSet = New DataSet
                 adapter.Fill(ds)
 
-
                 gd_company.DataSource = ds
                 gd_company.DataBind()
-
 
             Finally
                 'close the connection

@@ -1,23 +1,25 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site1.Master" CodeBehind="Pending_Contracts.aspx.vb" Inherits="Database_1.Pending_Contracts" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="Styles/main.css" rel="stylesheet" media="screen" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div>
         <table style="width: 100%">
             <tr>
                 <td>
-                    <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: #843C0C; font-size: 24px;">Action Items</p>
+                    <p class="pTitleStyles">Action Items</p>
                 </td>
                 <td>
-                    <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: black; font-size: 20px; text-align: right;">Pending Contracts</p>
+                    <p class="pLabelStyles">Pending Contracts</p>
                 </td>
             </tr>
 
         </table>
-        <asp:GridView ID="gd2" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 100%; grid-area: auto;">
+        <asp:GridView ID="gd2" runat="server" AutoGenerateColumns="false" 
+            GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" CssClass="gridStyle">
 
-            <RowStyle BackColor="White" ForeColor="DarkBlue" />
+            <RowStyle BackColor="White" ForeColor="DarkBlue" Font-Names="Helvetica" Font-Size="14px" />
             <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
             <Columns>
                 <asp:TemplateField HeaderText="Contract #">
@@ -53,7 +55,6 @@
             </Columns>
             <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
             <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-            <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
             <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
         </asp:GridView>

@@ -5,36 +5,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style>
-        .modalBackground {
-            background-color: Black;
-            filter: alpha(opacity=90);
-            opacity: 0.8;
-        }
-
-        .modalPopup {
-            background-color: #FFFFFF;
-            border-width: 3px;
-            border-style: solid;
-            border-color: black;
-            padding-top: 10px;
-            padding-left: 10px;
-            width: 900px;
-            height: 900px;
-            font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
-        }
-
-        #_ParentDiv {
-            border-color: white;
-        }
-
-        #ContentPlaceHolder1_LineChart1__tooltipDiv {
-            padding: 0px;
-            border-bottom-style: none;
-            left: 0px;
-            top: 0px;
-        }
-    </style>
+    <link href="Styles/main.css" rel="stylesheet"  media="screen" />
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript">
         window.onload = function () {
@@ -56,25 +27,25 @@
     </asp:ScriptManager>
 
     <div>
-        <%--<asp:UpdatePanel ID ="up1" runat="server" >
-       <ContentTemplate>--%>
+
         <div style="width: 100%">
 
             <table style="width: 100%">
                 <tr>
                     <td>
-                        <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: #843C0C; font-size: 18px;">
+                        <p class="pTitleStyles" >
                             Sales Period:&nbsp
                             <asp:Label ID="sales_period" runat="server" Text="Label"></asp:Label>&nbsp
                         </p>
                     </td>
                     <td>
-                        <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: black; font-size: 18px;">
-                            <asp:DropDownList ID="DropDownExtender1" runat="server" AutoPostBack="true" Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" Font-Size="18px" ForeColor="#843C0C"></asp:DropDownList>
+                        <p class="pLabelStyles">
+                            <asp:DropDownList ID="DropDownExtender1" runat="server" AutoPostBack="true" Font-Names="Helvetica" 
+                                Font-Size="14px" ForeColor="#843C0C"></asp:DropDownList>
                         </p>
                     </td>
                     <td>
-                        <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: black; font-size: 18px; text-align: right;">Sales Tracing Summary</p>
+                        <p class="pLabelStyles">Sales Tracing Summary</p>
                     </td>
                 </tr>
 
@@ -82,7 +53,10 @@
         </div>
 
 
-        <asp:GridView ID="gd1" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="5" BorderStyle="None" BorderWidth="1px" PageSize="20" AllowPaging="true" AllowSorting="true" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; grid-area: auto; width: 100%">
+        <asp:GridView ID="gd1" runat="server" 
+            AutoGenerateColumns="false" GridLines="Horizontal" 
+            CellPadding="5" BorderStyle="None" BorderWidth="1px" PageSize="20" 
+            AllowPaging="true" AllowSorting="true" CssClass="gridStyle" >
             <RowStyle BackColor="White" ForeColor="DarkBlue" />
             <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
             <Columns>
@@ -153,7 +127,7 @@
                     <ItemTemplate>
 
                         <asp:LinkButton ID="btnShowPopUp23" runat="server" BorderWidth="0" CommandName="select" CommandArgument='<%# Container.DataItemIndex %>'>
-                            <asp:ImageButton ID="btnShowPopUp54" runat="server" ClientIDMode="Static" ImageUrl="~/img/line_chart.jpg" CommandName="select" CommandArgument='<%# Container.DataItemIndex %>' Width="20px" Height="20px" />
+                            <asp:ImageButton ID="btnShowPopUp54" runat="server" ClientIDMode="Static" ImageUrl="~/img/line_chart.jpg" CommandName="select" CommandArgument='<%# Container.DataItemIndex %>' Width="16px" Height="16px" />
 
                         </asp:LinkButton>
                     </ItemTemplate>
@@ -164,7 +138,7 @@
             <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Right" VerticalAlign="Middle" Wrap="FALSE" />
             <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
 
-            <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" HorizontalAlign="Right" VerticalAlign="Middle" />
+            <RowStyle Font-Names="Helvetica" HorizontalAlign="Right" VerticalAlign="Middle" />
             <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
         </asp:GridView>
@@ -176,7 +150,7 @@
         PopupControlID="Panel1" DropShadow="true"
         BackgroundCssClass="modalBackground" CancelControlID="Button1">
     </ajaxToolkit:ModalPopupExtender>
-    <asp:Panel ID="Panel1" ClientIDMode="Static" runat="server" CssClass="modalPopup" align="center" Style="display: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif;" ScrollBars="Auto">
+    <asp:Panel ID="Panel1" ClientIDMode="Static" runat="server" CssClass="modalPopup" align="center" Style="display: none; font-family: Helvetica;" ScrollBars="Auto">
         <p style="text-align: right;">
             <asp:ImageButton ID="ImageButton1" runat="server" Height="20px" Width="20px" BorderStyle="None" ImageUrl="~/img/Cancle.Png" />
         </p>

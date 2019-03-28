@@ -24,6 +24,7 @@
 
 
     </script>
+    <link href="Styles/main.css" rel="stylesheet" media="screen" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ToolkitScriptManager1" runat="server">
@@ -33,9 +34,9 @@
 
             <div style="text-align: left">
                 <div>
-                    <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: #843C0C; font-size: 24px; text-align: left;">Expiring in 30 Days</p>
+                    <p style="font-family: Helvetica; color: #843C0C; font-size: 24px; text-align: left;">Expiring in 30 Days</p>
 
-                    <asp:GridView ID="gd1" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" DataKeyNames="CNT_NR" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 100%; grid-area: auto;">
+                    <asp:GridView ID="gd1" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" DataKeyNames="CNT_NR" BorderStyle="None" BorderWidth="1px" CssClass="gridStyle">
                         <RowStyle BackColor="White" ForeColor="DarkBlue" />
                         <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
                         <Columns>
@@ -80,7 +81,7 @@
 
                         <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" Width="500PX" />
                         <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                        <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
+                        <RowStyle Font-Names="Helvetica"  Font-Size="14px"/>
                         <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                     </asp:GridView>
@@ -93,10 +94,10 @@
                 </div>
 
                 <div>
-                    <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: #843C0C; font-size: 24px; text-align: left;">Other Contracts</p>
-                    <%--  <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif;  color:#843C0C;font-size:24px;text-align:left;">Expiring in 60 Days</p> --%>
+                    <p style="font-family: Helvetica; color: #843C0C; font-size: 24px; text-align: left;">Other Contracts</p>
+                    <%--  <p style="font-family: Helvetica;  color:#843C0C;font-size:24px;text-align:left;">Expiring in 60 Days</p> --%>
 
-                    <asp:GridView ID="gd2" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" DataKeyNames="CNT_NR" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 100%; grid-area: auto;">
+                    <asp:GridView ID="gd2" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" DataKeyNames="CNT_NR" BorderStyle="None" BorderWidth="1px" CssClass="gridStyle">
                         <RowStyle BackColor="White" ForeColor="DarkBlue" />
                         <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
                         <Columns>
@@ -142,7 +143,7 @@
 
                         <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" Width="500PX" />
                         <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                        <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
+                        <RowStyle Font-Names="Helvetica"  Font-Size="14px"/>
                         <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                     </asp:GridView>

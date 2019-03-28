@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <br />
-    <asp:GridView ID="gd1" EnableViewState="true" runat="server"    AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8"   BorderStyle="None" PageSize="10" allowpaging="true" BorderWidth="1px" style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif;width:100%; grid-area:auto;"  >
+    <asp:GridView ID="gd1" EnableViewState="true" runat="server"    AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8"   BorderStyle="None" PageSize="10" allowpaging="true" BorderWidth="1px" style="font-family: Helvetica;width:100%; grid-area:auto;"  >
             
             
             <Columns>
@@ -64,7 +64,7 @@
    
     <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left"  VerticalAlign="Middle"  Wrap="FALSE"  />
     <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-            <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif"  />
+            <RowStyle Font-Names="Helvetica"  />
     <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
    
             </asp:GridView>

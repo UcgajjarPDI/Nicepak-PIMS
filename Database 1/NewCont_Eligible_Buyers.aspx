@@ -3,21 +3,21 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="Styles/main.css" rel="stylesheet" />    
+    <link href="Styles/main.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ScriptManager>
     <div class="blueTable" style="text-align: center; width: 100%;">
-        <input type="button" value="General" style="width: 100px; height: 25px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; background-color: #808080; color: white;" onclick="window.location = 'New_Contract.aspx'" />
-        <input id="3" type="button" value="Product" style="width: 100px; height: 25px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; color: WHITE; background-color: #808080; color: white;" onclick="window.location = 'NewCont_Product.aspx'" />
-        <input id="4" type="button" value="Eligible Buyers" style="width: 100px; height: 25px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; color: WHITE; background-color: #A40000; color: white;" onclick="window.location = 'NewCont_Eligible_Buyers.aspx'" />
-        <input id="5" type="button" value="Comm" style="width: 100px; height: 25px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; color: WHITE; background-color: #808080; color: white;" onclick="window.location = 'NewCont_Comm.aspx'" />
+        <input type="button" value="General" style="width: 100px; height: 25px; font-family: Helvetica; border: none; cursor: pointer; background-color: #808080; color: white;" onclick="window.location = 'New_Contract.aspx'" />
+        <input id="3" type="button" value="Product" style="width: 100px; height: 25px; font-family: Helvetica; border: none; cursor: pointer; color: WHITE; background-color: #808080; color: white;" onclick="window.location = 'NewCont_Product.aspx'" />
+        <input id="4" type="button" value="Eligible Buyers" style="width: 100px; height: 25px; font-family: Helvetica; border: none; cursor: pointer; color: WHITE; background-color: #A40000; color: white;" onclick="window.location = 'NewCont_Eligible_Buyers.aspx'" />
+        <input id="5" type="button" value="Comm" style="width: 100px; height: 25px; font-family: Helvetica; border: none; cursor: pointer; color: WHITE; background-color: #808080; color: white;" onclick="window.location = 'NewCont_Comm.aspx'" />
     </div>
 
     <br />
 
-    <table style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif;">
+    <table style="font-family: Helvetica;">
         <tr>
             <td>Company name</td>
             <td>Address</td>
@@ -88,7 +88,7 @@
         </tr>
     </table>
 
-    <asp:Label ID="ERR" runat="server" Style="background-color: #A40000; border: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: white; font: bold;" Visible="false">asd</asp:Label>
+    <asp:Label ID="ERR" runat="server" Style="background-color: #A40000; border: none; font-family: Helvetica; color: white; font: bold;" Visible="false">asd</asp:Label>
 
     <asp:GridView
         ID="gd1"
@@ -101,8 +101,8 @@
         CellPadding="8"
         BorderStyle="None"
         BorderWidth="1px"
-        Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 1025px; grid-area: auto;">
-        <RowStyle BackColor="White" ForeColor="DarkBlue" />
+        Style="font-family: Helvetica; width: 1025px; grid-area: auto;">
+        <RowStyle BackColor="White" ForeColor="DarkBlue" Font-Names="Helvetica" Font-Size="14px" />
         <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
         <Columns>
             <asp:TemplateField>
@@ -148,7 +148,6 @@
 
         <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
         <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-        <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
         <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
     </asp:GridView>
     <div style="text-align: right; width: 1025px;">
@@ -167,15 +166,15 @@
         BorderStyle="None"
         BorderWidth="1px"
         Caption=" <p style='background: white; color: Red;font-size: 18px; font-weight: bold;'> Current eligible Buyers </p>"
-        Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 1025px; grid-area: auto;">
+        Style="font-family: Helvetica; width: 1025px; grid-area: auto;">
         <RowStyle BackColor="White" ForeColor="DarkBlue" />
         <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
         <Columns>
-             <asp:TemplateField>
-                <ItemTemplate>                
-                        <asp:Image ID="img_eb" runat="server" Visible='<%# IIf(Eval("BI").Equals("Y"), "True", "False") %>'
-                            ClientIDMode="Static" ImageUrl="~/img/buyer_icon.PNG" 
-                            Width="20px" Height="20px" />
+            <asp:TemplateField>
+                <ItemTemplate>
+                    <asp:Image ID="img_eb" runat="server" Visible='<%# IIf(Eval("BI").Equals("Y"), "True", "False") %>'
+                        ClientIDMode="Static" ImageUrl="~/img/buyer_icon.PNG"
+                        Width="20px" Height="20px" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="ID">
@@ -217,12 +216,12 @@
             </asp:TemplateField>
             <asp:TemplateField>
                 <ItemTemplate>
-                    <asp:LinkButton ID="delete1" runat="server" BorderWidth="0" 
-                            CommandName="delete1" CommandArgument='<%# Container.DataItemIndex %>' 
-                            ToolTip="Delete" OnClientClick="Collapse()">
-                        <asp:ImageButton ID="img_delete" runat="server" 
-                            ClientIDMode="Static" ImageUrl="~/img/Cancle.PNG" 
-                            CommandName="delete1" CommandArgument='<%# Container.DataItemIndex %>' 
+                    <asp:LinkButton ID="delete1" runat="server" BorderWidth="0"
+                        CommandName="delete1" CommandArgument='<%# Container.DataItemIndex %>'
+                        ToolTip="Delete" OnClientClick="Collapse()">
+                        <asp:ImageButton ID="img_delete" runat="server"
+                            ClientIDMode="Static" ImageUrl="~/img/Cancle.PNG"
+                            CommandName="delete1" CommandArgument='<%# Container.DataItemIndex %>'
                             Width="20px" Height="20px" OnClientClick="Collapse()" />
 
                     </asp:LinkButton>
@@ -232,7 +231,7 @@
 
         <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
         <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-        <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
+        <RowStyle Font-Names="Helvetica" Font-Size="14px" />
         <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
     </asp:GridView>
 

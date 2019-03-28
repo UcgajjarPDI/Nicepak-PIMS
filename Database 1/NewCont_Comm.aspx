@@ -5,7 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
         #table1 {
-            font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+            font-family: Helvetica;
             color: black;
             font-size: 18px;
             text-align: left;
@@ -58,7 +58,7 @@
             padding-left: 13px;
             width: 375px;
             height: 375px;
-            font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+            font-family: Helvetica;
         }
 
         #_ParentDiv {
@@ -92,10 +92,10 @@
         <ContentTemplate>
 
             <div style="text-align: center; width: 100%;">
-                <input type="button" value="General" style="width: 100px; height: 25px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; background-color: #808080; color: white;" onclick="window.location = 'New_Contract.aspx'" />
-                <input id="3" type="button" value="Product" style="width: 100px; height: 25px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; color: WHITE; background-color: #808080; color: white;" onclick="window.location = 'NewCont_Product.aspx'" />
-                <input id="4" type="button" value="Eligible Buyers" style="width: 100px; height: 25px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; color: WHITE; background-color: #808080; color: white;" onclick="window.location = 'NewCont_Eligible_Buyers.aspx'" />
-                <input id="5" type="button" value="Comm" style="width: 100px; height: 25px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; color: WHITE; background-color: #A40000; color: white;" onclick="window.location = 'NewCont_Comm.aspx'" />
+                <input type="button" value="General" style="width: 100px; height: 25px; font-family: Helvetica; border: none; cursor: pointer; background-color: #808080; color: white;" onclick="window.location = 'New_Contract.aspx'" />
+                <input id="3" type="button" value="Product" style="width: 100px; height: 25px; font-family: Helvetica; border: none; cursor: pointer; color: WHITE; background-color: #808080; color: white;" onclick="window.location = 'NewCont_Product.aspx'" />
+                <input id="4" type="button" value="Eligible Buyers" style="width: 100px; height: 25px; font-family: Helvetica; border: none; cursor: pointer; color: WHITE; background-color: #808080; color: white;" onclick="window.location = 'NewCont_Eligible_Buyers.aspx'" />
+                <input id="5" type="button" value="Comm" style="width: 100px; height: 25px; font-family: Helvetica; border: none; cursor: pointer; color: WHITE; background-color: #A40000; color: white;" onclick="window.location = 'NewCont_Comm.aspx'" />
             </div>
             <table style="width: 100%" id="table1">
                 <tr>
@@ -109,7 +109,7 @@
                             BackgroundCssClass="modalBackground" CancelControlID="HiddenField1">
                         </ajaxToolkit:ModalPopupExtender>
 
-                        <asp:Panel ID="Panel1" ClientIDMode="Static" runat="server" CssClass="modalPopup" align="center" Style="display: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif;" ScrollBars="Auto">
+                        <asp:Panel ID="Panel1" ClientIDMode="Static" runat="server" CssClass="modalPopup" align="center" Style="display: none; font-family: Helvetica;" ScrollBars="Auto">
 
                             <div>
                                 <div style="text-align: left;">
@@ -151,7 +151,7 @@
 
                                 </div>
                                 <div style="text-align: right; padding-right: 18px">
-                                    <asp:Button ID="Button2" runat="server" Text="Cancel" Style="width: 100px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; color: WHITE; background-color: #808080; color: white;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="Button1" runat="server" Text="Save" Style="width: 100px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; color: WHITE; background-color: #A40000; color: white;" />
+                                    <asp:Button ID="Button2" runat="server" Text="Cancel" Style="width: 100px; font-family: Helvetica; border: none; cursor: pointer; color: WHITE; background-color: #808080; color: white;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="Button1" runat="server" Text="Save" Style="width: 100px; font-family: Helvetica; border: none; cursor: pointer; color: WHITE; background-color: #A40000; color: white;" />
 
 
 
@@ -162,7 +162,7 @@
 
                         </asp:Panel>
 
-                        <asp:GridView ID="gd2" Width="100%" runat="server" AllowPaging="true" PageSize="5" AutoGenerateColumns="false" GridLines="None" CellPadding="0" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 100%; word-wrap: break-word; table-layout: fixed;"
+                        <asp:GridView ID="gd2" Width="100%" runat="server" AllowPaging="true" PageSize="5" AutoGenerateColumns="false" GridLines="None" CellPadding="0" Style="font-family: Helvetica; width: 100%; word-wrap: break-word; table-layout: fixed;"
                             OnRowDataBound="gd2_RowDataBound">
                             <Columns>
 
@@ -194,7 +194,7 @@
                                             </tr>
                                         </table>
 
-                                        <asp:GridView ID="gd3" Width="100%" runat="server" AutoGenerateColumns="false" GridLines="None" CellPadding="0" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 100%; word-wrap: break-word; table-layout: fixed;">
+                                        <asp:GridView ID="gd3" Width="100%" runat="server" AutoGenerateColumns="false" GridLines="None" CellPadding="0" Style="font-family: Helvetica; width: 100%; word-wrap: break-word; table-layout: fixed;">
                                             <Columns>
                                                 <asp:TemplateField>
                                                     <ItemTemplate>
@@ -238,7 +238,7 @@
                             </ajaxToolkit:AutoCompleteExtender>
                         </div>
 
-                        <asp:GridView ID="gd1" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="1" GridLines="None" CellPadding="0" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 100%; grid-area: auto;">
+                        <asp:GridView ID="gd1" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="1" GridLines="None" CellPadding="0" Style="font-family: Helvetica; width: 100%; grid-area: auto;">
                             <Columns>
                                 <asp:TemplateField>
                                     <ItemTemplate>

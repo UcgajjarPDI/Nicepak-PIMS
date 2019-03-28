@@ -37,7 +37,7 @@
         }
 
         #table1 {
-            font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+            font-family: Helvetica;
             color: black;
             font-size: 14px;
             text-align: left;
@@ -171,10 +171,10 @@
 
 
     <div class="blueTable" style="text-align: center; width: 100%;">
-        <input type="button" value="General" style="width: 100px; height: 25px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; background-color: #808080; color: white;" onclick="window.location = 'New_Contract.aspx'" />
-        <input id="3" type="button" value="Product" style="width: 100px; height: 25px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; color: WHITE; background-color: #A40000; color: white;" onclick="window.location = 'NewCont_Product.aspx'" />
-        <input id="4" type="button" value="Eligible Buyers" style="width: 100px; height: 25px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; color: WHITE; background-color: #808080; color: white;" onclick="window.location = 'NewCont_Eligible_Buyers.aspx'" />
-        <input id="5" type="button" value="Comm" style="width: 100px; height: 25px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; color: WHITE; background-color: #808080; color: white;" onclick="window.location = 'NewCont_Comm.aspx'" />
+        <input type="button" value="General" style="width: 100px; height: 25px; font-family: Helvetica; border: none; cursor: pointer; background-color: #808080; color: white;" onclick="window.location = 'New_Contract.aspx'" />
+        <input id="3" type="button" value="Product" style="width: 100px; height: 25px; font-family: Helvetica; border: none; cursor: pointer; color: WHITE; background-color: #A40000; color: white;" onclick="window.location = 'NewCont_Product.aspx'" />
+        <input id="4" type="button" value="Eligible Buyers" style="width: 100px; height: 25px; font-family: Helvetica; border: none; cursor: pointer; color: WHITE; background-color: #808080; color: white;" onclick="window.location = 'NewCont_Eligible_Buyers.aspx'" />
+        <input id="5" type="button" value="Comm" style="width: 100px; height: 25px; font-family: Helvetica; border: none; cursor: pointer; color: WHITE; background-color: #808080; color: white;" onclick="window.location = 'NewCont_Comm.aspx'" />
     </div>
     <table style="width: 100%" id="table1">
         <tr>
@@ -280,17 +280,17 @@
                                             </div>
                                             <div class="divTableCell" style="vertical-align: top;">
 
-                                                <asp:Button ID="Button5" runat="server" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; padding: 3px 10px 3px 10px" Text="Other Mfg." BackColor="#808080" Font-Size="Medium" ForeColor="White" BorderColor="#808080" BorderStyle="None" Width="150px" Height="25px" />
+                                                <asp:Button ID="Button5" runat="server" Style="font-family: Helvetica; padding: 3px 10px 3px 10px" Text="Other Mfg." BackColor="#808080" Font-Size="Medium" ForeColor="White" BorderColor="#808080" BorderStyle="None" Width="150px" Height="25px" />
 
-                                                <asp:Button ID="Button2" runat="server" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif;" Text="Submit" BackColor="#A40000" Font-Size="Medium" ForeColor="White" BorderColor="#A40000" BorderStyle="None" Width="150px" Height="25px" />
+                                                <asp:Button ID="Button2" runat="server" Style="font-family: Helvetica;" Text="Submit" BackColor="#A40000" Font-Size="Medium" ForeColor="White" BorderColor="#A40000" BorderStyle="None" Width="150px" Height="25px" />
                                                 <asp:HiddenField ID="hfHidden" runat="server" />
                                                 <ajaxToolkit:ModalPopupExtender ClientIDMode="Static" ID="ModalPopupExtender1" runat="server" TargetControlID="hfHidden"
                                                     PopupControlID="Panel3" DropShadow="true"
                                                     BackgroundCssClass="modalBackground" CancelControlID="Button1">
                                                 </ajaxToolkit:ModalPopupExtender>
-                                                <asp:Panel ID="Panel3" ClientIDMode="Static" runat="server" CssClass="modalPopup" align="center" Style="display: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif;" ScrollBars="Auto">
+                                                <asp:Panel ID="Panel3" ClientIDMode="Static" runat="server" CssClass="modalPopup" align="center" Style="display: none; font-family: Helvetica;" ScrollBars="Auto">
                                                     <p style="text-align: center; color: #A40000;">Competition</p>
-                                                    <table class="pop_table" style="width: 70%; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: black; font-size: 14px;">
+                                                    <table class="pop_table" style="width: 70%; font-family: Helvetica; color: black; font-size: 14px;">
                                                         <tr>
                                                             <td colspan="2">Manufacturer
                                                             </td>
@@ -333,7 +333,7 @@
                                                         <tr>
                                                             <td colspan="2">
                                                                 <p style="text-align: right; padding-right: 25px;">
-                                                                    <asp:Button ID="next" runat="server" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; height: 30px;" Text="NEXT" BackColor="#A40000" Font-Size="Medium" ForeColor="White" BorderColor="#A40000" BorderStyle="None" Width="150px" />
+                                                                    <asp:Button ID="next" runat="server" Style="font-family: Helvetica; height: 30px;" Text="NEXT" BackColor="#A40000" Font-Size="Medium" ForeColor="White" BorderColor="#A40000" BorderStyle="None" Width="150px" />
                                                                 </p>
                                                             </td>
                                                         </tr>
@@ -365,7 +365,7 @@
 
                 <div style="text-align: center; color: #A40000;">LIST OF PRODUCTS</div>
 
-                <asp:GridView ID="gd1" runat="server" AutoGenerateColumns="false" GridLines="None" CellPadding="3" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 100%; grid-area: auto;">
+                <asp:GridView ID="gd1" runat="server" AutoGenerateColumns="false" GridLines="None" CellPadding="3" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 100%; grid-area: auto;">
                     <RowStyle BackColor="White" ForeColor="DarkBlue" />
                     <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
 
@@ -430,7 +430,7 @@
                     <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="left" VerticalAlign="Middle" Wrap="FALSE" />
                     <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
 
-                    <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" HorizontalAlign="left" VerticalAlign="Middle" />
+                    <RowStyle Font-Names="Helvetica" HorizontalAlign="left" VerticalAlign="Middle" />
                     <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                 </asp:GridView>

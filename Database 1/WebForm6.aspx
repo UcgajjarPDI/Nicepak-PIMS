@@ -136,7 +136,7 @@
     Search:
     <asp:TextBox ID="txtSearch" runat="server" Width="200px" />
     <hr />
-    <asp:GridView ID="gvCustomers" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="5" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 100%; grid-area: auto;">
+    <asp:GridView ID="gvCustomers" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="5" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 100%; grid-area: auto;">
     <Columns>  <asp:TemplateField>
     <ItemTemplate>
        <table style="border-collapse: collapse; vertical-align: top;">
@@ -228,7 +228,7 @@
         </ItemTemplate>
 </asp:TemplateField></Columns> 
         <%--<PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />--%>
-        <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
+        <RowStyle Font-Names="Helvetica"  Font-Size="14px"/>
         <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
     </asp:GridView>
     <br />

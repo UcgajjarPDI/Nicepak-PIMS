@@ -47,12 +47,12 @@
                             <img src="img/pdi_logo_small.jpg" alt="Sample Photo" />
                         </td>
                         <td>
-                              <asp:Label ID="Main_Menu" runat="server" Style="border: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; text-align: center" ForeColor="#A40000" Font-Bold="true" Font-Size="Larger"></asp:Label>
+                              <asp:Label ID="Main_Menu" runat="server" Style="border: none; font-family: Helvetica; text-align: center" ForeColor="#A40000" Font-Bold="true" Font-Size="Larger"></asp:Label>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <asp:Label ID="Page_name" runat="server" Style="border: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; text-align: center" ForeColor="#808080" Font-Size="Larger"></asp:Label>
+                            <asp:Label ID="Page_name" runat="server" Style="border: none; font-family: Helvetica; text-align: center" ForeColor="#808080" Font-Size="Larger"></asp:Label>
                         </td>
                         <td> 
                             <asp:Label ID="Label1" runat="server" ForeColor="#C00000" Font-Bold="True" Font-Size="Larger"></asp:Label>
@@ -63,38 +63,38 @@
             <table style="width: 100%; height: 100%; table-layout: fixed; vertical-align: top; margin-top: 0px; border-top: solid; border-color: #808080; border-bottom: none;">
                 <tr>
                     <td style="width: 160px; vertical-align: top; margin-top: 0px; height: 100%;">
-                        <div id="navigation" runat="server" visible="true" style="width: 100%; height: 100%; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; vertical-align: top;">
+                        <div id="navigation" runat="server" visible="true" style="width: 100%; height: 100%; font-family: Helvetica; vertical-align: top;">
 
                             <table style="width: 100%;">
                                 <tr>
                                     <td style="background-color: #A40000; height: 28px;">
-                                        <asp:Button ID="Button5" runat="server" Text="Sales Tracing" Style="background-color: #A40000; border: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; text-align: left" Width="80%" ForeColor="White" Font-Bold="true" /></td>
+                                        <asp:Button ID="Button5" runat="server" Text="Sales Tracing" Style="background-color: #A40000; border: none; font-family: Helvetica; text-align: left" Width="80%" ForeColor="White" Font-Bold="true" /></td>
 
                                 </tr>
 
                                 <tr>
                                     <td style="background-color: #808080; height: 28px;">&nbsp&nbsp
-                              <asp:Button ID="Button1" runat="server" Text="Sales Tracing Summary" Style="background-color: #808080; border: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; text-align: left; cursor: pointer;" Width="80%" ForeColor="White" />
+                              <asp:Button ID="Button1" runat="server" Text="Sales Tracing Summary" Style="background-color: #808080; border: none; font-family: Helvetica; text-align: left; cursor: pointer;" Width="80%" ForeColor="White" />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="background-color: #808080; height: 28px;">&nbsp&nbsp
-                              <asp:Button ID="Button14" runat="server" Text="Exception Recon Report" Style="background-color: #808080; border: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; text-align: left; cursor: pointer;" Width="80%" ForeColor="White" />
+                              <asp:Button ID="Button14" runat="server" Text="Exception Recon Report" Style="background-color: #808080; border: none; font-family: Helvetica; text-align: left; cursor: pointer;" Width="80%" ForeColor="White" />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="background-color: #808080; height: 28px;">&nbsp&nbsp
-                              <asp:Button ID="Button2" runat="server" Text="Rebate Recon Report" Style="background-color: #808080; border: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; text-align: left; cursor: pointer;" Width="80%" ForeColor="White" />
+                              <asp:Button ID="Button2" runat="server" Text="Rebate Recon Report" Style="background-color: #808080; border: none; font-family: Helvetica; text-align: left; cursor: pointer;" Width="80%" ForeColor="White" />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="background-color: #808080; height: 28px;">&nbsp&nbsp
-                               <asp:Button ID="Button3" runat="server" Text="Rebate Calc Rules" Style="background-color: #808080; border: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; text-align: left; cursor: pointer;" Width="80%" ForeColor="White" />
+                               <asp:Button ID="Button3" runat="server" Text="Rebate Calc Rules" Style="background-color: #808080; border: none; font-family: Helvetica; text-align: left; cursor: pointer;" Width="80%" ForeColor="White" />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="background-color: #808080; height: 28px;">&nbsp&nbsp
-                                <asp:Button ID="Button4" runat="server" Text="Master Data" Style="background-color: #808080; border: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; text-align: left; cursor: pointer;" Width="80%" ForeColor="White" />
+                                <asp:Button ID="Button4" runat="server" Text="Master Data" Style="background-color: #808080; border: none; font-family: Helvetica; text-align: left; cursor: pointer;" Width="80%" ForeColor="White" />
                                     </td>
                                 </tr>
 
@@ -106,36 +106,36 @@
                             <table style="width: 100%">
                                 <tr>
                                     <td style="background-color: #A40000; height: 28px;">
-                                        <asp:Button ID="Button6" runat="server" Text="Contract Management" Style="background-color: #A40000; border: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; text-align: left" Width="80%" ForeColor="White" Font-Bold="true" /></td>
+                                        <asp:Button ID="Button6" runat="server" Text="Contract Management" Style="background-color: #A40000; border: none; font-family: Helvetica; text-align: left" Width="80%" ForeColor="White" Font-Bold="true" /></td>
 
                                 </tr>
 
                                 <tr>
                                     <td style="background-color: #808080; height: 28px;">&nbsp&nbsp
-                              <asp:Button ID="Button7" runat="server" Text="Pending Contracts" Style="background-color: #808080; border: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; text-align: left; cursor: pointer;" Width="80%" ForeColor="White" />
+                              <asp:Button ID="Button7" runat="server" Text="Pending Contracts" Style="background-color: #808080; border: none; font-family: Helvetica; text-align: left; cursor: pointer;" Width="80%" ForeColor="White" />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="background-color: #808080; height: 28px;">&nbsp&nbsp
-                              <asp:Button ID="Button8" runat="server" Text="Active Contracts" Style="background-color: #808080; border: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; text-align: left; cursor: pointer;" Width="80%" ForeColor="White" />
+                              <asp:Button ID="Button8" runat="server" Text="Active Contracts" Style="background-color: #808080; border: none; font-family: Helvetica; text-align: left; cursor: pointer;" Width="80%" ForeColor="White" />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="background-color: #808080; height: 28px;">&nbsp&nbsp
-                               <asp:Button ID="btnInitiateContract" runat="server" Text="Initiate Contract" Style="background-color: #808080; border: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; text-align: left; cursor: pointer;" Width="80%" ForeColor="White" />
+                               <asp:Button ID="btnInitiateContract" runat="server" Text="Initiate Contract" Style="background-color: #808080; border: none; font-family: Helvetica; text-align: left; cursor: pointer;" Width="80%" ForeColor="White" />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="background-color: #808080; height: 28px;">&nbsp&nbsp
-                                <asp:Button ID="Button10" runat="server" Text="Price Authorization" Style="background-color: #808080; border: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; text-align: left; cursor: pointer;" Width="80%" ForeColor="White" />
+                                <asp:Button ID="Button10" runat="server" Text="Price Authorization" Style="background-color: #808080; border: none; font-family: Helvetica; text-align: left; cursor: pointer;" Width="80%" ForeColor="White" />
                                     </td>
                                     <tr>
                                         <td style="background-color: #808080; height: 28px;">&nbsp&nbsp
-                                <asp:Button ID="Button11" runat="server" Text="Tier Compliance" Style="background-color: #808080; border: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; text-align: left; cursor: pointer;" Width="80%" ForeColor="White" />
+                                <asp:Button ID="Button11" runat="server" Text="Tier Compliance" Style="background-color: #808080; border: none; font-family: Helvetica; text-align: left; cursor: pointer;" Width="80%" ForeColor="White" />
                                         </td>
                                         <tr>
                                             <td style="background-color: #808080; height: 28px;">&nbsp&nbsp
-                                <asp:Button ID="Button12" runat="server" Text="GPO Admin Fee" Style="background-color: #808080; border: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; text-align: left; cursor: pointer;" Width="80%" ForeColor="White" />
+                                <asp:Button ID="Button12" runat="server" Text="GPO Admin Fee" Style="background-color: #808080; border: none; font-family: Helvetica; text-align: left; cursor: pointer;" Width="80%" ForeColor="White" />
                                             </td>
 
                                         </tr>
@@ -145,21 +145,21 @@
                             <table style="width: 100%">
                                 <tr>
                                     <td style="background-color: #A40000; height: 28px;">
-                                        <asp:Button ID="Button13" runat="server" Text="Admin" Style="background-color: #A40000; border: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; text-align: left" Width="80%" ForeColor="White" Font-Bold="true" />
+                                        <asp:Button ID="Button13" runat="server" Text="Admin" Style="background-color: #A40000; border: none; font-family: Helvetica; text-align: left" Width="80%" ForeColor="White" Font-Bold="true" />
 
                                     </td>
 
                                 </tr>
                                 <tr>
                                     <td style="background-color: #808080; height: 28px;">&nbsp&nbsp
-                                <asp:Button ID="Button15" runat="server" Text="Settings" Style="background-color: #808080; border: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; text-align: left; cursor: pointer;" Width="80%" ForeColor="White" />
+                                <asp:Button ID="Button15" runat="server" Text="Settings" Style="background-color: #808080; border: none; font-family: Helvetica; text-align: left; cursor: pointer;" Width="80%" ForeColor="White" />
                                     </td>
 
                                 </tr>
 
                                 <tr>
                                     <td style="background-color: #808080; height: 28px;">&nbsp&nbsp
-                                <asp:Button ID="Button17" runat="server" Text="EDI 845" Style="background-color: #808080; border: none; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; text-align: left; cursor: pointer;" Width="80%" ForeColor="White" />
+                                <asp:Button ID="Button17" runat="server" Text="EDI 845" Style="background-color: #808080; border: none; font-family: Helvetica; text-align: left; cursor: pointer;" Width="80%" ForeColor="White" />
                                     </td>
 
                                 </tr>

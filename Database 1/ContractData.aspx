@@ -26,9 +26,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" ViewStateMode="Inherit">
     <br />
     <div style="text-align: left">
-        <asp:Label ID="ac_it" runat="server" Text="Action Items" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: #843C0C; font-size: 24px;" Visible="false"></asp:Label>
-        <%-- <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif;  color:#843C0C;font-size:24px;"   >Action Items</p> --%>
-        <asp:GridView ID="gd2" runat="server" OnSelectedIndexChanged="gd2_SelectedIndexChanged" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 100%; grid-area: auto;">
+        <asp:Label ID="ac_it" runat="server" Text="Action Items" Style="font-family: Helvetica; color: #843C0C; font-size: 24px;" Visible="false"></asp:Label>
+        <%-- <p style="font-family: Helvetica;  color:#843C0C;font-size:24px;"   >Action Items</p> --%>
+        <asp:GridView ID="gd2" runat="server" OnSelectedIndexChanged="gd2_SelectedIndexChanged" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 100%; grid-area: auto;">
             <Columns>
                 <asp:TemplateField>
                     <HeaderTemplate>
@@ -75,7 +75,7 @@
 
             <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
             <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-            <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
+            <RowStyle Font-Names="Helvetica"  Font-Size="14px"/>
             <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
         </asp:GridView>
@@ -91,8 +91,8 @@
 
     </div>
     <div style="text-align: left">
-        <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: #843C0C; font-size: 24px;">Active Contracts</p>
-        <asp:GridView ID="gd1" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" DataKeyNames="CNT_NR" BorderStyle="None" BorderWidth="1px" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; width: 100%; grid-area: auto;">
+        <p style="font-family: Helvetica; color: #843C0C; font-size: 24px;">Active Contracts</p>
+        <asp:GridView ID="gd1" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" DataKeyNames="CNT_NR" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 100%; grid-area: auto;">
             <Columns>
                 <asp:TemplateField>
                     <HeaderTemplate>
@@ -138,7 +138,7 @@
 
             <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" Width="500PX" />
             <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-            <RowStyle Font-Names="Trebuchet MS, Arial, Helvetica, sans-serif" />
+            <RowStyle Font-Names="Helvetica"  Font-Size="14px"/>
             <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
         </asp:GridView>

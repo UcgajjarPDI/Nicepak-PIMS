@@ -1,9 +1,18 @@
 ﻿Imports System.Data.SqlClient
+Imports System
+Imports System.Collections.Generic
+Imports System.Web
+Imports System.Web.UI
+Imports System.Web.UI.WebControls
+Imports System.Data
+Imports System.Web.Services
+Imports System.Configuration
+Imports System.Drawing
 
 Public Class Site_Admin
-    Inherits Page
+    Inherits System.Web.UI.Page
 
-    Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         ERR.Visible = False
         ERR_ftp.Visible = False
         Label3.Visible = False
@@ -310,6 +319,164 @@ Public Class Site_Admin
         Dim CS As String = ConfigurationManager.ConnectionStrings("Con2").ConnectionString
         Using conn1 As New SqlConnection(CS)
             Dim dbCmd As SqlCommand = New SqlCommand("EXEC msdb.dbo.sp_start_job N'EDI_845_IMPORT_CHANGE_PRICE_AUTHORIZATION' ;", conn1)
+
+
+
+            Try
+                conn1.Open()
+                dbCmd.ExecuteNonQuery()
+                'Label3.Visible = True
+            Finally
+                'close the connection
+                If (Not conn1 Is Nothing) Then
+                    conn1.Close()
+                End If
+            End Try
+        End Using
+    End Sub
+
+    Protected Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        Label6.Visible = False
+        gpo_member_load()
+
+    End Sub
+    Public Sub gpo_member_load()
+        Dim CS As String = ConfigurationManager.ConnectionStrings("Con2").ConnectionString
+        Using conn1 As New SqlConnection(CS)
+            Dim dbCmd As SqlCommand = New SqlCommand("exec msdb.dbo.sp_help_job @job_name = N'GPO_MEMBERSHIP' ;", conn1)
+            Try
+                conn1.Open()
+                Dim dr As SqlDataReader = dbCmd.ExecuteReader()
+                dr.Read()
+                Dim status As Integer = Convert.ToInt32(dr("current_execution_status"))
+                dr.Close()
+
+                If status = 1 Then
+                    Label6.Visible = True
+                Else
+                    ERR.Visible = False
+                    startDHC_DATA_TRANSFER()
+
+
+                End If
+            Finally
+                'close the connection
+                If (Not conn1 Is Nothing) Then
+                    conn1.Close()
+                End If
+
+            End Try
+        End Using
+    End Sub
+    Public Sub startDHC_DATA_TRANSFER()
+        Dim CS As String = ConfigurationManager.ConnectionStrings("Con2").ConnectionString
+        Using conn1 As New SqlConnection(CS)
+            Dim dbCmd As SqlCommand = New SqlCommand("EXEC msdb.dbo.sp_start_job N'GPO_MEMBERSHIP' ;", conn1)
+
+
+
+            Try
+                conn1.Open()
+                dbCmd.ExecuteNonQuery()
+                'Label3.Visible = True
+            Finally
+                'close the connection
+                If (Not conn1 Is Nothing) Then
+                    conn1.Close()
+                End If
+            End Try
+        End Using
+    End Sub
+
+    Protected Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        Label7.Visible = False
+        PRC_AUTH_load()
+    End Sub
+    Public Sub PRC_AUTH_load()
+        Dim CS As String = ConfigurationManager.ConnectionStrings("Con2").ConnectionString
+        Using conn1 As New SqlConnection(CS)
+            Dim dbCmd As SqlCommand = New SqlCommand("exec msdb.dbo.sp_help_job @job_name = N'PRC_AUTH' ;", conn1)
+            Try
+                conn1.Open()
+                Dim dr As SqlDataReader = dbCmd.ExecuteReader()
+                dr.Read()
+                Dim status As Integer = Convert.ToInt32(dr("current_execution_status"))
+                dr.Close()
+
+                If status = 1 Then
+                    Label7.Visible = True
+                Else
+                    ERR.Visible = False
+                    startPRC_AUTH_TRANSFER()
+
+
+                End If
+            Finally
+                'close the connection
+                If (Not conn1 Is Nothing) Then
+                    conn1.Close()
+                End If
+
+            End Try
+        End Using
+    End Sub
+    Public Sub startPRC_AUTH_TRANSFER()
+        Dim CS As String = ConfigurationManager.ConnectionStrings("Con2").ConnectionString
+        Using conn1 As New SqlConnection(CS)
+            Dim dbCmd As SqlCommand = New SqlCommand("EXEC msdb.dbo.sp_start_job N'PRC_AUTH' ;", conn1)
+
+
+
+            Try
+                conn1.Open()
+                dbCmd.ExecuteNonQuery()
+                'Label3.Visible = True
+            Finally
+                'close the connection
+                If (Not conn1 Is Nothing) Then
+                    conn1.Close()
+                End If
+            End Try
+        End Using
+    End Sub
+
+    Protected Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        Label8.Visible = False
+        DHC_load()
+    End Sub
+
+    Public Sub DHC_load()
+        Dim CS As String = ConfigurationManager.ConnectionStrings("Con2").ConnectionString
+        Using conn1 As New SqlConnection(CS)
+            Dim dbCmd As SqlCommand = New SqlCommand("exec msdb.dbo.sp_help_job @job_name = N'DHC_DATA_TRANSFER' ;", conn1)
+            Try
+                conn1.Open()
+                Dim dr As SqlDataReader = dbCmd.ExecuteReader()
+                dr.Read()
+                Dim status As Integer = Convert.ToInt32(dr("current_execution_status"))
+                dr.Close()
+
+                If status = 1 Then
+                    Label8.Visible = True
+                Else
+                    ERR.Visible = False
+                    startDHC()
+
+
+                End If
+            Finally
+                'close the connection
+                If (Not conn1 Is Nothing) Then
+                    conn1.Close()
+                End If
+
+            End Try
+        End Using
+    End Sub
+    Public Sub startDHC()
+        Dim CS As String = ConfigurationManager.ConnectionStrings("Con2").ConnectionString
+        Using conn1 As New SqlConnection(CS)
+            Dim dbCmd As SqlCommand = New SqlCommand("EXEC msdb.dbo.sp_start_job N'DHC_DATA_TRANSFER' ;", conn1)
 
 
 

@@ -11,10 +11,10 @@
     <asp:UpdatePanel ID="up1" runat="server">
         <ContentTemplate>
             <div style="text-align: center; width: 100%;">
-                <input type="button" value="General" style="width: 100px; height: 25px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; background-color: #A40000; color: white;" onclick="window.location = 'New_Contract.aspx'" />
-                <input id="3" type="button" value="Product" style="width: 100px; height: 25px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; color: WHITE; background-color: #808080;" onclick="window.location = 'NewCont_Product.aspx'" />
-                <input id="4" type="button" value="Eligible Buyers" style="width: 100px; height: 25px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; color: WHITE; background-color: #808080;" onclick="window.location = 'NewCont_Eligible_Buyers.aspx'" />
-                <input id="5" type="button" value="Comm" style="width: 100px; height: 25px; font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: none; cursor: pointer; color: WHITE; background-color: #808080;" onclick="window.location = 'NewCont_Comm.aspx'" />
+                <input type="button" value="General" style="width: 100px; height: 25px; font-family: Helvetica; border: none; cursor: pointer; background-color: #A40000; color: white;" onclick="window.location = 'New_Contract.aspx'" />
+                <input id="3" type="button" value="Product" style="width: 100px; height: 25px; font-family: Helvetica; border: none; cursor: pointer; color: WHITE; background-color: #808080;" onclick="window.location = 'NewCont_Product.aspx'" />
+                <input id="4" type="button" value="Eligible Buyers" style="width: 100px; height: 25px; font-family: Helvetica; border: none; cursor: pointer; color: WHITE; background-color: #808080;" onclick="window.location = 'NewCont_Eligible_Buyers.aspx'" />
+                <input id="5" type="button" value="Comm" style="width: 100px; height: 25px; font-family: Helvetica; border: none; cursor: pointer; color: WHITE; background-color: #808080;" onclick="window.location = 'NewCont_Comm.aspx'" />
             </div>
             <br />
             <div>
@@ -165,13 +165,13 @@
                         </td>
                         <td></td>
                         <td>
-                            <asp:Button ID="btnSubmit" runat="server" Style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif;" Text="Submit" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Width="130px" Height="25px" />
+                            <asp:Button ID="btnSubmit" runat="server" Style="font-family: Helvetica;" Text="Submit" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Width="130px" Height="25px" />
                         </td>
                     </tr>
                 </table>
             </div>
 
-            <p style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; color: red; font-size: 24px;">
+            <p style="font-family: Helvetica; color: red; font-size: 24px;">
                 <asp:Label ID="Lbl_Error" runat="server" EnableViewState="false"></asp:Label>
             </p>
 
