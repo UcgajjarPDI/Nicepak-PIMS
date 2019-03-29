@@ -29,7 +29,7 @@
 
         });
 
-      
+
         function CompareConfirm() {
             var str1 = "abc";
             var str2 = "def";
@@ -168,7 +168,7 @@
                 </td>
             </tr>
         </table>
-        <br />
+
         <div id="ImgDetails1" <%--style="display: none;"--%>>
             <table style="width: 100%">
                 <tr>
@@ -259,7 +259,7 @@
 
                         <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                         <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                        <RowStyle Font-Names="Helvetica"  Font-Size="14px"/>
+                        <RowStyle Font-Names="Helvetica" Font-Size="14px" />
                         <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                     </asp:GridView>
@@ -267,10 +267,6 @@
             </asp:UpdatePanel>
             <br />
             <div style="text-align: right;">
-
-
-
-
 
                 <asp:Button ID="Button5" runat="server" Text="Submit" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Width="150px" OnClientClick="return confirm('Please confirm');" />
                 <asp:HiddenField ID="hfHidden" runat="server" />
@@ -296,7 +292,8 @@
                                 <br />
 
                                 <asp:GridView ID="pop1" EnableViewState="true" runat="server" ClientIDMode="Static" PageSize="5" AllowPaging="true" OnPageIndexChanging="pop1_PageIndexChanging" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 80%; grid-area: auto;">
-
+                                    <RowStyle BackColor="White" ForeColor="DarkBlue" />
+                                    <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
 
                                     <Columns>
                                         <asp:TemplateField>
@@ -340,7 +337,6 @@
 
                                     <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                                     <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                                    <RowStyle Font-Names="Helvetica"  Font-Size="14px"/>
                                     <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                                 </asp:GridView>
@@ -361,7 +357,8 @@
                                 <br />
                                 <p style="font-family: Helvetica; color: #843C0C; font-size: 24px;">Seacrh All</p>
                                 <asp:GridView ID="pop2" EnableViewState="true" runat="server" ClientIDMode="Static" PageSize="5" AllowPaging="true" OnPageIndexChanging="pop2_PageIndexChanging" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 80%; grid-area: auto;">
-
+                                    <RowStyle BackColor="White" ForeColor="DarkBlue" />
+                                    <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
 
                                     <Columns>
                                         <asp:TemplateField>
@@ -405,7 +402,6 @@
 
                                     <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                                     <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                                    <RowStyle Font-Names="Helvetica"  Font-Size="14px"/>
                                     <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                                 </asp:GridView>
@@ -435,19 +431,6 @@
             </div>
         </div>
 
-
-        <br />
-
-
-
-
-
-
-
-
-
-
-
         <div id="ImgDetails2" style="display: none;">
 
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -464,6 +447,8 @@
 
                     </table>
                     <asp:GridView ID="gd2" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" AllowPaging="true" PageSize="10" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 80%;">
+                        <RowStyle BackColor="White" ForeColor="DarkBlue" />
+                        <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
                         <Columns>
                             <asp:TemplateField>
                                 <HeaderTemplate>
@@ -543,7 +528,6 @@
 
                         <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                         <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                        <RowStyle Font-Names="Helvetica"  Font-Size="14px"/>
                         <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                     </asp:GridView>
@@ -591,7 +575,8 @@
                         <asp:Label ID="hidgd3" runat="server" Text="Label" Visible="false"></asp:Label>
                         <asp:Label ID="hidgd4" runat="server" Text="Label" Visible="false"></asp:Label>
                         <asp:GridView ID="prod_up_pop1" EnableViewState="true" runat="server" ClientIDMode="Static" PageSize="5" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 80%; grid-area: auto;">
-
+                            <RowStyle BackColor="White" ForeColor="DarkBlue" />
+                            <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
 
                             <Columns>
                                 <asp:TemplateField>
@@ -635,7 +620,6 @@
 
                             <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                             <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                            <RowStyle Font-Names="Helvetica"  Font-Size="14px"/>
                             <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                         </asp:GridView>
@@ -652,7 +636,8 @@
                         <br />
                         <p style="font-family: Helvetica; color: #843C0C; font-size: 24px;">Seacrh All</p>
                         <asp:GridView ID="prod_up_pop2" EnableViewState="true" runat="server" ClientIDMode="Static" PageSize="5" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 80%; grid-area: auto;">
-
+                            <RowStyle BackColor="White" ForeColor="DarkBlue" />
+                            <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
 
                             <Columns>
                                 <asp:TemplateField>
@@ -696,7 +681,6 @@
 
                             <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                             <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                            <RowStyle Font-Names="Helvetica"  Font-Size="14px"/>
                             <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                         </asp:GridView>
@@ -718,9 +702,6 @@
             <br />
         </asp:Panel>
 
-        <br />
-        <br />
-
         <div id="ImgDetails3" style="display: none;">
 
             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
@@ -738,6 +719,8 @@
                     </table>
 
                     <asp:GridView ID="gd3" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" AllowPaging="true" PageSize="10" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 80%;">
+                        <RowStyle BackColor="White" ForeColor="DarkBlue" />
+                        <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
                         <Columns>
                             <asp:TemplateField>
                                 <HeaderTemplate>
@@ -806,7 +789,6 @@
 
                         <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                         <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                        <RowStyle Font-Names="Helvetica"  Font-Size="14px"/>
                         <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                     </asp:GridView>
@@ -842,8 +824,10 @@
                     </tr>
 
                 </table>
-                <asp:GridView ID="gd4" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" AllowPaging="true" PageSize="10" 
+                <asp:GridView ID="gd4" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" AllowPaging="true" PageSize="10"
                     BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 80%;">
+                    <RowStyle BackColor="White" ForeColor="DarkBlue" />
+                    <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
                     <Columns>
                         <asp:TemplateField>
                             <HeaderTemplate>
@@ -907,7 +891,6 @@
 
                     <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                     <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
-                    <RowStyle Font-Names="Helvetica"  Font-Size="14px"/>
                     <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                 </asp:GridView>
@@ -917,11 +900,6 @@
 
                 <br />
                 <div style="text-align: right; padding-right: 10%;">
-
-
-
-
-
                     <asp:Button ID="Button3" runat="server" Text="Replace" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Width="150px" OnClientClick="return confirm('Please confirm');" />
                 </div>
             </ContentTemplate>

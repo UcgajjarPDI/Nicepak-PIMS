@@ -55,8 +55,8 @@
 
         <asp:GridView ID="gd1" runat="server" 
             AutoGenerateColumns="false" GridLines="Horizontal" 
-            CellPadding="5" BorderStyle="None" BorderWidth="1px" PageSize="20" 
-            AllowPaging="true" AllowSorting="true" CssClass="gridStyle" >
+            CellPadding="5" BorderStyle="None" BorderWidth="1px" 
+            AllowPaging="false" AllowSorting="true" CssClass="gridStyle" >
             <RowStyle BackColor="White" ForeColor="DarkBlue" />
             <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
             <Columns>

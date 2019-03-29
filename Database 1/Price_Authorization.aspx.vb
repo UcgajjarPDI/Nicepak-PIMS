@@ -22,33 +22,20 @@ Public Class Price_Authorization
 
         'SQL Conection
         Using conn1 As New SqlConnection(CS)
-
-            'SQL Command - the name have to exactly the same as in SQL server database in Exec command
-            Dim cmd1 As SqlCommand = New SqlCommand("select P.MFG_CNT_NR , GPO_NM, GPO_MBR_ID, 
-                    A.COACCTSHIPNAME, A.COACCTSHIPADDR1, A.COACCTSHIPCITY, A.COACCTSHIPSTATE, A.COACCTSHIPZIP,
-                    C.CNT_TIER_LVL, C.CNT_DESC AS TIER_DESC, A.SALES_AMT_PRIOR AS SALE, FORMAT(TRY_CONVERT(money,A.NTWRK_AMT_PRIOR),'C','en-US') as NETWORK_SALE
-                    FROM STage.PRC_AUTH1 P
-                    JOIN dbo.GPO_XREF X ON P.GPO_NM = X.[GPO Name] AND P.GPO_MBR_ID = X.[Facility Number]
-                    JOIN CONT.CONTRACT C ON P.MFG_CNT_NR = C.CNT_NR 
-                    JOIN STAGE.PRC_AUTH_TEST17 A ON X.PDI_UserID = A.COACCTID
-                    ", conn1)
-            cmd1.CommandType = CommandType.Text
-            'define parameter -- the parameter name have to exactly how it is in the store dprocedure
-
-
             Try
-                'open connection
+
+                Dim cmd As SqlCommand = New SqlCommand("CNT.spGet_Price_Authorization", conn1)
+                cmd.CommandType = CommandType.StoredProcedure
+
                 conn1.Open()
 
-                'read the data
-                Dim adapter As SqlDataAdapter = New SqlDataAdapter(cmd1)
+                Dim adapter As SqlDataAdapter = New SqlDataAdapter(cmd)
 
                 Dim ds As DataSet = New DataSet
                 adapter.Fill(ds)
 
                 gd1.DataSource = ds
                 gd1.DataBind()
-
 
             Finally
                 'close the connection

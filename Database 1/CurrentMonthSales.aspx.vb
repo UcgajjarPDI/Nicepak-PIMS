@@ -18,24 +18,12 @@ Public Class WebForm3
 
     End Sub
 
-
-
-
-
-
-
     Private Sub GetItemsData_first()
         'Connection String
         Dim CS As String = ConfigurationManager.ConnectionStrings("Con1").ConnectionString
 
         'SQL Conection
         Using conn1 As New SqlConnection(CS)
-
-
-
-            'SQL Command - the name have to exactly the same as in SQL server database in Exec command
-            'Dim cmd1 As SqlCommand = New SqlCommand("select *,format(convert(date,sales_period),'MMMM,yyyy') as SalesPeriod  FROM [PDI_SALESTRACING_dev].[STAGE].[SLS_TRC_LOAD_DTL] where left(sales_period,6)=left(replace(convert(date,(DATEADD(MM, -1, GETDATE()))),'-',''),6) ", conn1)
-            'Dim cmd2 As SqlCommand = New SqlCommand("select top 1 [SALES_PERIOD] FROM [PDI_SALESTRACING_TEST].[STAGE].[SLS_TRC_CNTRL] where substring(SALES_PERIOD,5,2)=DATEPART(MM,getdate())-1  ", conn1)
             Dim cmd1 As SqlCommand = New SqlCommand("[TRC].[spTRC_GET_CURR_MNTH]", conn1)
 
             Dim Param1 As SqlParameter = cmd1.Parameters.AddWithValue("@vSALES_PERIOD", DBNull.Value)
@@ -84,12 +72,6 @@ Public Class WebForm3
 
         'SQL Conection
         Using conn1 As New SqlConnection(CS)
-
-
-
-            'SQL Command - the name have to exactly the same as in SQL server database in Exec command
-            'Dim cmd1 As SqlCommand = New SqlCommand("select *,format(convert(date,sales_period),'MMMM,yyyy') as SalesPeriod  FROM [PDI_SALESTRACING_dev].[STAGE].[SLS_TRC_LOAD_DTL] where left(sales_period,6)=left(replace(convert(date,(DATEADD(MM, -1, GETDATE()))),'-',''),6) ", conn1)
-            'Dim cmd2 As SqlCommand = New SqlCommand("select top 1 [SALES_PERIOD] FROM [PDI_SALESTRACING_TEST].[STAGE].[SLS_TRC_CNTRL] where substring(SALES_PERIOD,5,2)=DATEPART(MM,getdate())-1  ", conn1)
             Dim cmd1 As SqlCommand = New SqlCommand("[TRC].[spTRC_GET_CURR_MNTH]", conn1)
 
             Dim Param1 As SqlParameter = cmd1.Parameters.AddWithValue("@vSALES_PERIOD", Session("sp_salesperiod").ToString())
@@ -117,32 +99,6 @@ Public Class WebForm3
 
                 gd1.DataSource = ds
                 gd1.DataBind()
-                'adapter.Fill(sales_table)
-                'sales_period.Text = sales_table.Rows(0)("SalesPeriod").ToString
-
-
-                'Dim sale_date As String = sales_table.Rows(0).Item("SALES_PERIOD").ToString
-                'Dim len As Int16 = sale_date.Length
-
-
-                'Dim subst As String = sale_date.Substring(len - 4, 5)
-
-
-
-
-                'sales_period.Text = subst.ToString
-
-
-
-
-                'sales_period.DataBind()
-
-
-
-
-
-
-
 
             Finally
                 'close the connection
@@ -194,14 +150,8 @@ Public Class WebForm3
 
         End If
 
-
-
-
     End Sub
 
-    Protected Sub gd1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles gd1.SelectedIndexChanged
-
-    End Sub
 
     Protected Friend Sub gd1_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles gd1.RowCommand
         Try
@@ -239,9 +189,6 @@ Public Class WebForm3
 
         'SQL Conection
         Using conn1 As New SqlConnection(CS)
-
-
-
             'SQL Command - the name have to exactly the same as in SQL server database in Exec command
             Dim cmd1 As SqlCommand = New SqlCommand("[TRC].[spTRC_GET_DIST_TREND]", conn1)
             cmd1.CommandType = CommandType.StoredProcedure
@@ -299,17 +246,4 @@ Public Class WebForm3
         End Using
     End Sub
 
-    Private Sub gd1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs) Handles gd1.PageIndexChanging
-        gd1.PageIndex = e.NewPageIndex
-        ModalPopupExtender1.Hide()
-        If Not Session("sp_salesperiod").ToString() Is Nothing Then
-            ModalPopupExtender1.Hide()
-            GetItemsData_first()
-        Else
-            ModalPopupExtender1.Hide()
-            GetItemsData_DropDown()
-
-        End If
-
-    End Sub
 End Class
