@@ -4,14 +4,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript"> 
-
-
-        function OnClientPopulating(sender, e) {
-            sender._element.className = "loading";
-        }
-        function OnClientCompleted(sender, e) {
-            sender._element.className = "";
-        }
         function CheckOne(obj) {
             var grid = obj.parentNode.parentNode.parentNode;
             var inputs = grid.getElementsByTagName("input");
@@ -23,104 +15,14 @@
                 }
             }
         }
-        function Checktwo(obj) {
-            var grid = obj.parentNode.parentNode.parentNode;
-            var inputs = grid.getElementsByTagName("input");
-            for (var i = 0; i < inputs.length; i++) {
-                if (inputs[i].type == "checkbox") {
-                    if (obj.checked && inputs[i] != obj && inputs[i].checked) {
-                        inputs[i].checked = false;
-                    }
-                }
-            }
-        }
-        function toggleCheckBoxes(gvId, isChecked) {
 
-            var checkboxes = getCheckBoxesFrom(document.getElementById(gvId));
 
-            for (i = 0; i <= checkboxes.length - 1; i++) {
-
-                checkboxes[i].checked = isChecked;
-            }
-
-        }
-        function getCheckBoxesFrom(gv) {
-
-            var checkboxesArray = new Array();
-            var inputElements = gv.getElementsByTagName("input");
-            if (inputElements.length == 0) null;
-
-            for (i = 0; i <= inputElements.length - 1; i++) {
-
-                if (isCheckBox(inputElements[i])) {
-
-                    checkboxesArray.push(inputElements[i]);
-                }
-
-            }
-
-            return checkboxesArray;
-        }
-        function isCheckBox(element) {
-            return element.type == "checkbox";
-        }
     </script>
-    <style>
-        .loading {
-            background-image: url(img/loader.gif);
-            background-position: right;
-            background-repeat: no-repeat;
-        }
-
-        .completionList {
-            border: solid 1px #444444;
-            margin: 0px;
-            padding: 2px;
-            height: 100px;
-            overflow: auto;
-            background-color: #FFFFFF;
-        }
-
-        .listItem {
-            color: #1C1C1C;
-        }
-
-        .itemHighlighted {
-            background-color: #ffc0c0;
-        }
-
-        .autocomplete_completionListElement {
-            margin: 0px !important;
-            background-color: inherit;
-            color: windowtext;
-            border: buttonshadow;
-            border-width: 1px;
-            border-style: solid;
-            cursor: 'default';
-            overflow: auto;
-            height: auto;
-            text-align: left;
-            list-style-type: none;
-        }
-    </style>
-
+    <link href="Styles/main.css" rel="stylesheet" media="screen" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ScriptManager>
-
-    <table style="width: 100%;">
-        <tr>
-            <td>
-                <div style="text-align: right">
-                    <input type="button" value="Verify" style="width: 100px; font-family: Helvetica; border: none; cursor: pointer; background-color: #808080; color: #FFFFFF;" onclick="window.location = 'Master_Data.aspx'" />
-                    <input id="3" type="button" value="Find Match" style="width: 100px; font-family: Helvetica; border: none; cursor: pointer; color: WHITE; background-color: #A40000;" onclick="window.location = 'Master_Data_Find.aspx'" />
-                    <input id="4" type="button" value="MDM Search" style="width: 100px; font-family: Helvetica; border: none; cursor: pointer; color: WHITE; background-color: #808080;" onclick="window.location = 'MDM_Search.aspx'" />
-                </div>
-            </td>
-        </tr>
-    </table>
-
 
     <asp:UpdatePanel ID="up1" runat="server">
         <ContentTemplate>
@@ -129,8 +31,8 @@
                 <p runat="server" id="Un_label" style="font-family: Helvetica; color: red; font-size: 20px; text-align: left;">Unmatched Company</p>
 
                 <asp:GridView ID="gd_un" EnableViewState="true" runat="server" PageSize="5" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 100%; grid-area: auto;">
-                     <RowStyle BackColor="White" ForeColor="DarkBlue" Font-Names="Helvetica" Font-Size="14px" />
-            <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
+                    <RowStyle BackColor="White" ForeColor="DarkBlue" Font-Names="Helvetica" Font-Size="14px" />
+                    <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
                     <Columns>
                         <asp:TemplateField HeaderText="">
                             <ItemTemplate>
@@ -272,8 +174,8 @@
                 <%-- <p style="font-family: Helvetica; color: red; font-size: 24px; text-align: left;">Search For:</p>--%>
 
                 <asp:GridView ID="gd1" EnableViewState="true" runat="server" PageSize="5" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 100%; grid-area: auto;">
- <RowStyle BackColor="White" ForeColor="DarkBlue" Font-Names="Helvetica" Font-Size="14px" />
-            <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
+                    <RowStyle BackColor="White" ForeColor="DarkBlue" Font-Names="Helvetica" Font-Size="14px" />
+                    <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
 
                     <Columns>
                         <asp:TemplateField HeaderText="">
@@ -347,8 +249,8 @@
 
                 </asp:GridView>
                 <asp:GridView ID="gd2" EnableViewState="true" runat="server" PageSize="5" AllowPaging="true" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 100%; grid-area: auto;">
-                     <RowStyle BackColor="White" ForeColor="DarkBlue" Font-Names="Helvetica" Font-Size="14px" />
-            <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
+                    <RowStyle BackColor="White" ForeColor="DarkBlue" Font-Names="Helvetica" Font-Size="14px" />
+                    <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
 
                     <Columns>
                         <asp:TemplateField HeaderText="">

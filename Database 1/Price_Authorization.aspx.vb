@@ -49,10 +49,6 @@ Public Class Price_Authorization
 
     End Sub
 
-    Protected Sub gd1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles gd1.SelectedIndexChanged
-
-    End Sub
-
     Private Sub gd1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs) Handles gd1.PageIndexChanging
         gd1.PageIndex = e.NewPageIndex
         GetPRC_AUTH_Data()

@@ -22,20 +22,9 @@
                     }
                 }
             }
-            function CompareConfirm() {
-                var str1 = "abc";
-                var str2 = "def";
-
-                if (str1 === str2) {
-                    // your logic here
-                    return false;
-                } else {
-                    // your logic here
-                    return confirm("Confirm?");
-                }
-            }
+         
     </script>
-
+     <link href="Styles/main.css" rel="stylesheet" media="screen" />
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -44,15 +33,6 @@
     <asp:UpdatePanel ID="up1" runat="server">
         <ContentTemplate>
             <table style="width: 100%;">
-                <tr>
-                    <td>
-                        <div style="text-align: right">
-                            <input type="button" value="Verify" style="width: 100px; font-family: Helvetica; border: none; cursor: pointer; background-color: #A40000; color: WHITE;" onclick="window.location = 'Master_Data.aspx'" />
-                            <input id="3" type="button" value="Find Match" style="width: 100px; font-family: Helvetica; border: none; cursor: pointer; color: #FFFFFF; background-color: #808080;" onclick="window.location = 'Master_Data_Find.aspx';" />
-                            <input id="4" type="button" value="MDM Search" style="width: 100px; font-family: Helvetica; border: none; cursor: pointer; color: WHITE; background-color: #808080;" onclick="window.location = 'MDM_Search.aspx'" />
-                        </div>
-                    </td>
-                </tr>
                 <tr>
                     <td>
                         <table style="width=40%;">

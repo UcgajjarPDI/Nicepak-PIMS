@@ -4,22 +4,10 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="Styles/main.css" rel="stylesheet" media="screen" />
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ToolkitScriptManager1" runat="server">
     </asp:ScriptManager>
-    <table style="width: 100%;">
-        <tr>
-            <td>
-                <div style="text-align: right">
-                    <input type="button" value="Verify" style="width: 100px; font-family: Helvetica; border: none; cursor: pointer; color: WHITE; background-color: #A40000;" onclick="window.location = 'Master_Data.aspx'" />
-                    <input id="3" type="button" value="Find Match" style="width: 100px; font-family: Helvetica; border: none; cursor: pointer; color: WHITE; background-color: #A40000;" onclick="window.location = 'Master_Data_Find.aspx'" />
-                    <input id="4" type="button" value="MDM Search" style="width: 100px; font-family: Helvetica; border: none; cursor: pointer; color: WHITE; background-color: #808080;" onclick="window.location = 'MDM_Search.aspx'" />
-                </div>
-            </td>
-        </tr>
-    </table>
 
     <p style="font-family: Helvetica; color: red; font-size: 24px; text-align: left;">Match for:</p>
     <br />

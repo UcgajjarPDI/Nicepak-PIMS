@@ -129,6 +129,7 @@
     <Content Include="EDI_845_CONTRACT.aspx" />
     <Content Include="EDI_845_PRC_AUTH.aspx" />
     <Content Include="Exception_Recon.aspx" />
+    <Content Include="GPOAdminFee.aspx" />
     <Content Include="HtmlPage1.html" />
     <Content Include="img\Back.PNG" />
     <Content Include="img\buyer_icon.png" />
@@ -220,6 +221,13 @@
     </Compile>
     <Compile Include="Exception_Recon.aspx.vb">
       <DependentUpon>Exception_Recon.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="GPOAdminFee.aspx.designer.vb">
+      <DependentUpon>GPOAdminFee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GPOAdminFee.aspx.vb">
+      <DependentUpon>GPOAdminFee.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Master_Data.aspx.designer.vb">

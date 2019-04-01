@@ -14,7 +14,6 @@ Public Class WebForm2
         btnLogIn.Attributes.Add("onMouseOut", "this.className='static'")
         Dim navigation As Control = Master.FindControl("navigation")
         navigation.Visible = False
-        'Dim Page_name As Control = Me.Master.FindControl("Page_name")
         ''Page_name. = "Login Page"
         Dim Main_Menu As Label = Master.FindControl("Main_Menu")
         Main_Menu.Text = "Login Page"
