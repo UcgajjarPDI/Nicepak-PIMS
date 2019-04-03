@@ -1,6 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Web.Services
 Imports System.Web.Script.Services
+Imports System.Drawing
 
 Public Class Price_Authorization
     Inherits Page
@@ -181,6 +182,7 @@ Public Class Price_Authorization
             ddlTierLevel.DataTextField = "CNT_TIER_LVL"
             ddlTierLevel.DataValueField = "CNT_TIER_LVL"
             ddlTierLevel.DataBind()
+            Session("ReqT") = dt
         End If
 
     End Sub
@@ -189,5 +191,34 @@ Public Class Price_Authorization
         GetPriceAuthorizationData(ddlGPO.SelectedValue,
                                   IIf(ddlContractNumber.SelectedIndex > 0, ddlContractNumber.SelectedValue, Nothing),
                                   IIf(ddlTierLevel.SelectedIndex > 0, ddlTierLevel.SelectedValue, Nothing))
+        btnSumit.Visible = True
+    End Sub
+
+    Private Sub gd1_RowDataBound(sender As Object, e As GridViewRowEventArgs) Handles gd1.RowDataBound
+        If (e.Row.RowType = DataControlRowType.DataRow) Then
+
+            Dim ddlApprTier As DropDownList = CType(e.Row.FindControl("ddlApprTier"), DropDownList)
+            ddlApprTier.DataSource = Session("ReqT")
+            ddlApprTier.DataTextField = "CNT_TIER_LVL"
+            ddlApprTier.DataValueField = "CNT_TIER_LVL"
+            ddlApprTier.DataBind()
+
+        End If
+    End Sub
+
+    Protected Sub btnSumit_ServerClick(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Protected Sub ddlApprTier_SelectedIndexChanged(sender As Object, e As EventArgs)
+        Dim ddlApprTier As DropDownList = sender
+        Dim Row As GridViewRow = ddlApprTier.Parent.Parent
+        Dim idx As Integer = Row.RowIndex
+        If ddlApprTier.SelectedIndex <> 0 Then
+            gd1.Rows.Item(idx).BackColor = Drawing.Color.Red
+        Else
+            gd1.Rows.Item(idx).BackColor = IIf(idx Mod 2 = 0, Drawing.Color.White, ColorTranslator.FromHtml("#E7E7E7"))
+        End If
+
     End Sub
 End Class
