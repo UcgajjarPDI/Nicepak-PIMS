@@ -30,6 +30,9 @@
     [REC_EFF_DT]        AS            ([PRC_EFF_DT]),
     [REC_EXP_DT]        AS            ([PRC_EXP_DT]),
     [CURRENT_TIMESTAMP] DATETIME      NULL,
-    [PRC_STAT_CD]       CHAR (1)      NULL
+    [PRC_STAT_CD]       CHAR (1)      DEFAULT ('P') NULL,
+    [PRCS_IN]           CHAR (1)      CONSTRAINT [D_PRC_AUTH_PRCS_IN] DEFAULT ('P') NOT NULL
 );
+
+
 

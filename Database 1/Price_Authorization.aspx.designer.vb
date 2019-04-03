@@ -14,6 +14,42 @@ Option Explicit On
 Partial Public Class Price_Authorization
     
     '''<summary>
+    '''ddlGPO control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlGPO As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''ddlTierLevel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlTierLevel As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''ddlContractNumber control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlContractNumber As Global.System.Web.UI.WebControls.DropDownList
+    
+    '''<summary>
+    '''btnSearch control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSearch As Global.System.Web.UI.HtmlControls.HtmlInputButton
+    
+    '''<summary>
     '''gd1 control.
     '''</summary>
     '''<remarks>

@@ -22,6 +22,9 @@
     [GPO_MEMBER_LIC_NR]     VARCHAR (50)  NULL,
     [MMBR_SGMNT]            VARCHAR (100) NULL,
     [GPO_NM]                VARCHAR (255) NULL,
-    [CURRENT TIMESTAMP]     VARCHAR (50)  DEFAULT (getdate()) NOT NULL
+    [CURRENT TIMESTAMP]     VARCHAR (50)  DEFAULT (getdate()) NOT NULL,
+    [PRCS_IN]               CHAR (1)      CONSTRAINT [D_GPO_MEMBER_PRCS_IN] DEFAULT ('P') NOT NULL
 );
+
+
 

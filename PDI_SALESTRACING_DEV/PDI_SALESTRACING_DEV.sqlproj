@@ -669,5 +669,11 @@
     <Build Include="Security\VT_TEST.sql" />
     <Build Include="dbo\Sequences\MyDemoSequence.sql" />
     <Build Include="dbo\Sequences\MySeq.sql" />
+    <Build Include="SNDBX\Tables\PRC_AUTH_EB.sql" />
+    <Build Include="CNT\Stored Procedures\spGetPriceAuthTiersByBuyerGrpid.sql" />
+    <Build Include="CNT\Stored Procedures\spGetPriceAuthCntByBuyerGrpid.sql" />
+    <Build Include="CNT\Stored Procedures\spGetPriceAuthBuyers.sql" />
+    <Build Include="CNT\Stored Procedures\spGetGPOTierCntNrPriceAuth.sql" />
+    <Build Include="CNT\Stored Procedures\spGet_Price_Authorization.sql" />
   </ItemGroup>
 </Project>

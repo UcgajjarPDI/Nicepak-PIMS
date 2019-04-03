@@ -4,20 +4,6 @@ WITH EXEC AS CALLER
 AS
 BEGIN
 
---DECLARE @MSG VARCHAR(200);
-
---IF @CO_NM IS NULL AND @CO_ADDR IS NULL
---  BEGIN
---    SET @MSG  = 'At least name or alternate name or street address is needed to run a search'
---  END
---ELSE
---  BEGIN
---SET @CO_NM  = '%'+@CO_NM+'%';
---SET @CO_ALT_NM  = '%'+@CO_ALT_NM+'%';
---SET @CO_ADDR  = '%'+@CO_ADDR+'%';
---SET @CO_CITY  = '%'+@CO_CITY+'%';
---SET @CO_ST  = '%'+@CO_ST+'%';
-    
   SELECT 
     c.[CMPNY_ID]as COMPANY_ID, 
 	c.[CMPNY_NM] as CMPNY_NM,
@@ -42,3 +28,7 @@ BEGIN
  
    -- SET @MSG  = '';
  END
+ 
+ 
+    
+--END

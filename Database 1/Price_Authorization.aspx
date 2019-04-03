@@ -2,9 +2,87 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="Styles/main.css" rel="stylesheet" media="screen" />
+    <script src="Scripts/jquery-3.3.1.min.js" type="text/javascript"></script>
+   <%-- <script type="text/javascript">
+
+        function GetContractsBuyersId() {
+            debugger;
+            var objddl = document.getElementById("<%= ddlGPO.ClientID%>");
+            //Show the seleted item value
+            alert(objddl.options[objddl.selectedIndex].value);
+            $.ajax({
+                type: "GET",
+                url: "Price_Authorization.aspx/GetContractsInfo",
+                contentType: "application/json",
+                dataType: "json",
+                success: function (response) {
+                    debugger;
+                    alert(response.d);
+                },
+                failure: function (response) {
+                    debugger;
+                    alert(response.d);
+                }
+            });
+        }
+
+    </script>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <br />
+    <div style="width: 100%">
+
+        <table style="width: 100%">
+            <tr>
+                <td style="width: 90px">
+                    <p class="pTitleStyles">
+                        GPO Name:
+                    </p>
+                </td>
+                <td style="text-align: left">
+                    <p class="pLabelStyles">
+                        <asp:DropDownList ID="ddlGPO" runat="server" Font-Names="Helvetica"
+                            Font-Size="14px" ForeColor="#843C0C" Width="60%" 
+                            AutoPostBack="True" 
+                            OnSelectedIndexChanged="ddlGPO_SelectedIndexChanged">
+                        </asp:DropDownList>
+                    </p>
+                </td>
+                <td style="width: 90px">
+                    <p class="pTitleStyles">
+                        Tier Level:
+                    </p>
+                </td>
+                <td>
+                    <p class="pLabelStyles">
+                        <asp:DropDownList ID="ddlTierLevel" runat="server" AutoPostBack="true" 
+                            Font-Names="Helvetica"
+                            Font-Size="14px" ForeColor="#843C0C" Width="80%">
+                        </asp:DropDownList>
+                    </p>
+                </td>
+                <td style="width: 120px">
+                    <p class="pTitleStyles">
+                        Contract Number
+                    </p>
+                </td>
+                <td>
+                    <p class="pLabelStyles">
+                        <asp:DropDownList ID="ddlContractNumber" runat="server" AutoPostBack="true" Font-Names="Helvetica"
+                            Font-Size="14px" ForeColor="#843C0C" Width="80%">
+                        </asp:DropDownList>
+                    </p>
+                </td>
+                <td>
+                    <input type="button" id="btnSearch" 
+                        runat="server"
+                        onserverclick="btnSearch_ServerClick"
+                        value="Show" style="width: 100px; height: 25px; font-family: Helvetica; border: none; cursor: pointer; background-color: #A40000; color: white;" />
+                </td>
+            </tr>
+
+        </table>
+    </div>
+
     <asp:GridView ID="gd1" EnableViewState="true" runat="server" AutoGenerateColumns="false" GridLines="Horizontal"
         CellPadding="8" BorderStyle="None" PageSize="10" AllowPaging="true" BorderWidth="1px" CssClass="gridStyle">
         <RowStyle BackColor="White" ForeColor="DarkBlue" Font-Names="Helvetica" Font-Size="14px" />

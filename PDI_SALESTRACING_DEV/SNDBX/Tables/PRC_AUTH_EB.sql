@@ -1,5 +1,5 @@
-﻿CREATE TABLE [CNT].[PRC_AUTH_EB] (
-    [PRC_AUTH_ID]       INT           IDENTITY (1, 1) NOT NULL,
+﻿CREATE TABLE [SNDBX].[PRC_AUTH_EB] (
+    [PRC_AUTH_ID]       INT           NOT NULL,
     [PDI_GPO_ID]        INT           NULL,
     [GPO_NM]            VARCHAR (15)  NULL,
     [GPO_MBR_ID]        VARCHAR (15)  NULL,
@@ -31,6 +31,4 @@
     [CMPNY_ID]          INT           NULL,
     [PRC_AUTH_STAT_CD]  CHAR (1)      DEFAULT ('P') NOT NULL
 );
-
-
 
