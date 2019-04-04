@@ -143,7 +143,12 @@
                                 <asp:Label ID="Zip" runat="server" Text='<%# Eval("ZIP") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-
+                         <asp:TemplateField HeaderText="Company Type">
+                            <ItemTemplate>
+                                <asp:Label ID="COMPANY_TYPE" runat="server" Text='<%# Eval("COMPANY_TYPE") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        
                         <asp:TemplateField HeaderText="Sales Amt.">
                             <ItemTemplate>
                                 <asp:Label ID="sales" runat="server" Text='<%# Eval("SALES_AMT") %>'></asp:Label>
