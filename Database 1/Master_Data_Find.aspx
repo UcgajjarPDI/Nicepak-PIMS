@@ -223,6 +223,11 @@
 
                             </ItemTemplate>
                         </asp:TemplateField>
+                         <asp:TemplateField HeaderText="Company Type">
+                            <ItemTemplate>
+                                <asp:Label ID="COMPANY_TYPE" runat="server" Text='<%# Eval("COMPANY_TYPE") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Source">
                             <ItemTemplate>
                                 <asp:Label ID="Source1" runat="server" Text='<%# Eval("source") %>'></asp:Label>

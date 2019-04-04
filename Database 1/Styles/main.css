@@ -65,6 +65,16 @@
     font-family: Helvetica;
 }
 
+#_ParentDiv {
+    border-color: white;
+}
+
+#ContentPlaceHolder1_LineChart1__tooltipDiv {
+    padding: 0px;
+    border-bottom-style: none;
+    left: 0px;
+    top: 0px;
+}
 .pTitleStyles {
     font-family: Helvetica;
     color: #843C0C;
