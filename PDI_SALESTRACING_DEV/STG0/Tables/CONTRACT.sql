@@ -1,4 +1,4 @@
-﻿CREATE TABLE [CNT].[CONTRACT] (
+﻿CREATE TABLE [STG0].[CONTRACT] (
     [CONTRACT_ID_PK]     INT           IDENTITY (1, 1) NOT NULL,
     [REC_EFF_DT]         DATE          NOT NULL,
     [REC_EXP_DT]         DATE          NOT NULL,
@@ -24,12 +24,6 @@
     [CNT_UPD_TYP]        VARCHAR (32)  NULL,
     [RPLCD_CNT_NR]       VARCHAR (20)  NULL,
     [ORIG_EXP_DTE]       INT           NULL,
-    [CURRENT TIMESTAMP]  DATETIME      NULL,
-    [BUYER_GRP_ADDR_1]   VARCHAR (200) NULL,
-    [BUYER_GRP_CITY]     VARCHAR (100) NULL,
-    [BUYER_GRP_ST]       VARCHAR (20)  NULL,
-    [BUYER_GRP_ZIP]      VARCHAR (20)  NULL
+    [CURRENT TIMESTAMP]  DATETIME      NULL
 );
-
-
 

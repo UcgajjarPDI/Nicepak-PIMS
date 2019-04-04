@@ -3,52 +3,32 @@
 -- Create date: 03/28/2019
 -- Description:	PRICE AUTHORIZATION aggregate
 -- =============================================
-CREATE PROCEDURE [CNT].[spGet_Price_Authorization]
+CREATE PROCEDURE [CNT].[spGet_Price_Authorization]-- 115, null, null
 	 @buyerGroupId INT,
 	 @mfgCntNr varchar(7) = null,
 	 @cntTierLvl varchar(3) = null
 AS
     BEGIN
-        SELECT P.MFG_CNT_NR, 
-               G.CMS_NM AS GPO_NM, 
-               P.GPO_MBR_ID, 
-               P.GPO_MBR_NM AS COACCTSHIPNAME, 
-               P.GPO_MBR_ADDR1 COACCTSHIPADDR1, 
-               P.GPO_MBR_CITY COACCTSHIPCITY, 
-               P.GPO_MBR_ST COACCTSHIPSTATE, 
-               P.GPO_MBR_ZIP COACCTSHIPZIP, 
-               C.CNT_TIER_LVL_NR AS CNT_TIER_LVL, 
-               C.CNT_DESC AS TIER_DESC, 
-               S.[TOTAL SALES PRIOR YEAR] AS SALE, 
-               0 AS NETWORK_SALE
+       SELECT P.GPO_MBR_ID, 
+               P.GPO_MBR_NM AS GPOCompany, 
+			   CM.CMPNY_NM AS PDICompany,
+			   S.[TOTAL SALES PRIOR YEAR] AS Sales, 
+			   0 AS ParSales,
+			   0 AS NetworkSales,
+			   1 AS CurrTier,
+               P.TIER_NR AS ReqtTier,
+			   CM.BUYER_INDICATOR AS BI		
         FROM [SNDBX].[PRC_AUTH_EB] P -- REMOVE THIS LINE AND COMMENT OUT NEXT LINE - WHEN WE GO LIVE
              --[CNT].[PRC_AUTH_EB] P
              JOIN [CNT].[CONTRACT] C ON C.CNT_NR = P.MFG_CNT_NR
                                         AND C.REC_STAT_CD = 'A'
+										AND C.BUYER_GRP_ID = @buyerGroupId
              JOIN [STAGE].[PRCHS_GRP] G ON C.BUYER_GRP_ID = G.PDI_GRP_ID
              JOIN CMPNY.CMPNY_SALES S ON P.CMPNY_ID = S.CMPNY_ID
              JOIN CMPNY.COMPANY CM ON P.CMPNY_ID = CM.CMPNY_ID
-        WHERE PRC_AUTH_STAT_CD = 'P' AND C.BUYER_GRP_ID = @buyerGroupId
-			AND (@mfgCntNr IS NOT NULL AND P.MFG_CNT_NR =@mfgCntNr)
-			AND (@cntTierLvl IS NOT NULL AND C.CNT_TIER_LVL =@cntTierLvl )
-
-
-/*
-
-  SELECT P.MFG_CNT_NR, G.CMS_NM AS GPO_NM, P.GPO_MBR_ID,
-  P.GPO_MBR_NM, --P.GPO_MBR_ADDR1 COACCTSHIPADDR1, P.GPO_MBR_CITY COACCTSHIPCITY, P.GPO_MBR_ST COACCTSHIPSTATE, P.GPO_MBR_ZIP COACCTSHIPZIP,
-  CM.CMPNY_NM as [Primary Company], CM.CMPNY_ADDR_1 as [ADDRESS], CM.CMPNY_CITY, CM.CMPNY_ST, CM.CMPNY_ZIP,
-  --P.GPO_MBR_NM, P.GPO_MBR_ADDR1, P.GPO_MBR_ADDR2, P.GPO_MBR_CITY, P.GPO_MBR_ST, P.GPO_MBR_ZIP,
-  C.CNT_TIER_LVL_NR AS CNT_TIER_LVL, C.CNT_DESC AS TIER_DESC, S.[TOTAL SALES PRIOR YEAR] AS SALE, 0 as NETWORK_SALE
-  FROM 
-  [SNDBX].[PRC_AUTH_EB] P -- REMOVE THIS LINE AND COMMENT OUT NEXT LINE - WHEN WE GO LIVE
-  --[CNT].[PRC_AUTH_EB] P
-  JOIN [CNT].[CONTRACT] C on C.CNT_NR = P.MFG_CNT_NR AND C.REC_STAT_CD = 'A'
-  JOIN [STAGE].[PRCHS_GRP] G ON C.BUYER_GRP_ID = G.PDI_GRP_ID
-  JOIN CMPNYCMPNY_SALES S ON P.CMPNY_ID = S.CMPNY_ID
-  JOIN CMPNY.COMPANY CM ON  P.CMPNY_ID = CM.CMPNY_ID
-  WHERE PRC_AUTH_STAT_CD = 'P'
-
-*/
+        WHERE PRC_AUTH_STAT_CD = 'P' 
+			AND (ISNULL(@mfgCntNr,'') = '' or P.MFG_CNT_NR = @mfgCntNr)
+			AND (ISNULL(@cntTierLvl,'') = '' or C.CNT_TIER_LVL =@cntTierLvl )
+		ORDER BY P.GPO_MBR_NM
 
     END;

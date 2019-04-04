@@ -152,8 +152,6 @@
 
     </asp:GridView>
 
-    <br />
-
     <p style="text-align: right">
         <input type="button" id="btnSumit"
             runat="server"

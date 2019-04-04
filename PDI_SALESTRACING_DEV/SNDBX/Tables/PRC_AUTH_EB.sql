@@ -29,6 +29,9 @@
     [EDI_TRANSFER_STAT] CHAR (1)      NULL,
     [CURRENT_TIMESTAMP] DATETIME      NULL,
     [CMPNY_ID]          INT           NULL,
-    [PRC_AUTH_STAT_CD]  CHAR (1)      DEFAULT ('P') NOT NULL
+    [PRC_AUTH_STAT_CD]  CHAR (1)      DEFAULT ('P') NOT NULL,
+    [Apprd_Tier]        VARCHAR (10)  NULL
 );
+
+
 

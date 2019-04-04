@@ -675,5 +675,12 @@
     <Build Include="CNT\Stored Procedures\spGetPriceAuthBuyers.sql" />
     <Build Include="CNT\Stored Procedures\spGetGPOTierCntNrPriceAuth.sql" />
     <Build Include="CNT\Stored Procedures\spGet_Price_Authorization.sql" />
+    <Build Include="STG0\Tables\CONTRACT.sql" />
+    <Build Include="SNDBX\Tables\CONTRACT.sql" />
+    <Build Include="dbo\Stored Procedures\upsert_contract.sql" />
+    <Build Include="dbo\Stored Procedures\family_tree.sql" />
+    <Build Include="CNT\Stored Procedures\spUpdateBuyersGroupTiers.sql" />
+    <Build Include="CNT\Stored Procedures\spGetTiersByBuyerGrpid.sql" />
+    <Build Include="dbo\User Defined Types\MemberTiers.sql" />
   </ItemGroup>
 </Project>

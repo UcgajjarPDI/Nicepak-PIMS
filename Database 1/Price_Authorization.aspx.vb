@@ -2,6 +2,8 @@
 Imports System.Web.Services
 Imports System.Web.Script.Services
 Imports System.Drawing
+Imports System.Linq
+Imports Microsoft.SqlServer.Server
 
 Public Class Price_Authorization
     Inherits Page
@@ -155,6 +157,37 @@ Public Class Price_Authorization
         Return New DataTable
     End Function
 
+    <WebMethod>
+    <ScriptMethod(ResponseFormat:=ResponseFormat.Json)>
+    Public Shared Function GetAllTiersInfo(ByVal buyerId As Int16) As DataTable
+        'Connection String
+        Dim CS As String = ConfigurationManager.ConnectionStrings("Con2").ConnectionString
+
+        'SQL Conection
+        Using conn1 As New SqlConnection(CS)
+            Try
+
+                Dim cmd As SqlCommand = New SqlCommand("CNT.spGetTiersByBuyerGrpid", conn1)
+                cmd.CommandType = CommandType.StoredProcedure
+                Dim BuyerGrpId As SqlParameter = cmd.Parameters.AddWithValue("@buyerGroupId", buyerId)
+                BuyerGrpId.Direction = ParameterDirection.Input
+
+                conn1.Open()
+
+                Dim adapter As SqlDataAdapter = New SqlDataAdapter(cmd)
+
+                Dim ds As DataSet = New DataSet
+                adapter.Fill(ds)
+                Return ds.Tables.Item(0)
+
+            Catch Ex As Exception
+                Console.WriteLine(Ex.Message)
+            End Try
+
+        End Using
+        Return New DataTable
+    End Function
+
     Private Sub gd1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs) Handles gd1.PageIndexChanging
         gd1.PageIndex = e.NewPageIndex
         GetPriceAuthorizationData(ddlGPO.SelectedValue,
@@ -182,6 +215,11 @@ Public Class Price_Authorization
             ddlTierLevel.DataTextField = "CNT_TIER_LVL"
             ddlTierLevel.DataValueField = "CNT_TIER_LVL"
             ddlTierLevel.DataBind()
+
+            dt = GetAllTiersInfo(ddlGPO.SelectedValue)
+            R = dt.NewRow
+            R("CNT_TIER_LVL") = "--Please Select--"
+            dt.Rows.InsertAt(R, 0)
             Session("ReqT") = dt
         End If
 
@@ -208,6 +246,34 @@ Public Class Price_Authorization
 
     Protected Sub btnSumit_ServerClick(sender As Object, e As EventArgs)
 
+        Dim dtMemTier As DataTable = New DataTable("MemberTier")
+        dtMemTier.Columns.Add("MemberNr", System.Type.GetType("System.String"))
+        dtMemTier.Columns.Add("TierNr", System.Type.GetType("System.String"))
+
+        For Each row As GridViewRow In gd1.Rows
+            Dim ddlApprTier As DropDownList = CType(row.FindControl("ddlApprTier"), DropDownList)
+            If ddlApprTier.SelectedIndex <> 0 Then
+                Dim lblGPOMember As Label = CType(row.FindControl("GPO_MBR_ID"), Label)
+                Dim nrown = dtMemTier.NewRow()
+                nrown.Item("MemberNr") = lblGPOMember.Text
+                nrown.Item("TierNr") = ddlApprTier.SelectedValue
+                dtMemTier.Rows.Add(nrown)
+            End If
+        Next
+
+        Dim CS As String = ConfigurationManager.ConnectionStrings("Con1").ConnectionString
+        Using conn As New SqlConnection(CS)
+            Using cmd As New SqlCommand("CNT.spUpdateBuyersGroupTiers", conn)
+                cmd.CommandType = CommandType.StoredProcedure
+                Dim CompanyIds As SqlParameter = New SqlParameter("@buyers", SqlDbType.Structured) With {.TypeName = "dbo.MemberTiers", .Value = dtMemTier}
+                CompanyIds.Direction = ParameterDirection.Input
+                cmd.Parameters.Add(CompanyIds)
+                conn.Open()
+                cmd.ExecuteNonQuery()
+                conn.Close()
+            End Using
+        End Using
+
     End Sub
 
     Protected Sub ddlApprTier_SelectedIndexChanged(sender As Object, e As EventArgs)
@@ -215,9 +281,9 @@ Public Class Price_Authorization
         Dim Row As GridViewRow = ddlApprTier.Parent.Parent
         Dim idx As Integer = Row.RowIndex
         If ddlApprTier.SelectedIndex <> 0 Then
-            gd1.Rows.Item(idx).BackColor = Drawing.Color.Red
+            gd1.Rows.Item(idx).BackColor = Color.Red
         Else
-            gd1.Rows.Item(idx).BackColor = IIf(idx Mod 2 = 0, Drawing.Color.White, ColorTranslator.FromHtml("#E7E7E7"))
+            gd1.Rows.Item(idx).BackColor = IIf(idx Mod 2 = 0, Color.White, ColorTranslator.FromHtml("#E7E7E7"))
         End If
 
     End Sub
