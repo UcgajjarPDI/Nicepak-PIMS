@@ -237,6 +237,8 @@ Public Class WebForm3
                 LineChart1.ChartTitleColor = "#A40000"
 
                 LineChart1.Visible = True
+            Catch Ex As Exception
+                Throw
             Finally
                 'close the connection
                 If (Not conn1 Is Nothing) Then

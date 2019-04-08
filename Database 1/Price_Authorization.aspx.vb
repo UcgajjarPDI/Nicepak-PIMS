@@ -40,7 +40,9 @@ Public Class Price_Authorization
 
                 Dim ds As DataSet = New DataSet
                 adapter.Fill(ds)
-
+                Dim R As DataRow = ds.Tables.Item(0).NewRow
+                R("gpoName") = "--Please Select--"
+                ds.Tables.Item(0).Rows.InsertAt(R, 0)
                 ddlGPO.DataSource = ds.Tables.Item(0)
                 ddlGPO.DataTextField = "gpoName"
                 ddlGPO.DataValueField = "buyerGrpId"
@@ -197,7 +199,7 @@ Public Class Price_Authorization
 
     Protected Sub ddlGPO_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlGPO.SelectedIndexChanged
 
-        If ddlGPO.SelectedIndex >= 0 Then
+        If ddlGPO.SelectedIndex > 0 Then
             Dim dt As DataTable = GetContractsInfo(ddlGPO.SelectedValue)
             Dim R As DataRow = dt.NewRow
             R("MFG_CNT_NR") = "--Please Select--"
@@ -221,15 +223,23 @@ Public Class Price_Authorization
             R("CNT_TIER_LVL") = "--Please Select--"
             dt.Rows.InsertAt(R, 0)
             Session("ReqT") = dt
+        Else
+
+            gd1.DataSource = Nothing
+            gd1.DataBind()
+            btnSumit.Visible = False
         End If
 
     End Sub
 
     Protected Sub btnSearch_ServerClick(sender As Object, e As EventArgs) Handles btnSearch.ServerClick
-        GetPriceAuthorizationData(ddlGPO.SelectedValue,
+        If ddlGPO.SelectedIndex > 0 Then
+            GetPriceAuthorizationData(ddlGPO.SelectedValue,
                                   IIf(ddlContractNumber.SelectedIndex > 0, ddlContractNumber.SelectedValue, Nothing),
                                   IIf(ddlTierLevel.SelectedIndex > 0, ddlTierLevel.SelectedValue, Nothing))
-        btnSumit.Visible = True
+            btnSumit.Visible = True
+
+        End If
     End Sub
 
     Private Sub gd1_RowDataBound(sender As Object, e As GridViewRowEventArgs) Handles gd1.RowDataBound

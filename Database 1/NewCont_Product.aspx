@@ -361,7 +361,7 @@
 
                 <ajaxToolkit:CollapsiblePanelExtender ID="CollapsiblePanelExtender2" ClientIDMode="Static" runat="server" Collapsed="true" CollapseControlID="Panel4" ExpandControlID="Panel4" CollapsedText="ADD" ExpandedText="Hide" ImageControlID="Image1" CollapsedImage="~/img/Plus.PNG"
                     ExpandedImage="~/img/minus.PNG" ExpandDirection="Vertical" TargetControlID="Panel2" ScrollContents="false" CollapsedSize="0" />
-
+                
 
                 <div style="text-align: center; color: #A40000;">LIST OF PRODUCTS</div>
 
@@ -441,7 +441,6 @@
                 <table style="border-collapse: collapse; vertical-align: top;">
                     <tr style="border-bottom: solid; border-bottom-color: Gray;">
                         <td colspan="2">Price Detail</td>
-
                     </tr>
                     <tr class="productTable">
                         <td colspan="2">

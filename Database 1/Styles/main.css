@@ -97,7 +97,7 @@
 #navigation {
     margin: 0;
     padding: 0 1em;
-    background: #000;
+    background: white;
     height: 3em;
     list-style: none;
 }
@@ -113,14 +113,14 @@
         #navigation > li > a {
             float: left;
             height: 100%;
-            color: #c60;
+            color: #AC172B;
             text-decoration: none;
             line-height: 3;
             font-weight: bold;
         }
 
             #navigation > li > a:hover {
-                color: orange;
+                color: #AC172B;
                 text-decoration: underline;
             }
 
@@ -162,3 +162,4 @@
             #navigation > li.sub:hover ul {
                 top: 3em;
             }
+

@@ -77,13 +77,13 @@ Partial Public Class WebForm3
     Protected WithEvents Panel1 As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
-    '''ImageButton1 control.
+    '''Button1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ImageButton1 As Global.System.Web.UI.WebControls.ImageButton
+    Protected WithEvents Button1 As Global.System.Web.UI.WebControls.ImageButton
     
     '''<summary>
     '''LineChart1 control.

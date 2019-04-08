@@ -5,7 +5,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="Styles/main.css" rel="stylesheet"  media="screen" />
+    <link href="Styles/main.css" rel="stylesheet" media="screen" />
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript">
         window.onload = function () {
@@ -23,7 +23,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:ScriptManager ID="ToolkitScriptManager1" runat="server">
+    <asp:ScriptManager ID="ToolkitScriptManager1" runat="server" ScriptMode="Release">
     </asp:ScriptManager>
 
     <div>
@@ -33,15 +33,16 @@
             <table style="width: 100%">
                 <tr>
                     <td>
-                        <p class="pTitleStyles" >
+                        <p class="pTitleStyles">
                             Sales Period:&nbsp
                             <asp:Label ID="sales_period" runat="server" Text="Label"></asp:Label>&nbsp
                         </p>
                     </td>
                     <td>
                         <p class="pLabelStyles">
-                            <asp:DropDownList ID="DropDownExtender1" runat="server" AutoPostBack="true" Font-Names="Helvetica" 
-                                Font-Size="14px" ForeColor="#843C0C"></asp:DropDownList>
+                            <asp:DropDownList ID="DropDownExtender1" runat="server" AutoPostBack="true" Font-Names="Helvetica"
+                                Font-Size="14px" ForeColor="#843C0C">
+                            </asp:DropDownList>
                         </p>
                     </td>
                     <td>
@@ -53,10 +54,10 @@
         </div>
 
 
-        <asp:GridView ID="gd1" runat="server" 
-            AutoGenerateColumns="false" GridLines="Horizontal" 
-            CellPadding="5" BorderStyle="None" BorderWidth="1px" 
-            AllowPaging="false" AllowSorting="true" CssClass="gridStyle" >
+        <asp:GridView ID="gd1" runat="server"
+            AutoGenerateColumns="false" GridLines="Horizontal"
+            CellPadding="5" BorderStyle="None" BorderWidth="1px"
+            AllowPaging="false" AllowSorting="true" CssClass="gridStyle">
             <RowStyle BackColor="White" ForeColor="DarkBlue" />
             <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
             <Columns>
@@ -145,16 +146,16 @@
 
 
     </div>
-    <asp:HiddenField ID="hfHidden" runat="server" />
+    <asp:HiddenField ID="hfHidden" runat="server"  />
     <ajaxToolkit:ModalPopupExtender ClientIDMode="Static" ID="ModalPopupExtender1" runat="server" TargetControlID="hfHidden"
         PopupControlID="Panel1" DropShadow="true"
         BackgroundCssClass="modalBackground" CancelControlID="Button1">
     </ajaxToolkit:ModalPopupExtender>
     <asp:Panel ID="Panel1" ClientIDMode="Static" runat="server" CssClass="modalPopup" align="center" Style="display: none; font-family: Helvetica;" ScrollBars="Auto">
         <p style="text-align: right;">
-            <asp:ImageButton ID="ImageButton1" runat="server" Height="20px" Width="20px" BorderStyle="None" ImageUrl="~/img/Cancle.Png" />
+            <asp:ImageButton ID="Button1" runat="server" Height="20px" Width="20px" BorderStyle="None" ImageUrl="~/img/Cancle.Png" />
         </p>
-        <div style="width: 100%; height: 500px;">
+        <div style="width: 80%; height: 400px;">
             <ajaxToolkit:LineChart ID="LineChart1" runat="server" ClientIDMode="Static" ChartWidth="650" ChartHeight="800" EnableViewState="True"
                 ChartType="Basic" ChartTitleColor="#0E426C" Visible="false" CategoryAxisLineColor="#ffcccc"
                 ValueAxisLineColor="#ffcccc" BaseLineColor="#A40000" BorderStyle="None" BorderColor="White" TooltipBorderColor="white">

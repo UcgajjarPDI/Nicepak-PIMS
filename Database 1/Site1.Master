@@ -8,89 +8,121 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="Styles/main.css" rel="stylesheet" media="screen" />
+
+    <style>
+      
+        footer {
+            background-color: white;
+            padding: 10px;
+            text-align: center;
+            color: black;
+        }
+
+        section:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        nav {
+            float: right;
+            width: 20%;
+            background: white;
+            padding: 20px;
+        }
+
+        article {
+            float: left;
+            padding: 10px;
+            width: 75%;
+            background-color: white;
+        }
+
+        @media (max-width: 600px) {
+            nav, article {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div>
-        <form id="form1" runat="server">
 
+    <form id="form1" runat="server">
 
-            <div id="header">
-                <table style="width: 100%;">
-                    <tr>
-                        <td rowspan="2">
-                            <img src="img/pdi_logo_small.jpg" alt="Sample Photo" />
-                        </td>
-                        <td>
-                            <asp:Label ID="Main_Menu" runat="server" Style="border: none; font-family: Helvetica; text-align: center" ForeColor="#A40000" Font-Bold="true" Font-Size="Larger"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <asp:Label ID="Page_name" runat="server" Style="border: none; font-family: Helvetica; text-align: center" ForeColor="#808080" Font-Size="Larger"></asp:Label>
-                        </td>
-                        <td>
-                            <asp:Label ID="Label1" runat="server" ForeColor="#C00000" Font-Bold="True" Font-Size="Larger"></asp:Label>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <ul id="navigation" runat="server">
+        <table style="width: 100%;">
+            <tr>
+                <td rowspan="2">
+                    <img src="img/pdi_logo_small.jpg" alt="Sample Photo" />
+                </td>
+                <td>
+                    <asp:Label ID="Main_Menu" runat="server" Style="border: none; font-family: Helvetica; text-align: center" ForeColor="#A40000" Font-Bold="true" Font-Size="Larger"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="Page_name" runat="server" Style="border: none; font-family: Helvetica; text-align: center" ForeColor="#808080" Font-Size="Larger"></asp:Label>
+                </td>
+                <td>
+                    <asp:Label ID="Label1" runat="server" ForeColor="#C00000" Font-Bold="True" Font-Size="Larger"></asp:Label>
+                </td>
+            </tr>
+        </table>
 
-                <li class="sub">
-                    <a href="#">Sales Tracing</a>
-                    <ul>
-                        <li><a href="CurrentMonthSales.aspx">Sales Tracing Summary</a></li>
-                        <li><a href="Exception_Recon.aspx">Exception Recon Report</a></li>
-                        <li><a href="Rebate_Recon.aspx">Rebate Recon Report</a></li>
-                    </ul>
-                </li>
-                <li class="sub">
-                    <a href="Master_Data.aspx">Master Data</a>
-                    <ul>
-                        <li><a href="Master_Data.aspx">Verify </a></li>
-                        <li><a href="Master_Data_Find.aspx">Find Match</a></li>
-                        <li><a href="MDM_Search.aspx">MDM Search</a></li>
-                    </ul>
-                </li>
-                <li class="sub">
-                    <a href="#">Contract Management</a>
-                    <ul>
-                        <li><a href="Active_Contract.aspx">Active Contracts</a></li>
-                        <li><a href="Pending_Contracts.aspx">Pending Contracts</a></li>
-                        <li><a href="New_Contract.aspx">Initiate Contract</a></li>
-                        <li><a href="Price_Authorization.aspx">Price Authorization</a></li>
-                        <li><a href="Tier_Complance.aspx">Tier Compliance</a></li>
-                        <li><a href="GPOAdminFee.aspx">GPO Admin Fee</a></li>
-                    </ul>
-                </li>
-                <li class="sub">
-                    <a href="#">Admin</a>
-                    <ul>
-                        <li><a href="Site_Admin.aspx">Settings</a></li>
-                        <li><a href="EDI_845_CONTRACT.aspx">EDI 845</a></li>
-                    </ul>
-                </li>           
-            </ul>
+        <ul id="navigation" runat="server">
 
-            <table style="width: 100%; height: 100%; table-layout: fixed; vertical-align: top; margin-top: 0px; border-top: solid; border-color: #808080; border-bottom: none;">
-                <tr>
-                    <td style="width: 10px; vertical-align: top; margin-top: 0px; height: 100%;">
-                       
-                    </td>
+            <li class="sub">
+                <a href="#">Sales Tracing</a>
+                <ul>
+                    <li><a href="CurrentMonthSales.aspx">Sales Tracing Summary</a></li>
+                    <li><a href="Exception_Recon.aspx">Exception Recon Report</a></li>
+                    <li><a href="Rebate_Recon.aspx">Rebate Recon Report</a></li>
+                </ul>
+            </li>
+            <li class="sub">
+                <a href="#">Master Data</a>
+                <ul>
+                    <li><a href="Master_Data.aspx">Verify </a></li>
+                    <li><a href="Master_Data_Find.aspx">Find Match</a></li>
+                    <li><a href="MDM_Search.aspx">MDM Search</a></li>
+                </ul>
+            </li>
+            <li class="sub">
+                <a href="#">Contract Management</a>
+                <ul>
+                    <li><a href="Active_Contract.aspx">Active Contracts</a></li>
+                    <li><a href="Pending_Contracts.aspx">Pending Contracts</a></li>
+                    <li><a href="New_Contract.aspx">Initiate Contract</a></li>
+                    <li><a href="Price_Authorization.aspx">Price Authorization</a></li>
+                    <li><a href="Tier_Complance.aspx">Tier Compliance</a></li>
+                    <li><a href="GPOAdminFee.aspx">GPO Admin Fee</a></li>
+                </ul>
+            </li>
+            <li class="sub">
+                <a href="#">Admin</a>
+                <ul>
+                    <li><a href="Site_Admin.aspx">Settings</a></li>
+                    <li><a href="EDI_845_CONTRACT.aspx">EDI 845</a></li>
+                </ul>
+            </li>
+        </ul>
 
-                    <td style="width: 80%; vertical-align: top; margin-top: 0px;">
-                        <div id="content" style="vertical-align: top; margin-top: 0px; width: 80%;">
-                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
-                        </div>
-                    </td>
-                </tr>
+        <section>
 
-            </table>
+            <article>
 
+                <div id="content" style="vertical-align: top; margin-top: 0px; width: 100%; ">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+                </div>
 
+            </article>
+            <nav>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server"></asp:ContentPlaceHolder>
+            </nav>
+        </section>
 
-        </form>
-    </div>
+    </form>
+   
 </body>
 </html>
