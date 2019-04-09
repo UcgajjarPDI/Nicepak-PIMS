@@ -5,8 +5,7 @@
 -- =============================================
 CREATE PROCEDURE [CNT].[spGet_Price_Authorization]-- 115, null, null
 	 @buyerGroupId INT,
-	 @mfgCntNr varchar(7) = null,
-	 @cntTierLvl varchar(3) = null
+	 @mfgCntNr varchar(7) = null
 AS
     BEGIN
        SELECT P.GPO_MBR_ID, 
@@ -28,7 +27,6 @@ AS
              JOIN CMPNY.COMPANY CM ON P.CMPNY_ID = CM.CMPNY_ID
         WHERE PRC_AUTH_STAT_CD = 'P' 
 			AND (ISNULL(@mfgCntNr,'') = '' or P.MFG_CNT_NR = @mfgCntNr)
-			AND (ISNULL(@cntTierLvl,'') = '' or C.CNT_TIER_LVL =@cntTierLvl )
 		ORDER BY P.GPO_MBR_NM
 
     END;

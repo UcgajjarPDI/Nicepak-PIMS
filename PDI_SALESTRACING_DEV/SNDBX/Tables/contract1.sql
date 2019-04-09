@@ -1,4 +1,4 @@
-﻿CREATE TABLE [STG0].[CONTRACT] (
+﻿CREATE TABLE [SNDBX].[contract1] (
     [CONTRACT_ID_PK]     INT           IDENTITY (1, 1) NOT NULL,
     [REC_EFF_DT]         DATE          NOT NULL,
     [REC_EXP_DT]         DATE          NOT NULL,
@@ -30,6 +30,4 @@
     [BUYER_GRP_ST]       VARCHAR (20)  NULL,
     [BUYER_GRP_ZIP]      VARCHAR (20)  NULL
 );
-
-
 

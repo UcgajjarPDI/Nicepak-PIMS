@@ -682,5 +682,13 @@
     <Build Include="CNT\Stored Procedures\spUpdateBuyersGroupTiers.sql" />
     <Build Include="CNT\Stored Procedures\spGetTiersByBuyerGrpid.sql" />
     <Build Include="dbo\User Defined Types\MemberTiers.sql" />
+    <Build Include="TRC\Tables\SALES_TRACING_VAR_PROD.sql" />
+    <Build Include="SNDBX\Tables\contract2.sql" />
+    <Build Include="SNDBX\Tables\contract1.sql" />
+    <Build Include="STAGE\Stored Procedures\spUpdate_SalesPeriod.sql" />
+    <Build Include="STAGE\Stored Procedures\spSALES_TRACING_VAR_PROD.sql" />
+    <Build Include="dbo\Stored Procedures\tree.sql" />
+    <Build Include="dbo\Stored Procedures\MERGEusp.sql" />
+    <Build Include="dbo\Stored Procedures\IDNFAMILYTREEusp.sql" />
   </ItemGroup>
 </Project>

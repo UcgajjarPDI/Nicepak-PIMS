@@ -9,7 +9,7 @@ AS
     BEGIN
         UPDATE p
           SET 
-              Apprd_Tier = b.TierNr
+              APPRD_CONTRACT_TIER = b.TierNr
         FROM [SNDBX].[PRC_AUTH_EB] p
              INNER JOIN @buyers b ON b.MemberNr = P.GPO_MBR_ID
         WHERE p.GPO_MBR_ID = b.MemberNr;
