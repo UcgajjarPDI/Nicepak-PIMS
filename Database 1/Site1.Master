@@ -8,9 +8,41 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="Styles/main.css" rel="stylesheet" media="screen" />
+    <script type="text/javascript">
+        $(document).ready(function () {
 
+            $(".account").click(function () {
+                var X = $(this).attr('id');
+                if (X == 1) {
+                    $(".submenu").hide();
+                    $(this).attr('id', '0');
+                }
+                else {
+                    $(".submenu").show();
+                    $(this).attr('id', '1');
+                }
+
+            });
+
+            //Mouse click on sub menu
+            $(".submenu").mouseup(function () {
+                return false
+            });
+
+            //Mouse click on my account link
+            $(".account").mouseup(function () {
+                return false
+            });
+
+
+            //Document Click
+            $(document).mouseup(function () {
+                $(".submenu").hide();
+                $(".account").attr('id', '');
+            });
+        });
+    </script>
     <style>
-      
         footer {
             background-color: white;
             padding: 10px;
@@ -34,7 +66,7 @@
         article {
             float: left;
             padding: 10px;
-            width: 75%;
+            width: 95%;
             background-color: white;
         }
 
@@ -51,21 +83,33 @@
 
     <form id="form1" runat="server">
 
-        <table style="width: 100%;">
+        <table style="width: 90%;">
             <tr>
                 <td rowspan="2">
                     <img src="img/pdi_logo_small.jpg" alt="Sample Photo" />
                 </td>
                 <td>
-                    <asp:Label ID="Main_Menu" runat="server" Style="border: none; font-family: Helvetica; text-align: center" ForeColor="#A40000" Font-Bold="true" Font-Size="Larger"></asp:Label>
+                    <asp:Label ID="Main_Menu" runat="server" Style="border: none; font-family: Helvetica;" ForeColor="#A40000"></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="Page_name" runat="server" Style="border: none; font-family: Helvetica; text-align: center" ForeColor="#808080" Font-Size="Larger"></asp:Label>
+                    <asp:Label ID="Page_name" runat="server" Style="border: none; font-family: Helvetica;" ForeColor="#808080"></asp:Label>
                 </td>
                 <td>
-                    <asp:Label ID="Label1" runat="server" ForeColor="#C00000" Font-Bold="True" Font-Size="Larger"></asp:Label>
+
+                    <div class="dropdown">
+                        <a class="account">
+                            <asp:Label ID="lblUser" runat="server" Style="border: none; font-family: Helvetica; text-align: left" ForeColor="#C00000" Font-Size="14px"></asp:Label></a>
+
+                        <div class="submenu">
+                            <ul class="root">
+                                <li><a href="#Dashboard">Log out</a></li>
+                                <li><a href="#Profile">Account Profile</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
                 </td>
             </tr>
         </table>
@@ -112,17 +156,15 @@
 
             <article>
 
-                <div id="content" style="vertical-align: top; margin-top: 0px; width: 100%; ">
+                <div id="content" style="vertical-align: top; margin-top: 0px; width: 100%;">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
                 </div>
 
             </article>
-            <nav>
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server"></asp:ContentPlaceHolder>
-            </nav>
+            
         </section>
 
     </form>
-   
+
 </body>
 </html>

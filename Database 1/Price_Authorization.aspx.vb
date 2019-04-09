@@ -9,6 +9,9 @@ Public Class Price_Authorization
     Inherits Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
+        If String.IsNullOrEmpty(Session("user")) Then
+            Response.Redirect("Login.aspx")
+        End If
 
         Dim Page_name As Label = Master.FindControl("Page_name")
         Dim Main_Menu As Label = Master.FindControl("Main_Menu")
@@ -59,7 +62,7 @@ Public Class Price_Authorization
         End Using
     End Sub
 
-    Private Sub GetPriceAuthorizationData(ByVal buyerId As Int16, Optional ByVal mfgCntNr As String = Nothing, Optional ByVal cntTierLvl As String = Nothing)
+    Private Sub GetPriceAuthorizationData(ByVal buyerId As Int16, Optional ByVal mfgCntNr As String = Nothing)
         'Connection String
         Dim CS As String = ConfigurationManager.ConnectionStrings("Con2").ConnectionString
 
@@ -71,10 +74,8 @@ Public Class Price_Authorization
                 cmd.CommandType = CommandType.StoredProcedure
                 Dim BuyerGrpId As SqlParameter = cmd.Parameters.AddWithValue("@buyerGroupId", buyerId)
                 Dim MfgContractNr As SqlParameter = cmd.Parameters.AddWithValue("@mfgCntNr", IIf(IsNothing(mfgCntNr), DBNull.Value, mfgCntNr))
-                Dim TierLvl As SqlParameter = cmd.Parameters.AddWithValue("@cntTierLvl", IIf(IsNothing(cntTierLvl), DBNull.Value, cntTierLvl))
                 BuyerGrpId.Direction = ParameterDirection.Input
                 MfgContractNr.Direction = ParameterDirection.Input
-                TierLvl.Direction = ParameterDirection.Input
                 conn1.Open()
 
                 Dim adapter As SqlDataAdapter = New SqlDataAdapter(cmd)
@@ -130,37 +131,6 @@ Public Class Price_Authorization
 
     <WebMethod>
     <ScriptMethod(ResponseFormat:=ResponseFormat.Json)>
-    Public Shared Function GetTiersInfo(ByVal buyerId As Int16) As DataTable
-        'Connection String
-        Dim CS As String = ConfigurationManager.ConnectionStrings("Con2").ConnectionString
-
-        'SQL Conection
-        Using conn1 As New SqlConnection(CS)
-            Try
-
-                Dim cmd As SqlCommand = New SqlCommand("CNT.spGetPriceAuthTiersByBuyerGrpid", conn1)
-                cmd.CommandType = CommandType.StoredProcedure
-                Dim BuyerGrpId As SqlParameter = cmd.Parameters.AddWithValue("@buyerGroupId", buyerId)
-                BuyerGrpId.Direction = ParameterDirection.Input
-
-                conn1.Open()
-
-                Dim adapter As SqlDataAdapter = New SqlDataAdapter(cmd)
-
-                Dim ds As DataSet = New DataSet
-                adapter.Fill(ds)
-                Return ds.Tables.Item(0)
-
-            Catch Ex As Exception
-                Console.WriteLine(Ex.Message)
-            End Try
-
-        End Using
-        Return New DataTable
-    End Function
-
-    <WebMethod>
-    <ScriptMethod(ResponseFormat:=ResponseFormat.Json)>
     Public Shared Function GetAllTiersInfo(ByVal buyerId As Int16) As DataTable
         'Connection String
         Dim CS As String = ConfigurationManager.ConnectionStrings("Con2").ConnectionString
@@ -193,8 +163,7 @@ Public Class Price_Authorization
     Private Sub gd1_PageIndexChanging(sender As Object, e As GridViewPageEventArgs) Handles gd1.PageIndexChanging
         gd1.PageIndex = e.NewPageIndex
         GetPriceAuthorizationData(ddlGPO.SelectedValue,
-                                  IIf(ddlContractNumber.SelectedIndex > 0, ddlContractNumber.SelectedValue, Nothing),
-                                  IIf(ddlTierLevel.SelectedIndex > 0, ddlTierLevel.SelectedValue, Nothing))
+                                  IIf(ddlContractNumber.SelectedIndex > 0, ddlContractNumber.SelectedValue, Nothing))
     End Sub
 
     Protected Sub ddlGPO_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlGPO.SelectedIndexChanged
@@ -209,20 +178,17 @@ Public Class Price_Authorization
             ddlContractNumber.DataValueField = "MFG_CNT_NR"
             ddlContractNumber.DataBind()
 
-            dt = GetTiersInfo(ddlGPO.SelectedValue)
-            R = dt.NewRow
-            R("CNT_TIER_LVL") = "--Please Select--"
-            dt.Rows.InsertAt(R, 0)
-            ddlTierLevel.DataSource = dt
-            ddlTierLevel.DataTextField = "CNT_TIER_LVL"
-            ddlTierLevel.DataValueField = "CNT_TIER_LVL"
-            ddlTierLevel.DataBind()
-
             dt = GetAllTiersInfo(ddlGPO.SelectedValue)
             R = dt.NewRow
-            R("CNT_TIER_LVL") = "--Please Select--"
+            R("TierId") = "--Please Select--"
             dt.Rows.InsertAt(R, 0)
-            Session("ReqT") = dt
+
+            Dim tiersList = dt.Rows.Cast(Of DataRow).Select(Function(dr) dr("TierId").ToString)
+
+
+            Session("ReqT") = tiersList.Distinct
+
+
         Else
 
             gd1.DataSource = Nothing
@@ -235,8 +201,8 @@ Public Class Price_Authorization
     Protected Sub btnSearch_ServerClick(sender As Object, e As EventArgs) Handles btnSearch.ServerClick
         If ddlGPO.SelectedIndex > 0 Then
             GetPriceAuthorizationData(ddlGPO.SelectedValue,
-                                  IIf(ddlContractNumber.SelectedIndex > 0, ddlContractNumber.SelectedValue, Nothing),
-                                  IIf(ddlTierLevel.SelectedIndex > 0, ddlTierLevel.SelectedValue, Nothing))
+                                  IIf(ddlContractNumber.SelectedIndex > 0, ddlContractNumber.SelectedValue, Nothing))
+            GetTierDetails(ddlGPO.SelectedValue)
             btnSumit.Visible = True
 
         End If
@@ -247,8 +213,6 @@ Public Class Price_Authorization
 
             Dim ddlApprTier As DropDownList = CType(e.Row.FindControl("ddlApprTier"), DropDownList)
             ddlApprTier.DataSource = Session("ReqT")
-            ddlApprTier.DataTextField = "CNT_TIER_LVL"
-            ddlApprTier.DataValueField = "CNT_TIER_LVL"
             ddlApprTier.DataBind()
 
         End If
@@ -265,8 +229,10 @@ Public Class Price_Authorization
             If ddlApprTier.SelectedIndex <> 0 Then
                 Dim lblGPOMember As Label = CType(row.FindControl("GPO_MBR_ID"), Label)
                 Dim nrown = dtMemTier.NewRow()
+                Dim cntrNrSplt = ddlApprTier.SelectedValue.Split("-")
                 nrown.Item("MemberNr") = lblGPOMember.Text
-                nrown.Item("TierNr") = ddlApprTier.SelectedValue
+
+                nrown.Item("TierNr") = cntrNrSplt(0).Trim
                 dtMemTier.Rows.Add(nrown)
             End If
         Next
@@ -295,6 +261,39 @@ Public Class Price_Authorization
         Else
             gd1.Rows.Item(idx).BackColor = IIf(idx Mod 2 = 0, Color.White, ColorTranslator.FromHtml("#E7E7E7"))
         End If
+
+    End Sub
+
+    Private Sub GetTierDetails(ByVal buyerId As Int16)
+        'Connection String
+        Dim CS As String = ConfigurationManager.ConnectionStrings("Con2").ConnectionString
+
+        'SQL Conection
+        Using conn1 As New SqlConnection(CS)
+            Try
+
+                Dim cmd As SqlCommand = New SqlCommand("CNT.spGetTiersByBuyerGrpid", conn1)
+                cmd.CommandType = CommandType.StoredProcedure
+                Dim BuyerGrpId As SqlParameter = cmd.Parameters.AddWithValue("@buyerGroupId", buyerId)
+                BuyerGrpId.Direction = ParameterDirection.Input
+                conn1.Open()
+
+                Dim adapter As SqlDataAdapter = New SqlDataAdapter(cmd)
+
+                Dim ds As DataSet = New DataSet
+                adapter.Fill(ds)
+                grdTierDesc.DataSource = ds
+                grdTierDesc.DataBind()
+
+            Finally
+                'close the connection
+                If (Not conn1 Is Nothing) Then
+                    conn1.Close()
+                End If
+            End Try
+
+
+        End Using
 
     End Sub
 End Class

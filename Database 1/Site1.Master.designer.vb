@@ -50,13 +50,13 @@ Partial Public Class Site1
     Protected WithEvents Page_name As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''Label1 control.
+    '''lblUser control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lblUser As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
     '''navigation control.
@@ -75,13 +75,4 @@ Partial Public Class Site1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents ContentPlaceHolder1 As Global.System.Web.UI.WebControls.ContentPlaceHolder
-    
-    '''<summary>
-    '''ContentPlaceHolder2 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ContentPlaceHolder2 As Global.System.Web.UI.WebControls.ContentPlaceHolder
 End Class

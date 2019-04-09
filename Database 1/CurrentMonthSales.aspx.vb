@@ -55,7 +55,6 @@ Public Class WebForm3
                 Session("sp_salesperiod") = cmd1.Parameters("@currSALES_PERIOD").Value.ToString()
                 'Session("sp_salesperiod_typ") = Segments(1).ToString
                 Session("sp_salesperiod_dis") = cmd1.Parameters("@currDSPLY_NM").Value.ToString()
-                sales_period.Text = Session("sp_salesperiod_dis").ToString
             Finally
                 'close the connection
                 If (Not conn1 Is Nothing) Then
@@ -143,7 +142,6 @@ Public Class WebForm3
             Session("sp_salesperiod") = Segments(0).ToString
             Session("sp_salesperiod_typ") = Segments(1).ToString
             Session("sp_salesperiod_dis") = Segments(2).ToString
-            sales_period.Text = Session("sp_salesperiod_dis").ToString
             GetItemsData_DropDown()
         Else
             GetItemsData_first()

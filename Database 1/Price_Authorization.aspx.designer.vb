@@ -23,15 +23,6 @@ Partial Public Class Price_Authorization
     Protected WithEvents ddlGPO As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
-    '''ddlTierLevel control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ddlTierLevel As Global.System.Web.UI.WebControls.DropDownList
-    
-    '''<summary>
     '''ddlContractNumber control.
     '''</summary>
     '''<remarks>
@@ -66,4 +57,13 @@ Partial Public Class Price_Authorization
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnSumit As Global.System.Web.UI.HtmlControls.HtmlInputButton
+    
+    '''<summary>
+    '''grdTierDesc control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents grdTierDesc As Global.System.Web.UI.WebControls.GridView
 End Class

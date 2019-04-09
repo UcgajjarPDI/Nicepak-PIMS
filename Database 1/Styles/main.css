@@ -14,6 +14,7 @@
     overflow: auto;
     background-color: #FFFFFF;
 }
+
 .autocomplete_completionListElement {
     margin: 0px !important;
     background-color: inherit;
@@ -27,6 +28,7 @@
     text-align: left;
     list-style-type: none;
 }
+
 .listItem {
     color: #1C1C1C;
 }
@@ -75,6 +77,7 @@
     left: 0px;
     top: 0px;
 }
+
 .pTitleStyles {
     font-family: Helvetica;
     color: #843C0C;
@@ -97,14 +100,14 @@
 #navigation {
     margin: 0;
     padding: 0 1em;
-    background: white;
+    background: #AC172B;
     height: 3em;
     list-style: none;
 }
 
     #navigation > li {
         float: left;
-        height: 100%;
+        height: 90%;
         margin-right: 0.5em;
         padding: 0 1em;
         font-family: Helvetica;
@@ -112,15 +115,15 @@
 
         #navigation > li > a {
             float: left;
-            height: 100%;
-            color: #AC172B;
+            height: 90%;
+            color: white;
             text-decoration: none;
             line-height: 3;
-            font-weight: bold;
         }
 
             #navigation > li > a:hover {
-                color: #AC172B;
+                display: block;
+                color: white;
                 text-decoration: underline;
             }
 
@@ -133,7 +136,7 @@
                 margin: 0;
                 padding: 0.5em 0;
                 list-style: none;
-                background: #a40;
+                background: #AC172B;
                 position: absolute;
                 top: -1000em;
             }
@@ -144,22 +147,86 @@
                 }
 
                     #navigation > li.sub ul li a {
-                        height: 100%;
+                        height: 90%;
                         display: block;
                         padding: 0.4em;
-                        color: #fff;
-                        font-weight: bold;
+                        color: white;
                         text-decoration: none;
                         white-space: nowrap;
                     }
 
                         #navigation > li.sub ul li a:hover {
+                            display: block;
                             background: #c60;
                             text-decoration: underline;
-                            
                         }
 
             #navigation > li.sub:hover ul {
+                display: block;
                 top: 3em;
             }
 
+.dropdown {
+    color: #555;
+    margin: 3px -22px 0 0;
+    width: 200px;
+    position: relative;
+    height: 17px;
+    text-align: left;
+}
+
+.submenu {
+    background: #fff;
+    position: absolute;
+    top: -12px;
+    left: -20px;
+    z-index: 100;
+    width: 160px;
+    display: none;
+    margin-left: 10px;
+    padding: 40px 0 5px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+}
+
+.dropdown li a {
+    color: #555555;
+    display: block;
+    font-family: arial;
+    font-weight: bold;
+    padding: 6px 15px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+    .dropdown li a:hover {
+        display: block;
+        background: #155FB0;
+        color: #FFFFFF;
+        text-decoration: none;
+    }
+
+a.account {
+    font-size: 11px;
+    line-height: 16px;
+    color: #555;
+    position: absolute;
+    z-index: 110;
+    display: block;
+    padding: 11px 0 0 20px;
+    height: 28px;
+    width: 140px;
+    margin: -11px 0 0 -10px;
+    text-decoration: none;
+    background: url(icons/arrow.png) 116px 17px no-repeat;
+    cursor: pointer;
+}
+
+.root {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    font-size: 11px;
+    padding: 11px 0 0 0px;
+    border-top: 1px solid #dedede;
+}

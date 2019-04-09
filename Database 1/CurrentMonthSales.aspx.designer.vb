@@ -23,15 +23,6 @@ Partial Public Class WebForm3
     Protected WithEvents ToolkitScriptManager1 As Global.System.Web.UI.ScriptManager
     
     '''<summary>
-    '''sales_period control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents sales_period As Global.System.Web.UI.WebControls.Label
-    
-    '''<summary>
     '''DropDownExtender1 control.
     '''</summary>
     '''<remarks>

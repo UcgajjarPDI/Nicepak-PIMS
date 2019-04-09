@@ -4,11 +4,9 @@
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         If Session("user") IsNot Nothing Then
 
-            Label1.Visible = True
-            Label1.Text = "Welcome " + Session("Greet").ToString()
-        Else
+            lblUser.Visible = True
+            lblUser.Text = "Welcome " + Session("Greet").ToString()
         End If
-
 
     End Sub
 

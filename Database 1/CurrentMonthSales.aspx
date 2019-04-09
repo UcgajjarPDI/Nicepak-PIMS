@@ -26,25 +26,21 @@
     <asp:ScriptManager ID="ToolkitScriptManager1" runat="server" ScriptMode="Release">
     </asp:ScriptManager>
 
-    <div>
+
 
         <div style="width: 100%">
 
             <table style="width: 100%">
                 <tr>
                     <td>
-                        <p class="pTitleStyles">
-                            Sales Period:&nbsp
-                            <asp:Label ID="sales_period" runat="server" Text="Label"></asp:Label>&nbsp
-                        </p>
-                    </td>
-                    <td>
-                        <p class="pLabelStyles">
+                        <p class="pTitleStyles"> 
+                            Sales Period:&nbsp  
                             <asp:DropDownList ID="DropDownExtender1" runat="server" AutoPostBack="true" Font-Names="Helvetica"
                                 Font-Size="14px" ForeColor="#843C0C">
                             </asp:DropDownList>
-                        </p>
+                       </p>
                     </td>
+                   
                     <td>
                         <p class="pLabelStyles">Sales Tracing Summary</p>
                     </td>
@@ -145,7 +141,7 @@
         </asp:GridView>
 
 
-    </div>
+
     <asp:HiddenField ID="hfHidden" runat="server"  />
     <ajaxToolkit:ModalPopupExtender ClientIDMode="Static" ID="ModalPopupExtender1" runat="server" TargetControlID="hfHidden"
         PopupControlID="Panel1" DropShadow="true"
