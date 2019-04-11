@@ -31,6 +31,7 @@
         * {
             box-sizing: border-box;
         }
+
         .column {
             float: left;
             width: 80%;
@@ -42,6 +43,7 @@
             width: 20%;
             padding: 10px;
         }
+
         .row:after {
             content: "";
             display: table;
@@ -54,7 +56,7 @@
         <div class="column">
             <div style="width: 100%">
 
-                <table style="width: 100%">
+                <table style="width: 80%">
                     <tr>
                         <td style="width: 90px">
                             <p class="pTitleStyles">
@@ -64,13 +66,13 @@
                         <td style="text-align: left">
                             <p class="pLabelStyles">
                                 <asp:DropDownList ID="ddlGPO" runat="server" Font-Names="Helvetica"
-                                    Font-Size="14px" ForeColor="#843C0C" Width="80%"
+                                    Font-Size="14px" ForeColor="#843C0C" Width="200px"
                                     AutoPostBack="True"
                                     OnSelectedIndexChanged="ddlGPO_SelectedIndexChanged">
                                 </asp:DropDownList>
                             </p>
                         </td>
-                        <td style="width: 150px">
+                        <td style="width: 160px">
                             <p class="pTitleStyles">
                                 Contract & Tier Number
                             </p>
@@ -78,15 +80,17 @@
                         <td>
                             <p class="pLabelStyles">
                                 <asp:DropDownList ID="ddlContractNumber" runat="server" AutoPostBack="true" Font-Names="Helvetica"
-                                    Font-Size="14px" ForeColor="#843C0C" Width="65%">
+                                    Font-Size="14px" ForeColor="#843C0C" Width="200px">
                                 </asp:DropDownList>
                             </p>
                         </td>
                         <td>
-                            <input type="button" id="btnSearch"
-                                runat="server"
-                                onserverclick="btnSearch_ServerClick"
-                                value="Show" style="width: 100px; height: 25px; font-family: Helvetica; border: none; cursor: pointer; background-color: #A40000; color: white;" />
+                            <p class="pLabelStyles">
+                                <input type="button" id="btnSearch"
+                                    runat="server"
+                                    onserverclick="btnSearch_ServerClick"
+                                    value="Show" style="width: 100px; height: 25px; font-family: Helvetica; border: none; cursor: pointer; background-color: #A40000; color: white;" />
+                            </p>
                         </td>
                     </tr>
 
@@ -146,7 +150,7 @@
                                 <asp:Label ID="ReqtTier" runat="server" Text='<%# Eval("ReqtTier") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Apprv. Tier">
+                        <asp:TemplateField HeaderText="Approve Tier">
                             <ItemTemplate>
                                 <asp:DropDownList ID="ddlApprTier" runat="server"
                                     OnSelectedIndexChanged="ddlApprTier_SelectedIndexChanged"
@@ -177,6 +181,7 @@
             <div>
                 <asp:GridView ID="grdTierDesc" EnableViewState="true" runat="server" AutoGenerateColumns="false" GridLines="Horizontal"
                     CellPadding="8" BorderStyle="None" PageSize="20" AllowPaging="true">
+                    <RowStyle BackColor="White" ForeColor="DarkBlue" Font-Names="Helvetica" Font-Size="14px" />
                     <Columns>
 
                         <asp:TemplateField HeaderText="Tier">

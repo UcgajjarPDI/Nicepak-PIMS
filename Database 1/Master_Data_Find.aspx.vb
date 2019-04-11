@@ -360,29 +360,22 @@ Public Class MDM_Search1
             Dim x As String = String.Empty
 
             'SQL Command - the name have to exactly the same as in SQL server database in Exec command
-            Dim cmd1 As SqlCommand = New SqlCommand("select top 1000 TRC_ENDUSER_1_ID as COMPANY_ID , T.DISTCOID AS SRC_ID,
-                                                        DISTID SOURCE_NM, DISTACCTID , DISTACCTSHIPNAME as CMPNY_NM, 
-                                                        DISTACCTSHIPADDR1 as ADDR_1, DISTACCTSHIPCITY AS CITY, DISTACCTSHIPSTATE AS ST,
-                                                        DISTACCTSHIPZIP AS ZIP ,
-                                                        convert(varchar,cast(SALES_SUM as money),1) AS SALES_AMT,'YES' as  PDI_CUSTOMER
-                                                        FROM STAGE.TRC_ENDUSER_3K T
-                                                        LEFT JOIN MDM_STAGE.CMPNY_MATCH_XREF C ON T.TRC_ENDUSER_1_ID = C.SRC_DATA_ID 
-                                                        WHERE
-                                                        T.COMPANY_ID is NULL
-                                                        AND C.SRC_DATA_ID IS NULL
-                                                        ORDER BY SALES_SUM DESC", conn1)
-            'cmd1.CommandType = CommandType.StoredProcedure
-            'define parameter -- the parameter name have to exactly how it is in the store dprocedure
-
-
-
-
-
-
-            'Dim output As SqlParameter = cmd1.Parameters.Add("@Msg", SqlDbType.VarChar, 200)
-            'output.Direction = ParameterDirection.Output
-
-
+            Dim cmd1 As SqlCommand = New SqlCommand("SELECT TOP 1000 TRC_ENDUSER_1_ID AS COMPANY_ID, 
+																	T.DISTCOID AS SRC_ID, 
+																	DISTID SOURCE_NM, 
+																	DISTACCTID, 
+																	DISTACCTSHIPNAME AS CMPNY_NM, 
+																	DISTACCTSHIPADDR1 AS ADDR_1, 
+																	DISTACCTSHIPCITY AS CITY, 
+																	DISTACCTSHIPSTATE AS ST, 
+																	DISTACCTSHIPZIP AS ZIP, 
+																	CONVERT(varchar, CAST( ROUND(SALES_SUM,0) AS money), 1) AS SALES_AMT,
+																	'YES' AS PDI_CUSTOMER
+													FROM STAGE.TRC_ENDUSER_3K T
+														 LEFT JOIN MDM_STAGE.CMPNY_MATCH_XREF C ON T.TRC_ENDUSER_1_ID = C.SRC_DATA_ID
+													WHERE T.COMPANY_ID IS NULL
+														  AND C.SRC_DATA_ID IS NULL
+													ORDER BY SALES_SUM DESC;", conn1)
 
             Try
                 'open connection
@@ -392,11 +385,6 @@ Public Class MDM_Search1
 
                 Dim ds As DataSet = New DataSet
                 adapter.Fill(ds)
-
-
-
-
-
 
 
                 gd_un.DataSource = ds
@@ -473,14 +461,14 @@ Public Class MDM_Search1
             'SQL Conection
             Using conn1 As New SqlConnection(CS)
                 Dim cmd1 As SqlCommand = New SqlCommand("INSERT INTO [MDM_STAGE].[CMPNY_MATCH_XREF]
-                                                           (
-                                                           [SRC_ID]
-                                                           ,[SRC_ACCT_ID]
-                                                           ,[SRC_DATA_ID]
-                                                           ,[MTCH_To_TYPE]
-                                                           ,[MTCH_To_ID]
-                                                           )
-                                                        values(@src,@dist,@com,@sour,@cmp)", conn1)
+														   (
+														   [SRC_ID]
+														   ,[SRC_ACCT_ID]
+														   ,[SRC_DATA_ID]
+														   ,[MTCH_To_TYPE]
+														   ,[MTCH_To_ID]
+														   )
+														values(@src,@dist,@com,@sour,@cmp)", conn1)
 
                 Dim Param3 As SqlParameter = cmd1.Parameters.AddWithValue("@src", srcids)
                 Dim Param4 As SqlParameter = cmd1.Parameters.AddWithValue("@dist ", distaccids)
@@ -538,17 +526,17 @@ Public Class MDM_Search1
             'SQL Conection
             Using conn1 As New SqlConnection(CS)
                 Dim cmd1 As SqlCommand = New SqlCommand("INSERT INTO [MDM_STAGE].[CMPNY_MATCH_XREF]
-                                                           (
-                                                           [SRC_ID]
-                                                           ,[SRC_ACCT_ID]
-                                                           ,[SRC_DATA_ID]
-                                                           ,[MTCH_To_CMPNY_NM]
-                                                           ,[MTCH_To_CMPNY_ADDR_1]
-                                                           ,[MTCH_To_CMPNY_CITY]
-                                                           ,[MTCH_To_CMPNY_STATE]
-                                                           ,[MTCH_To_CMPNY_ZIP]
-                                                           )
-                                                        values(@src,@dist,@com,@nm,@add1,@city,@st,@zip)", conn1)
+														   (
+														   [SRC_ID]
+														   ,[SRC_ACCT_ID]
+														   ,[SRC_DATA_ID]
+														   ,[MTCH_To_CMPNY_NM]
+														   ,[MTCH_To_CMPNY_ADDR_1]
+														   ,[MTCH_To_CMPNY_CITY]
+														   ,[MTCH_To_CMPNY_STATE]
+														   ,[MTCH_To_CMPNY_ZIP]
+														   )
+														values(@src,@dist,@com,@nm,@add1,@city,@st,@zip)", conn1)
                 Dim Param3 As SqlParameter = cmd1.Parameters.AddWithValue("@src", srcids)
                 Dim Param4 As SqlParameter = cmd1.Parameters.AddWithValue("@dist ", distaccids)
                 Dim Param5 As SqlParameter = cmd1.Parameters.AddWithValue("@com ", company_ids)

@@ -125,6 +125,7 @@
                 display: block;
                 color: white;
                 text-decoration: underline;
+                z-index: 100000;
             }
 
         #navigation > li.sub {
@@ -132,13 +133,18 @@
         }
 
             #navigation > li.sub ul {
+                display: none;
+                position: absolute;
+                top: 30px; /* this is too much. Try something more like 20px */
+                z-index: 5;
                 width: 14em;
                 margin: 0;
                 padding: 0.5em 0;
                 list-style: none;
                 background: #AC172B;
-                position: absolute;
-                top: -1000em;
+
+                /*position: absolute;
+                top: -1000em;*/
             }
 
                 #navigation > li.sub ul li {
@@ -153,19 +159,25 @@
                         color: white;
                         text-decoration: none;
                         white-space: nowrap;
+                        line-height: inherit !important;
                     }
 
                         #navigation > li.sub ul li a:hover {
                             display: block;
                             background: #c60;
                             text-decoration: underline;
+                            z-index: 100000;
                         }
 
             #navigation > li.sub:hover ul {
                 display: block;
-                top: 3em;
+                top: 40px;
+                left:-5px;
+                z-index: 100000;
             }
-
+#menuwrapper:hover div {
+    display: block;
+}
 .dropdown {
     color: #555;
     margin: 3px -22px 0 0;
@@ -201,7 +213,7 @@
 
     .dropdown li a:hover {
         display: block;
-        background: #155FB0;
+        background: #AC172B;
         color: #FFFFFF;
         text-decoration: none;
     }

@@ -113,7 +113,8 @@ Public Class WebForm3
         DropDownExtender1.Items.Add(New ListItem("--Please Select Sales Period--", ""))
         DropDownExtender1.AppendDataBoundItems = True
         Dim CS As String = ConfigurationManager.ConnectionStrings("Con1").ConnectionString
-        Dim strQuery As String = "SELECT SLS_PERIOD+'~'+SLS_PERIOD_TYP+'~'+SLS_PERIOD_DSPLY_NM as sp_value,* FROM TRC.SALES_PERIOD_ADMIN"
+        Dim strQuery As String = "SELECT SLS_PERIOD+'~'+SLS_PERIOD_TYP + '~' + SLS_PERIOD_DSPLY_NM as sp_value, 
+                            * FROM TRC.SALES_PERIOD_ADMIN ORDER BY SLS_PERIOD DESC"
         Dim con As New SqlConnection(CS)
         Dim cmd As New SqlCommand()
         cmd.CommandType = CommandType.Text

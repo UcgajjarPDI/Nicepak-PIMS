@@ -75,14 +75,9 @@
                                 <asp:Label ID="Zip" runat="server" Text='<%# Eval("ZIP") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField>
+                        <asp:TemplateField HeaderText="Sales Amount">
                             <ItemTemplate>
-
-                                <asp:LinkButton ID="view1" runat="server" BorderWidth="0" CommandName="view1" CommandArgument='<%# Container.DataItemIndex %>' ToolTip="View" ClientIDMode="Static" OnClientClick="Collapse()">
-                                    <asp:ImageButton ID="img_view" runat="server" ClientIDMode="Static" ImageUrl="~/img/Search.PNG" CommandName="view" CommandArgument='<%# Container.DataItemIndex %>' Width="20px" Height="20px" OnClientClick="Collapse()" />
-
-                                </asp:LinkButton>
-
+                                <asp:Label ID="SALES_AMT" runat="server" Text='<%# Eval("SALES_AMT") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
 
@@ -228,23 +223,12 @@
                                 <asp:Label ID="COMPANY_TYPE" runat="server" Text='<%# Eval("COMPANY_TYPE") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Source">
+                       
+                         <asp:TemplateField HeaderText="Sales Amount">
                             <ItemTemplate>
-                                <asp:Label ID="Source1" runat="server" Text='<%# Eval("source") %>'></asp:Label>
+                                <asp:Label ID="SALES_AMT" runat="server" Text='<%# Eval("SALES_AMT") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-
-                        <asp:TemplateField>
-                            <ItemTemplate>
-
-                                <asp:LinkButton ID="view1" runat="server" BorderWidth="0" CommandName="view1" CommandArgument='<%# Container.DataItemIndex %>' ToolTip="View" ClientIDMode="Static" OnClientClick="Collapse()">
-                                    <asp:ImageButton ID="img_view" runat="server" ClientIDMode="Static" ImageUrl="~/img/Search.PNG" CommandName="view" CommandArgument='<%# Container.DataItemIndex %>' Width="20px" Height="20px" OnClientClick="Collapse()" />
-
-                                </asp:LinkButton>
-
-                            </ItemTemplate>
-                        </asp:TemplateField>
-
                     </Columns>
 
 
@@ -308,7 +292,7 @@
                                 <asp:Label ID="Source1" runat="server" Text='<%# Eval("source") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField>
+                       <%-- <asp:TemplateField>
                             <ItemTemplate>
 
                                 <asp:LinkButton ID="view1" runat="server" BorderWidth="0" CommandName="view1" CommandArgument='<%# Container.DataItemIndex %>' ToolTip="View" ClientIDMode="Static" OnClientClick="Collapse()">
@@ -317,7 +301,7 @@
                                 </asp:LinkButton>
 
                             </ItemTemplate>
-                        </asp:TemplateField>
+                        </asp:TemplateField>--%>
 
 
                     </Columns>
