@@ -15,6 +15,9 @@
     [PROD_PRC]           DECIMAL (18, 2) NOT NULL,
     [PROD_STAT_CD]       VARCHAR (20)    NULL,
     [SRCE_REC_MOD_DT_NR] BIGINT          NULL,
-    [CURRENT TIMESTAMP]  DATETIME        NULL
+    [CURRENT TIMESTAMP]  DATETIME        NULL,
+    [DATA_XFER_IN]       CHAR (1)        NULL
 );
+
+
 

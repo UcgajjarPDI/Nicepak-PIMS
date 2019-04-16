@@ -1,4 +1,4 @@
-﻿CREATE TABLE [TRC].[SALES_TRACING_VAR_PROD] (
+﻿CREATE TABLE [TRC].[SALES_TRACING_VAR_INV] (
     [SALES_PERIOD]  VARCHAR (10)    NULL,
     [DIST_NR]       VARCHAR (15)    NULL,
     [DIST_ID]       VARCHAR (48)    NULL,
@@ -8,6 +8,10 @@
     [PDI_PROD_ID]   VARCHAR (48)    NULL,
     [VC_CNT_NR]     VARCHAR (30)    NULL,
     [VC_PROD_ID]    VARCHAR (30)    NULL,
+    [PDi_INV_ID]    VARCHAR (40)    NULL,
+    [VC_INV_ID]     VARCHAR (40)    NULL,
+    [VC_INV_DT]     VARCHAR (20)    NULL,
+    [PDI_INV_DT]    INT             NULL,
     [PDI_QtySold]   DECIMAL (18, 2) NULL,
     [VC_QtySold]    DECIMAL (18, 2) NULL,
     [PDI_SALESAMT]  DECIMAL (18, 2) NULL,
@@ -20,6 +24,4 @@
     [ISSUE]         VARCHAR (200)   NULL,
     [ISSUE_WITH]    VARCHAR (10)    NULL
 );
-
-
 

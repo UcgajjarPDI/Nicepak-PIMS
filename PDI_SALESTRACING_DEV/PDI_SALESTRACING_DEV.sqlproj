@@ -690,5 +690,11 @@
     <Build Include="dbo\Stored Procedures\tree.sql" />
     <Build Include="dbo\Stored Procedures\MERGEusp.sql" />
     <Build Include="dbo\Stored Procedures\IDNFAMILYTREEusp.sql" />
+    <Build Include="TRC\Tables\SALES_TRACING_VAR_INV.sql" />
+    <Build Include="TRC\Stored Procedures\spTRC_GET_ERR_EXC_CONTRACTS.sql" />
+    <Build Include="TRC\Stored Procedures\spTRC_GET_ERR_EXC_BUYERS.sql" />
+    <Build Include="STAGE\Stored Procedures\spVar_Inv.sql" />
+    <Build Include="EDI\Stored Procedures\spGenerate_EDI845_PRC_ACT.sql" />
+    <Build Include="EDI\Stored Procedures\spGenerate_EDI845_CNT.sql" />
   </ItemGroup>
 </Project>

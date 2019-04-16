@@ -15,21 +15,24 @@
     [RENEW_CNT_NR]       VARCHAR (20)  NULL,
     [BUYER_GRP_CNT_NR]   VARCHAR (40)  NULL,
     [BUYER_GRP_ID]       INT           NULL,
+    [BUYER_GRP_NM]       VARCHAR (200) NULL,
+    [BUYER_GRP_ADDR_1]   VARCHAR (200) NULL,
+    [BUYER_GRP_CITY]     VARCHAR (100) NULL,
+    [BUYER_GRP_ST]       VARCHAR (20)  NULL,
+    [BUYER_GRP_ZIP]      VARCHAR (20)  NULL,
     [CNT_TIER_LVL]       VARCHAR (20)  NULL,
     [CNT_TIER_LVL_NR]    INT           NULL,
     [CNT_VALID_IN]       CHAR (1)      NULL,
-    [BUYER_GRP_NM]       VARCHAR (200) NULL,
     [CNT_DESC]           VARCHAR (MAX) NULL,
     [SRC_REC_LST_MOD_DT] BIGINT        NULL,
     [CNT_UPD_TYP]        VARCHAR (32)  NULL,
     [RPLCD_CNT_NR]       VARCHAR (20)  NULL,
     [ORIG_EXP_DTE]       INT           NULL,
     [CURRENT TIMESTAMP]  DATETIME      NULL,
-    [BUYER_GRP_ADDR_1]   VARCHAR (200) NULL,
-    [BUYER_GRP_CITY]     VARCHAR (100) NULL,
-    [BUYER_GRP_ST]       VARCHAR (20)  NULL,
-    [BUYER_GRP_ZIP]      VARCHAR (20)  NULL
+    [DATA_XFER_IN]       CHAR (1)      NULL
 );
+
+
 
 
 
