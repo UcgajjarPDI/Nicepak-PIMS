@@ -11,8 +11,9 @@ Public Class WebForm3
         Page_name.Text = "Sales Tracing Summary"
         Main_Menu.Text = "Sales Tracing"
         If Not IsPostBack Then
-            GetItemsData_first()
             getdropdowndata()
+            DropDownExtender1_SelectedIndexChanged(vbNull, New EventArgs)
+
 
         End If
 
@@ -53,7 +54,6 @@ Public Class WebForm3
                 gd1.DataBind()
 
                 Session("sp_salesperiod") = cmd1.Parameters("@currSALES_PERIOD").Value.ToString()
-                'Session("sp_salesperiod_typ") = Segments(1).ToString
                 Session("sp_salesperiod_dis") = cmd1.Parameters("@currDSPLY_NM").Value.ToString()
             Finally
                 'close the connection
@@ -110,8 +110,8 @@ Public Class WebForm3
     End Sub
     Private Sub getdropdowndata()
 
-        DropDownExtender1.Items.Add(New ListItem("--Please Select Sales Period--", ""))
-        DropDownExtender1.AppendDataBoundItems = True
+        'DropDownExtender1.Items.Add(New ListItem("--Please Select Sales Period--", ""))
+        'DropDownExtender1.AppendDataBoundItems = True
         Dim CS As String = ConfigurationManager.ConnectionStrings("Con1").ConnectionString
         Dim strQuery As String = "SELECT SLS_PERIOD+'~'+SLS_PERIOD_TYP + '~' + SLS_PERIOD_DSPLY_NM as sp_value, 
                             * FROM TRC.SALES_PERIOD_ADMIN ORDER BY SLS_PERIOD DESC"

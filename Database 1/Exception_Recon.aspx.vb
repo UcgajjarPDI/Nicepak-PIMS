@@ -5,23 +5,20 @@ Public Class Exception_Recon
     Inherits Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
-        If Session("sp_salesperiod") IsNot Nothing Then
+
+        If Not IsPostBack Then
             Dim Page_name As Label = Master.FindControl("Page_name")
             Dim Main_Menu As Label = Master.FindControl("Main_Menu")
             Page_name.Text = "Exception Recon"
             Main_Menu.Text = "Sales Tracing"
-            If Not IsPostBack Then
-                getexp_cont()
-                InvalidProductOnContract()
-                UnknownProduct()
-                ContractID()
-                sales_period.Text = Session("sp_salesperiod_dis").ToString()
-
-            End If
-        Else
-            Response.Write("Please select sales period in Current Month Sales page")
-
+            Session("sp_salesperiod") = Nothing
+            getdropdowndata()
+            'getexp_cont()
+            'InvalidProductOnContract()
+            'UnknownProduct()
+            'ContractID()
         End If
+
     End Sub
 
 
@@ -37,10 +34,18 @@ Public Class Exception_Recon
             cmd1.CommandType = CommandType.StoredProcedure
             'define parameter -- the parameter name have to exactly how it is in the store dprocedure
 
-            Dim Param3 As SqlParameter = cmd1.Parameters.AddWithValue("@vSales_Period", Session("sp_salesperiod").ToString())
+            Dim salesPeriod As SqlParameter = cmd1.Parameters.AddWithValue("@vSales_Period", Session("sp_salesperiod").ToString)
+            salesPeriod.Direction = ParameterDirection.Input
 
+            If (ddlBuyersGrp.SelectedValue <> "") Then
+                Dim BuyGrp As SqlParameter = cmd1.Parameters.AddWithValue("@buyerGrp", ddlBuyersGrp.SelectedValue)
+                BuyGrp.Direction = ParameterDirection.Input
+            End If
+            If (ddlContracts.SelectedValue <> "") Then
+                Dim contractId As SqlParameter = cmd1.Parameters.AddWithValue("@contractId", ddlContracts.SelectedValue)
+                contractId.Direction = ParameterDirection.Input
+            End If
 
-            Param3.Direction = ParameterDirection.Input
             Try
                 'open connection
                 conn1.Open()
@@ -150,6 +155,7 @@ Public Class Exception_Recon
         End Using
 
     End Sub
+
     Private Sub ContractID()
 
         'Connection String
@@ -288,7 +294,6 @@ Public Class Exception_Recon
     End Sub
 
     Private Sub gd4_PageIndexChanging(sender As Object, e As GridViewPageEventArgs) Handles gd4.PageIndexChanging
-        'ContractID()
         gd4.PageIndex = e.NewPageIndex
         ContractID()
 
@@ -298,19 +303,10 @@ Public Class Exception_Recon
     Protected Sub Gd1_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles gd1.RowCommand
 
         Dim a As String = e.CommandArgument
-
-
-        'If e.CommandName = "Select" Then
-        'Determine the RowIndex of the Row whose Button was clicked.
-        'Dim rowIndex As Integer = Convert.ToInt32(e.CommandArgument)
-        ' Dim As Integer = Int32.Parse(e.CommandArgument.ToString())
         Dim rowIndex As Integer = Convert.ToInt32(e.CommandArgument)
 
-        'Dim rowIndex As Integer = Convert.ToInt32(e.CommandArgument)
-        'Reference the GridView Row.
         Dim row As GridViewRow = gd1.Rows(rowIndex)
 
-        'row.Cells(CellIndex).Text
         Dim contractid As String = CType(row.FindControl("dis"), Label).Text
         Dim groupname As String = CType(row.FindControl("bu_gp"), Label).Text
 
@@ -335,10 +331,6 @@ Public Class Exception_Recon
 
         'SQL Conection
         Using conn1 As New SqlConnection(CS)
-
-
-
-            'SQL Command - the name have to exactly the same as in SQL server database in Exec command
             Dim cmd1 As SqlCommand = New SqlCommand("[TRC].[spTRC_GET_EXC_CORR_by_grp]", conn1)
             cmd1.CommandType = CommandType.StoredProcedure
             'define parameter -- the parameter name have to exactly how it is in the store dprocedure
@@ -383,13 +375,8 @@ Public Class Exception_Recon
 
         'SQL Conection
         Using conn1 As New SqlConnection(CS)
-
-
-
-            'SQL Command - the name have to exactly the same as in SQL server database in Exec command
             Dim cmd1 As SqlCommand = New SqlCommand("[TRC].[spTRC_GET_EXC_CORR]", conn1)
             cmd1.CommandType = CommandType.StoredProcedure
-            'define parameter -- the parameter name have to exactly how it is in the store dprocedure
 
             Dim Param3 As SqlParameter = cmd1.Parameters.AddWithValue("@vCNT_ID", Session("exp_con").ToString())
             Dim Param4 As SqlParameter = cmd1.Parameters.AddWithValue("@vPROD_ID", Session("exp_prod").ToString())
@@ -426,19 +413,9 @@ Public Class Exception_Recon
     Private Sub Gd2_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles gd2.RowCommand
 
         Dim a As String = e.CommandArgument
-
-
-        'If e.CommandName = "Select" Then
-        'Determine the RowIndex of the Row whose Button was clicked.
-        'Dim rowIndex As Integer = Convert.ToInt32(e.CommandArgument)
-        ' Dim As Integer = Int32.Parse(e.CommandArgument.ToString())
         Dim rowIndex As Integer = Convert.ToInt32(e.CommandArgument)
 
-        'Dim rowIndex As Integer = Convert.ToInt32(e.CommandArgument)
-        'Reference the GridView Row.
         Dim row As GridViewRow = gd2.Rows(rowIndex)
-
-        'row.Cells(CellIndex).Text
         Dim contractid As String = CType(row.FindControl("dis"), Label).Text
         Dim groupname As String = CType(row.FindControl("bu_gp"), Label).Text
 
@@ -784,5 +761,142 @@ Public Class Exception_Recon
 
     Protected Sub gd1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles gd1.SelectedIndexChanged
 
+    End Sub
+
+    Protected Sub ddlSalesPeriod_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlSalesPeriod.SelectedIndexChanged
+        If ddlSalesPeriod.SelectedValue <> "" Then
+            Dim Segments As String() = ddlSalesPeriod.SelectedValue.Split("~")
+            ' Response.Write("You Selected: " & Segments(0) & ", " + Segments(1))
+            Session("sp_salesperiod") = Segments(0).ToString
+            Session("sp_salesperiod_typ") = Segments(1).ToString
+            Session("sp_salesperiod_dis") = Segments(2).ToString
+
+            ddlContracts.Items.Clear()
+            ddlBuyersGrp.Items.Clear()
+            getExpiredBuyersGroups()
+            getExpiredContracts()
+            getexp_cont()
+            InvalidProductOnContract()
+            UnknownProduct()
+            ContractID()
+
+
+
+        End If
+
+    End Sub
+
+    Private Sub getdropdowndata()
+
+        ddlSalesPeriod.Items.Add(New ListItem("--Please Select Sales Period--", ""))
+        ddlSalesPeriod.AppendDataBoundItems = True
+        Dim CS As String = ConfigurationManager.ConnectionStrings("Con1").ConnectionString
+        Dim strQuery As String = "SELECT SLS_PERIOD+'~'+SLS_PERIOD_TYP + '~' + SLS_PERIOD_DSPLY_NM as sp_value, 
+                            * FROM TRC.SALES_PERIOD_ADMIN ORDER BY SLS_PERIOD DESC"
+        Dim con As New SqlConnection(CS)
+        Dim cmd As New SqlCommand()
+        cmd.CommandType = CommandType.Text
+        cmd.CommandText = strQuery
+        cmd.Connection = con
+        Try
+            con.Open()
+            ddlSalesPeriod.DataSource = cmd.ExecuteReader()
+            ddlSalesPeriod.DataTextField = "SLS_PERIOD_DSPLY_NM"
+            ddlSalesPeriod.DataValueField = "sp_value"
+            ddlSalesPeriod.DataBind()
+
+        Catch ex As Exception
+            Throw ex
+        Finally
+            con.Close()
+            con.Dispose()
+        End Try
+
+    End Sub
+
+    Private Sub getExpiredContracts(Optional ByVal buyersGrp As String = "")
+        Dim CS As String = ConfigurationManager.ConnectionStrings("Con2").ConnectionString
+        ddlContracts.Items.Clear()
+
+        Using conn1 As New SqlConnection(CS)
+
+            Dim cmd1 As SqlCommand = New SqlCommand("TRC.spTRC_GET_ERR_EXC_CONTRACTS", conn1)
+            cmd1.CommandType = CommandType.StoredProcedure
+
+            Dim salesPeriod As SqlParameter = cmd1.Parameters.AddWithValue("@vSales_Period", Session("sp_salesperiod").ToString)
+            salesPeriod.Direction = ParameterDirection.Input
+
+            If (Not String.IsNullOrEmpty(buyersGrp)) Then
+                Dim BuyGrp As SqlParameter = cmd1.Parameters.AddWithValue("@buyersNm", buyersGrp)
+                BuyGrp.Direction = ParameterDirection.Input
+            End If
+
+            Try
+                conn1.Open()
+
+                Dim adapter As SqlDataAdapter = New SqlDataAdapter(cmd1)
+
+                Dim ds As DataSet = New DataSet
+                adapter.Fill(ds)
+                ddlContracts.Items.Add(New ListItem("--Please Select--", ""))
+                ddlContracts.AppendDataBoundItems = True
+                ddlContracts.DataSource = ds.Tables.Item(0)
+                ddlContracts.DataTextField = "UPD_CNT_ID"
+                ddlContracts.DataValueField = "UPD_CNT_ID"
+                ddlContracts.DataBind()
+            Finally
+                If (Not conn1 Is Nothing) Then
+                    conn1.Close()
+                End If
+            End Try
+
+
+        End Using
+
+    End Sub
+
+    Private Sub getExpiredBuyersGroups()
+        Dim CS As String = ConfigurationManager.ConnectionStrings("Con2").ConnectionString
+        ddlBuyersGrp.Items.Clear()
+
+        Using conn1 As New SqlConnection(CS)
+
+            Dim cmd1 As SqlCommand = New SqlCommand("TRC.spTRC_GET_ERR_EXC_BUYERS", conn1)
+            cmd1.CommandType = CommandType.StoredProcedure
+
+            Dim salesPeriod As SqlParameter = cmd1.Parameters.AddWithValue("@vSales_Period", Session("sp_salesperiod").ToString)
+
+            salesPeriod.Direction = ParameterDirection.Input
+            Try
+                conn1.Open()
+
+                Dim adapter As SqlDataAdapter = New SqlDataAdapter(cmd1)
+
+                Dim ds As DataSet = New DataSet
+                adapter.Fill(ds)
+                ddlBuyersGrp.Items.Add(New ListItem("--Please Select--", ""))
+                ddlBuyersGrp.AppendDataBoundItems = True
+                ddlBuyersGrp.DataSource = ds.Tables.Item(0)
+                ddlBuyersGrp.DataTextField = "GROUP_NAME"
+                ddlBuyersGrp.DataValueField = "GROUP_NAME"
+                ddlBuyersGrp.DataBind()
+            Finally
+                If (Not conn1 Is Nothing) Then
+                    conn1.Close()
+                End If
+            End Try
+
+
+        End Using
+
+    End Sub
+
+    Protected Sub ddlBuyersGrp_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlBuyersGrp.SelectedIndexChanged
+        getExpiredContracts(ddlBuyersGrp.SelectedValue)
+        getexp_cont()
+    End Sub
+
+    Protected Sub ddlContracts_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlContracts.SelectedIndexChanged
+        getexp_cont()
     End Sub
 End Class

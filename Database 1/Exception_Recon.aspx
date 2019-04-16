@@ -19,96 +19,56 @@
                 var currentDiv = $('div[id=ImgDetails' + id + ']');
                 $('div[id*=ImgDetails]').hide();
                 currentDiv.show();
+                if (id == "1")
+                {
+                    $('div[id=buyersGrpDiv]').show();
+                    $('div[id=contractsDiv]').show();
+                }
+                else
+                {
+                    $('div[id=buyersGrpDiv]').hide();
+                    $('div[id=contractsDiv]').hide();
+                }
                 if (currentDiv.style.display === "none") {
                     inp.style.background - color === "#A40000";
                 } else {
                     inp.style.background - color === "#808080";
                 }
+              
             });
-
 
         });
 
-
-        function CompareConfirm() {
-            var str1 = "abc";
-            var str2 = "def";
-
-            if (str1 === str2) {
-                // your logic here
-                return false;
-            } else {
-                // your logic here
-                return confirm("Confirm?");
-            }
-        }
-        function CheckOne(obj) {
-            var grid = obj.parentNode.parentNode.parentNode;
-            var inputs = grid.getElementsByTagName("input");
-            for (var i = 0; i < inputs.length; i++) {
-                if (inputs[i].type == "checkbox") {
-                    if (obj.checked && inputs[i] != obj && inputs[i].checked) {
-                        inputs[i].checked = false;
-                    }
-                }
-            }
-        } function HidePanelA() {
-            $('ImgDetails1').hide()
-            $('ImgDetails2').show()
-            $('ImgDetails3').hide()
-            $('ImgDetails4').hide()
-        }
-        function HidePanelA() {
-            $('ImgDetails1').show()
-            $('ImgDetails2').hide()
-            $('ImgDetails3').hide()
-            $('ImgDetails4').hide()
-        }
     </script>
     <style>
-        /**
-     * Reset button styles
-     * It takes some work to achieve a “blank slate” look.
-     */
         INPUT {
             padding: 0;
             border: none;
             font: inherit;
             color: inherit;
             background-color: transparent;
-            /* show a hand cursor on hover; some argue that we
-      should keep the default arrow cursor for buttons */
             cursor: pointer;
             font-family: Helvetica;
         }
 
 
         .my-button {
-            /* default for <button>, but needed for <a> */
             display: inline-block;
             text-align: center;
             text-decoration: none;
             font-family: Helvetica;
-            /* create a small space when buttons wrap on 2 lines */
             margin: 2px 0;
-            /* invisible border (will be colored on hover/focus) */
-            /*border: solid 1px transparent;
-      border-radius: 4px;*/
-            /* button size comes from text + padding, avoid height */
             padding: 0.5em 1em;
-            /* make sure colors have enough contrast! */
             color: #FFFFFF;
             background-color: #808080;
             width: 100%;
         }
 
-            /* old-school "down" effect on clic + color tweak */
             .my-button:active {
                 transform: translateY(1px);
                 filter: saturate(150%);
             }
 
-            /* inverse colors on mouse-over and focus */
             .my-button:hover,
             .my-button:focus {
                 color: WHITE;
@@ -134,8 +94,6 @@
             height: 800px;
             font-family: Helvetica;
         }
-
-
     </style>
 
 </asp:Content>
@@ -170,19 +128,41 @@
                 </td>
             </tr>
         </table>
+        <table>
+            <tr>
+                <td>
+                    <p class="pTitleStyles">
+                        Sales Period:&nbsp  
+                            <asp:DropDownList ID="ddlSalesPeriod" runat="server" AutoPostBack="true" Font-Names="Helvetica"
+                                Font-Size="14px" ForeColor="#843C0C">
+                            </asp:DropDownList>
+                    </p>
+                </td>
+                <td>
+                    <div id="buyersGrpDiv">
+                        <p class="pTitleStyles">
+                            Buyers Group:&nbsp  
+                            <asp:DropDownList ID="ddlBuyersGrp" runat="server" AutoPostBack="true" Font-Names="Helvetica"
+                                Font-Size="14px" ForeColor="#843C0C">
+                            </asp:DropDownList>
+                        </p>
+                    </div>
+                </td>
+                <td>
+                    <div id="contractsDiv">
+                        <p class="pTitleStyles">
+                            Contracts:&nbsp  
+                            <asp:DropDownList ID="ddlContracts" runat="server" AutoPostBack="true" Font-Names="Helvetica"
+                                Font-Size="14px" ForeColor="#843C0C">
+                            </asp:DropDownList>
+                        </p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
 
         <div id="ImgDetails1" <%--style="display: none;"--%>>
-            <table style="width: 100%">
-                <tr>
-                    <td>
-                        <p style="font-family: Helvetica; color: #843C0C; font-size: 24px;">Expired Contract </p>
-                    </td>
-                    <td>
-                        <p style="font-family: Helvetica; color: black; font-size: 20px; text-align: right;">Sales Period:<asp:Label runat="server" ID="sales_period"></asp:Label></p>
-                    </td>
-                </tr>
-
-            </table>
             <asp:UpdatePanel ID="up1" runat="server">
                 <ContentTemplate>
 
@@ -224,11 +204,6 @@
                                     <asp:Label ID="replace_with" runat="server" Text='<%# Eval("Replacing_With") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Persistent">
-                                <ItemTemplate>
-                                    <asp:CheckBox ID="Persistent" runat="server" Checked="true" />
-                                </ItemTemplate>
-                            </asp:TemplateField>
                             <asp:TemplateField HeaderText="Reject">
                                 <ItemTemplate>
                                     <asp:RadioButton ID="Reject" runat="server" GroupName="re_ac_re" onclick="javascript:CheckOtherIsCheckedByGVIDMore(this);" Style="align-content: center;" />
@@ -237,11 +212,6 @@
                             <asp:TemplateField HeaderText="Accept">
                                 <ItemTemplate>
                                     <asp:RadioButton ID="Accept" runat="server" GroupName="re_ac_re" onclick="javascript:CheckOtherIsCheckedByGVIDMore(this);" Style="text-align: center" />
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Replace">
-                                <ItemTemplate>
-                                    <asp:RadioButton ID="Replace" runat="server" GroupName="re_ac_re" onclick="javascript:CheckOtherIsCheckedByGVIDMore(this);" Style="text-align: center" />
                                 </ItemTemplate>
                             </asp:TemplateField>
 
@@ -270,7 +240,9 @@
             <br />
             <div style="text-align: right;">
 
-                <asp:Button ID="Button5" runat="server" Text="Submit" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Width="150px" OnClientClick="return confirm('Please confirm');" />
+                <asp:Button ID="Button5" runat="server" Text="Submit" 
+                        style="width: 100px; height: 25px; font-family: Helvetica; border: none; cursor: pointer;" 
+                        BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" OnClientClick="return confirm('Please confirm');" />
                 <asp:HiddenField ID="hfHidden" runat="server" />
                 <ajaxToolkit:ModalPopupExtender ClientIDMode="Static" ID="ModalPopupExtender1" runat="server" TargetControlID="hfHidden"
                     PopupControlID="Panel1" DropShadow="true"
@@ -440,7 +412,7 @@
                     <table style="width: 100%">
                         <tr>
                             <td>
-                                <p style="font-family: Helvetica; color: #843C0C; font-size: 24px;">Product Not In Contract </p>
+                                <p class="pTitleStyles">Product Not In Contract </p>
                             </td>
                             <td>
                                 <p style="font-family: Helvetica; color: black; font-size: 20px; text-align: right;"></p>
@@ -482,36 +454,14 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
 
-                            <%--  <asp:TemplateField  HeaderText="Replace with">
-            <ItemTemplate>
-                <asp:DropDownList ID="rep_with" runat="server">
-                     <asp:ListItem Text="Please Select an item" Value ="-1"></asp:ListItem>
-                </asp:DropDownList>
-            </ItemTemplate>
-        </asp:TemplateField>--%>
-                            <asp:TemplateField HeaderText="Persistent">
-                                <ItemTemplate>
-                                    <asp:CheckBox ID="Persistent" runat="server" Checked="true" />
-                                </ItemTemplate>
-                            </asp:TemplateField>
                             <asp:TemplateField HeaderText="Reject">
                                 <ItemTemplate>
                                     <asp:RadioButton ID="Reject" runat="server" GroupName="re_ac_re" onclick="javascript:CheckOtherIsCheckedByGVIDMore(this);" Style="align-content: center;" />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <%-- <asp:TemplateField  HeaderText="Accept">
-            <ItemTemplate>
-                <asp:RadioButton ID="Accept" runat="server" GroupName="re_ac_re" onclick="javascript:CheckOtherIsCheckedByGVIDMore(this);" style="text-align:center"/>
-            </ItemTemplate>
-        </asp:TemplateField>--%>
-                            <asp:TemplateField HeaderText="Replace">
-                                <ItemTemplate>
-                                    <asp:RadioButton ID="Replace" runat="server" GroupName="re_ac_re" onclick="javascript:CheckOtherIsCheckedByGVIDMore(this);" Style="text-align: center" />
-                                </ItemTemplate>
-                            </asp:TemplateField>
+
                             <asp:TemplateField HeaderText="Comment">
                                 <ItemTemplate>
-                                    <%-- <asp:TextBox ID="INV_comment" runat="server" Width="200px" BorderColor="#808080" BorderStyle="Solid" BorderWidth="1px"></asp:TextBox>--%>
                                     <asp:Label ID="INV_comment" runat="server" Text='<%# Eval("Err_Desc") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
@@ -527,7 +477,6 @@
                             </asp:TemplateField>
                         </Columns>
 
-
                         <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                         <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
                         <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
@@ -537,18 +486,10 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
 
-
             <br />
             <div style="text-align: right;">
-
-
-
-
-
                 <asp:Button ID="Button1" runat="server" Text="Submit" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Width="150px" OnClientClick="return confirm('Please confirm');" />
             </div>
-
-
 
         </div>
 
@@ -559,9 +500,6 @@
         </ajaxToolkit:ModalPopupExtender>
         <asp:Panel ID="Panel2" ClientIDMode="Static" runat="server" CssClass="modalPopup" align="center" Style="display: none; font-family: Helvetica;" ScrollBars="Auto">
             <div id="popup2">
-
-
-
                 <asp:UpdatePanel ID="UpdatePanel4" runat="server" style="text-align: left">
                     <ContentTemplate>
 
@@ -571,7 +509,6 @@
                             with Item
                             <asp:Label ID="lb4" ClientIDMode="Static" runat="server"></asp:Label>
                         </p>
-
 
                         <br />
                         <asp:Label ID="hidgd3" runat="server" Text="Label" Visible="false"></asp:Label>
@@ -614,11 +551,7 @@
                                         <asp:Label ID="day_exp_by" runat="server" Text='<%# Eval("CNT_DES") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-
-
-
                             </Columns>
-
 
                             <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                             <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
@@ -628,11 +561,6 @@
                         <br />
 
                         <div style="text-align: right; padding-right: 10%;">
-
-
-
-
-
                             <asp:Button ID="Button8" runat="server" Text="Submit" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Width="150px" OnClientClick="return confirm('Please confirm');" />
                         </div>
                         <br />
@@ -676,10 +604,7 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
-
-
                             </Columns>
-
 
                             <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                             <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
@@ -688,17 +613,11 @@
                         </asp:GridView>
                         <br />
                         <div style="text-align: right; padding-right: 10%;">
-
-
-
-
-
                             <asp:Button ID="Button9" runat="server" Text="Submit" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Width="150px" OnClientClick="return confirm('Please confirm');" />
                         </div>
                         <asp:Button ID="Button10" runat="server" Text="Done" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Width="150px" />
                     </ContentTemplate>
                 </asp:UpdatePanel>
-
 
             </div>
             <br />
@@ -711,7 +630,7 @@
                     <table style="width: 100%">
                         <tr>
                             <td>
-                                <p style="font-family: Helvetica; color: #843C0C; font-size: 24px;">Unknown Product </p>
+                                <p class="pTitleStyles">Unknown Product </p>
                             </td>
                             <td>
                                 <p style="font-family: Helvetica; color: black; font-size: 20px; text-align: right;"></p>
@@ -726,11 +645,9 @@
                         <Columns>
                             <asp:TemplateField>
                                 <HeaderTemplate>
-                                    <%--<asp:CheckBox ID="chkCheckAll1" runat="server" onclick=""  />--%>
                                 </HeaderTemplate>
                                 <ItemTemplate>
                                     <asp:CheckBox ID="chkCheck2" runat="server" onclick="CheckOne(this)" />
-                                    <%--<asp:RadioButton ID="chkCheck" runat="server" onclick="javascript:CheckedCheckboxes(this)" />--%>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Distributor Name">
@@ -751,43 +668,17 @@
 
                             <asp:TemplateField HeaderText="Replace with">
                                 <ItemTemplate>
-                                    <%--<asp:DropDownList ID="rep_with" runat="server">
-                     <asp:ListItem Text="Please Select an item" Value ="-1"></asp:ListItem>
-                </asp:DropDownList>--%>
                                     <asp:TextBox ID="replacewith" runat="server" Width="150px" BorderColor="#808080" BorderStyle="Solid" BorderWidth="1px"></asp:TextBox>
-
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Persistent">
-                                <ItemTemplate>
-                                    <asp:CheckBox ID="Persistent" runat="server" Checked="true" />
                                 </ItemTemplate>
                             </asp:TemplateField>
 
-                            <%-- <asp:TemplateField  HeaderText="Reject">
-            <ItemTemplate >
-                <asp:RadioButton ID="Reject" runat="server" GroupName="re_ac_re" onclick="javascript:CheckOtherIsCheckedByGVIDMore(this);" style="align-content:center;"/>
-            </ItemTemplate>
-        </asp:TemplateField>
-                  <asp:TemplateField  HeaderText="Accept">
-            <ItemTemplate>
-                <asp:RadioButton ID="Accept" runat="server" GroupName="re_ac_re" onclick="javascript:CheckOtherIsCheckedByGVIDMore(this);" style="text-align:center"/>
-            </ItemTemplate>
-        </asp:TemplateField>
-                  <asp:TemplateField  HeaderText="Replace">
-            <ItemTemplate >
-             <asp:RadioButton ID="Replace" runat="server" GroupName="re_ac_re" onclick="javascript:CheckOtherIsCheckedByGVIDMore(this);" style="text-align:center" />
-            </ItemTemplate>
-        </asp:TemplateField>--%>
-                            <asp:TemplateField HeaderText="Comment">
+                            <asp:TemplateField HeaderText="Remove Comment">
                                 <ItemTemplate>
                                     <asp:TextBox ID="un_pro_comment" runat="server" Width="200px" BorderColor="#808080" BorderStyle="Solid" BorderWidth="1px"></asp:TextBox>
                                 </ItemTemplate>
                             </asp:TemplateField>
 
-
                         </Columns>
-
 
                         <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                         <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
@@ -795,16 +686,8 @@
 
                     </asp:GridView>
 
-
-
-
                     <br />
                     <div style="text-align: right; padding-right: 10%;">
-
-
-
-
-
                         <asp:Button ID="Button2" runat="server" Text="Replace" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Width="150px" OnClientClick="return confirm('Please confirm');" />
                 </ContentTemplate>
             </asp:UpdatePanel>
@@ -818,7 +701,7 @@
                 <table style="width: 100%">
                     <tr>
                         <td>
-                            <p style="font-family: Helvetica; color: #843C0C; font-size: 24px;">Unknown Contract </p>
+                            <p class="pTitleStyles">Unknown Contract </p>
                         </td>
                         <td>
                             <p style="font-family: Helvetica; color: black; font-size: 20px; text-align: right;"></p>
@@ -854,9 +737,6 @@
                         <asp:TemplateField HeaderText="Replace with">
                             <ItemTemplate>
                                 <asp:TextBox ID="un_con_id" runat="server" Width="150px" BorderColor="#808080" BorderStyle="Solid" BorderWidth="1px"></asp:TextBox>
-                                <%-- <asp:DropDownList ID="rep_with" runat="server">
-                     <asp:ListItem Text="Please Select an item" Value ="-1"></asp:ListItem>
-                </asp:DropDownList>--%>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Persistent">
@@ -870,35 +750,20 @@
                                 <asp:RadioButton ID="Reject" runat="server" GroupName="re_ac_re" onclick="javascript:CheckOtherIsCheckedByGVIDMore(this);" Style="align-content: center;" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <%-- <asp:TemplateField  HeaderText="Accept">
-            <ItemTemplate>
-                <asp:RadioButton ID="Accept" runat="server" GroupName="re_ac_re" onclick="javascript:CheckOtherIsCheckedByGVIDMore(this);" style="text-align:center"/>
-            </ItemTemplate>
-        </asp:TemplateField>--%>
                         <asp:TemplateField HeaderText="Replace">
                             <ItemTemplate>
                                 <asp:RadioButton ID="Replace" runat="server" GroupName="re_ac_re" onclick="javascript:CheckOtherIsCheckedByGVIDMore(this);" Style="text-align: center" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Comment">
-                            <ItemTemplate>
-                                <asp:TextBox ID="un_con_comment" runat="server" Width="200px" BorderColor="#808080" BorderStyle="Solid" BorderWidth="1px"></asp:TextBox>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-
 
 
                     </Columns>
-
 
                     <HeaderStyle BackColor="#808080" Font-Bold="True" ForeColor="White" Font-Overline="false" HorizontalAlign="Left" VerticalAlign="Middle" Wrap="FALSE" />
                     <PagerStyle BackColor="White" ForeColor="#cccccc" HorizontalAlign="Right" />
                     <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 
                 </asp:GridView>
-
-
-
 
                 <br />
                 <div style="text-align: right; padding-right: 10%;">
@@ -907,7 +772,6 @@
             </ContentTemplate>
         </asp:UpdatePanel>
     </div>
-
 
 </asp:Content>
 
