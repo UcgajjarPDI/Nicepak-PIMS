@@ -138,8 +138,10 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Control\SearchContract.aspx" />
     <Content Include="EDI_845_CONTRACT.aspx" />
     <Content Include="EDI_845_PRC_AUTH.aspx" />
+    <Content Include="ExpiredContract.aspx" />
     <Content Include="Exception_Recon.aspx" />
     <Content Include="GPOAdminFee.aspx" />
     <Content Include="HtmlPage1.html" />
@@ -239,6 +241,13 @@
       <DependentUpon>Active_Contract.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="Control\SearchContract.aspx.designer.vb">
+      <DependentUpon>SearchContract.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Control\SearchContract.aspx.vb">
+      <DependentUpon>SearchContract.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="DataSet1.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -256,6 +265,13 @@
     </Compile>
     <Compile Include="EDI_845_PRC_AUTH.aspx.vb">
       <DependentUpon>EDI_845_PRC_AUTH.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="ExpiredContract.aspx.designer.vb">
+      <DependentUpon>ExpiredContract.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExpiredContract.aspx.vb">
+      <DependentUpon>ExpiredContract.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Exception_Recon.aspx.designer.vb">

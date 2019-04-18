@@ -17,6 +17,7 @@
                 var id = this.id;
                 var inp = document.getElementById(this.id);
                 var currentDiv = $('div[id=ImgDetails' + id + ']');
+                var curDiv = document.getElementById('ImgDetails' + id);
                 $('div[id*=ImgDetails]').hide();
                 currentDiv.show();
                 if (id == "1")
@@ -29,15 +30,22 @@
                     $('div[id=buyersGrpDiv]').hide();
                     $('div[id=contractsDiv]').hide();
                 }
-                if (currentDiv.style.display === "none") {
-                    inp.style.background - color === "#A40000";
-                } else {
-                    inp.style.background - color === "#808080";
-                }
+                //if (curDiv.style.display === "none") {
+                //    inp.style.backgroundColor = "#A40000";
+                //} else {
+                //    inp.style.backgroundColor = "#808080";
+                //}
               
             });
 
         });
+
+        function setColor(e) {
+            console.log('The time is: ' + e.target.id);
+            $( ".my-button" ).css( "backgroundColor", "#808080" );
+            var inp = document.getElementById(e.target.id);
+            inp.style.backgroundColor = "#A40000";
+        }
 
     </script>
     <style>
@@ -242,7 +250,7 @@
 
                 <asp:Button ID="Button5" runat="server" Text="Submit" 
                         style="width: 100px; height: 25px; font-family: Helvetica; border: none; cursor: pointer;" 
-                        BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" OnClientClick="return confirm('Please confirm');" />
+                        BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None"  />
                 <asp:HiddenField ID="hfHidden" runat="server" />
                 <ajaxToolkit:ModalPopupExtender ClientIDMode="Static" ID="ModalPopupExtender1" runat="server" TargetControlID="hfHidden"
                     PopupControlID="Panel1" DropShadow="true"
@@ -323,7 +331,7 @@
 
 
 
-                            <asp:Button ID="Button4" runat="server" Text="Submit" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Width="150px" OnClientClick="return confirm('Please confirm');" />
+                            <asp:Button ID="Button4" runat="server" Text="Submit" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Width="150px" />
                         </div>
                         <br />
                         <asp:UpdatePanel ID="UpdatePanel5" runat="server" style="text-align: left">
@@ -386,7 +394,7 @@
 
 
 
-                                    <asp:Button ID="Button6" runat="server" Text="Submit" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Width="150px" OnClientClick="return confirm('Please confirm');" />
+                                    <asp:Button ID="Button6" runat="server" Text="Submit" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Width="150px" />
                                 </div>
                             </ContentTemplate>
                         </asp:UpdatePanel>
@@ -409,17 +417,6 @@
 
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
-                    <table style="width: 100%">
-                        <tr>
-                            <td>
-                                <p class="pTitleStyles">Product Not In Contract </p>
-                            </td>
-                            <td>
-                                <p style="font-family: Helvetica; color: black; font-size: 20px; text-align: right;"></p>
-                            </td>
-                        </tr>
-
-                    </table>
                     <asp:GridView ID="gd2" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" AllowPaging="true" PageSize="10" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 80%;">
                         <RowStyle BackColor="White" ForeColor="DarkBlue" />
                         <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
@@ -488,7 +485,7 @@
 
             <br />
             <div style="text-align: right;">
-                <asp:Button ID="Button1" runat="server" Text="Submit" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Width="150px" OnClientClick="return confirm('Please confirm');" />
+                <asp:Button ID="Button1" runat="server" Text="Submit" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Width="150px"  />
             </div>
 
         </div>
@@ -561,7 +558,7 @@
                         <br />
 
                         <div style="text-align: right; padding-right: 10%;">
-                            <asp:Button ID="Button8" runat="server" Text="Submit" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Width="150px" OnClientClick="return confirm('Please confirm');" />
+                            <asp:Button ID="Button8" runat="server" Text="Submit" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Width="150px"  />
                         </div>
                         <br />
                         <p style="font-family: Helvetica; color: #843C0C; font-size: 24px;">Seacrh All</p>
@@ -613,7 +610,7 @@
                         </asp:GridView>
                         <br />
                         <div style="text-align: right; padding-right: 10%;">
-                            <asp:Button ID="Button9" runat="server" Text="Submit" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Width="150px" OnClientClick="return confirm('Please confirm');" />
+                            <asp:Button ID="Button9" runat="server" Text="Submit" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Width="150px"  />
                         </div>
                         <asp:Button ID="Button10" runat="server" Text="Done" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Width="150px" />
                     </ContentTemplate>
@@ -627,18 +624,6 @@
 
             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                 <ContentTemplate>
-                    <table style="width: 100%">
-                        <tr>
-                            <td>
-                                <p class="pTitleStyles">Unknown Product </p>
-                            </td>
-                            <td>
-                                <p style="font-family: Helvetica; color: black; font-size: 20px; text-align: right;"></p>
-                            </td>
-                        </tr>
-
-                    </table>
-
                     <asp:GridView ID="gd3" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" AllowPaging="true" PageSize="10" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 80%;">
                         <RowStyle BackColor="White" ForeColor="DarkBlue" />
                         <AlternatingRowStyle BackColor="#E7E7E7" ForeColor="DarkBlue" />
@@ -672,11 +657,7 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
 
-                            <asp:TemplateField HeaderText="Remove Comment">
-                                <ItemTemplate>
-                                    <asp:TextBox ID="un_pro_comment" runat="server" Width="200px" BorderColor="#808080" BorderStyle="Solid" BorderWidth="1px"></asp:TextBox>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                          
 
                         </Columns>
 
@@ -688,7 +669,7 @@
 
                     <br />
                     <div style="text-align: right; padding-right: 10%;">
-                        <asp:Button ID="Button2" runat="server" Text="Replace" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Width="150px" OnClientClick="return confirm('Please confirm');" />
+                        <asp:Button ID="Button2" runat="server" Text="Replace" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Width="150px"  />
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
@@ -698,17 +679,6 @@
 
         <asp:UpdatePanel ID="UpdatePanel3" runat="server">
             <ContentTemplate>
-                <table style="width: 100%">
-                    <tr>
-                        <td>
-                            <p class="pTitleStyles">Unknown Contract </p>
-                        </td>
-                        <td>
-                            <p style="font-family: Helvetica; color: black; font-size: 20px; text-align: right;"></p>
-                        </td>
-                    </tr>
-
-                </table>
                 <asp:GridView ID="gd4" runat="server" AutoGenerateColumns="false" GridLines="Horizontal" CellPadding="8" AllowPaging="true" PageSize="10"
                     BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 80%;">
                     <RowStyle BackColor="White" ForeColor="DarkBlue" />
@@ -739,13 +709,7 @@
                                 <asp:TextBox ID="un_con_id" runat="server" Width="150px" BorderColor="#808080" BorderStyle="Solid" BorderWidth="1px"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Persistent">
-                            <ItemTemplate>
-                                <asp:CheckBox ID="Persistent" runat="server" Checked="true" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-
-                        <asp:TemplateField HeaderText="Reject">
+                                            <asp:TemplateField HeaderText="Reject">
                             <ItemTemplate>
                                 <asp:RadioButton ID="Reject" runat="server" GroupName="re_ac_re" onclick="javascript:CheckOtherIsCheckedByGVIDMore(this);" Style="align-content: center;" />
                             </ItemTemplate>
@@ -767,7 +731,7 @@
 
                 <br />
                 <div style="text-align: right; padding-right: 10%;">
-                    <asp:Button ID="Button3" runat="server" Text="Replace" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Width="150px" OnClientClick="return confirm('Please confirm');" />
+                    <asp:Button ID="Button3" runat="server" Text="Replace" BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None" Width="150px"  />
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>

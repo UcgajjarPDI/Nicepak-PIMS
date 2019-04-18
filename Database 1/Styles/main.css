@@ -135,16 +135,13 @@
             #navigation > li.sub ul {
                 display: none;
                 position: absolute;
-                top: 30px; /* this is too much. Try something more like 20px */
+                top: 30px;
                 z-index: 5;
                 width: 14em;
                 margin: 0;
                 padding: 0.5em 0;
                 list-style: none;
                 background: #AC172B;
-
-                /*position: absolute;
-                top: -1000em;*/
             }
 
                 #navigation > li.sub ul li {
