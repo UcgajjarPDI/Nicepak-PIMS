@@ -138,14 +138,8 @@ Public Class ExpiredContract
         Session("exp_grp") = groupname.ToString()
         Session("exp_prod") = productid.ToString()
 
-
-        'Lb1.Text = CType(row.FindControl("bu_gp"), Label).Text 'Session("exp_grp") = groupname.ToString()
-        'Lb2.Text = Session("exp_prod").ToString()
-
-        'popup_exp_cont1()
-        'popup_exp_cont2()
         ModalPopupExtender1.Show()
-
+        getdropdowndata()
     End Sub
 
     'Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click

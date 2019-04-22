@@ -5,8 +5,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <script type="text/javascript">
+        function closeWin() {
+            window.close();
+        }
+    </script>
     <style>
-       
         .modalBackground {
             background-color: Black;
             filter: alpha(opacity=90);
@@ -20,7 +24,7 @@
             border-color: black;
             padding-top: 10px;
             padding-left: 10px;
-            width: 800px;
+            width: 950px;
             height: 700px;
             font-family: Helvetica;
         }
@@ -31,8 +35,8 @@
         <asp:ScriptManager ID="ToolkitScriptManager1" runat="server">
         </asp:ScriptManager>
         <div style="width: 100%;">
-            <asp:Button ID="btnLoad" runat="server" ClientIDMode="Static" 
-                BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" 
+            <asp:Button ID="btnLoad" runat="server" ClientIDMode="Static"
+                BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C"
                 BorderStyle="None" Width="150px" Height="25px" Text="Load" OnClick="btnLoad_Click" />
 
             <br />
@@ -49,7 +53,7 @@
                                     <asp:Label ID="Lb2" runat="server" Text="Label"></asp:Label>
                             </p>
 
-                            <asp:GridView ID="pop1" EnableViewState="true" runat="server" ClientIDMode="Static" 
+                            <asp:GridView ID="pop1" EnableViewState="true" runat="server" ClientIDMode="Static"
                                 AutoGenerateColumns="false" GridLines="Horizontal" OnRowCommand="pop1_RowCommand"
                                 CellPadding="8" BorderStyle="None" BorderWidth="1px" Style="font-family: Helvetica; width: 90%; grid-area: auto;">
                                 <RowStyle BackColor="White" ForeColor="DarkBlue" />
@@ -71,7 +75,11 @@
                                             <asp:Label ID="bu_gp" runat="server" Text='<%# Eval("EXP_DT") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-
+                                    <asp:TemplateField HeaderText="Tier ID">
+                                        <ItemTemplate >
+                                            <asp:Label ID="ti_le" runat="server" Text='<%#  Eval("TIER_LEVEL") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                     <asp:TemplateField>
                                         <ItemTemplate>
                                             <asp:LinkButton ID="lnkSelectContr" runat="server" CommandName="select" CommandArgument='<%# Eval("CONTRACT_NO") %>'>Select</asp:LinkButton>
@@ -90,11 +98,11 @@
                         <ContentTemplate>
 
                             <p class="pTitleStyles">Seacrh All</p>
-                            <asp:GridView ID="pop2" EnableViewState="true" runat="server" 
-                                ClientIDMode="Static" PageSize="5" AllowPaging="true" 
-                                OnPageIndexChanging="pop2_PageIndexChanging" 
-                                AutoGenerateColumns="false" GridLines="Horizontal" 
-                                CellPadding="8" BorderStyle="None" BorderWidth="1px" 
+                            <asp:GridView ID="pop2" EnableViewState="true" runat="server"
+                                ClientIDMode="Static" PageSize="5" AllowPaging="true"
+                                OnPageIndexChanging="pop2_PageIndexChanging"
+                                AutoGenerateColumns="false" GridLines="Horizontal"
+                                CellPadding="8" BorderStyle="None" BorderWidth="1px"
                                 Style="font-family: Helvetica; width: 90%; grid-area: auto;"
                                 OnRowCommand="pop2_RowCommand">
                                 <RowStyle BackColor="White" ForeColor="DarkBlue" />
@@ -114,10 +122,15 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Exp Date">
                                         <ItemTemplate>
-                                            <asp:Label ID="bu_gp" runat="server" Text='<%# Eval("EXP_DT") %>'></asp:Label>
+                                            <asp:Label ID="bu_gp" runat="server" Text='<%#  Eval("EXP_DT") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                   <asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Tier ID" >
+                                        <ItemTemplate>
+                                            <asp:Label ID="ti_le" runat="server" Text='<%#  Eval("TIER_LEVEL") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField>
                                         <ItemTemplate>
                                             <asp:LinkButton ID="lnkSelectContr" runat="server" CommandName="select" CommandArgument='<%# Eval("CONTRACT_NO") %>'>Select</asp:LinkButton>
                                         </ItemTemplate>

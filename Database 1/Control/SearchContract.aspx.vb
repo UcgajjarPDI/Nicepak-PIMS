@@ -94,7 +94,6 @@ Public Class SearchContract
 
             Try
                 conn1.Open()
-
                 cmd.ExecuteNonQuery()
 
             Finally
@@ -120,10 +119,10 @@ Public Class SearchContract
                 'Dim contractID As String = CType(pop1.Rows(rowIndex).FindControl("CONTRACT_NO"), Label).Text
 
                 Session("Dist_ID_gd1") = contractID.ToString
-
+                ClientScript.RegisterStartupScript(Me.GetType(), "winclose", "window.parent.close();", True)
             End If
         Catch ex As Exception
-
+            Throw ex
         End Try
     End Sub
 
@@ -145,10 +144,9 @@ Public Class SearchContract
                 'Dim contractID As String = CType(pop1.Rows(rowIndex).FindControl("CONTRACT_NO"), Label).Text
 
                 Session("Dist_ID_gd1") = contractID.ToString
-
             End If
         Catch ex As Exception
-
+            Throw ex
         End Try
     End Sub
 End Class

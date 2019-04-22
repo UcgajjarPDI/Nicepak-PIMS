@@ -50,15 +50,6 @@ Partial Public Class ExpiredContract
     Protected WithEvents ddlContracts As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
-    '''up1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents up1 As Global.System.Web.UI.UpdatePanel
-    
-    '''<summary>
     '''gd1 control.
     '''</summary>
     '''<remarks>
@@ -66,6 +57,15 @@ Partial Public Class ExpiredContract
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents gd1 As Global.System.Web.UI.WebControls.GridView
+    
+    '''<summary>
+    '''up1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents up1 As Global.System.Web.UI.UpdatePanel
     
     '''<summary>
     '''Button5 control.
