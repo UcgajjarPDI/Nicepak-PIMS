@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [STAGE].[spVar_Inv]
+﻿CREATE PROCEDURE [STAGE].[spSALES_TRACING_VAR_INV]
 @vSales_Period varchar(10)=NULL, @vDist_NR varchar(48) = null
 WITH EXEC AS CALLER
 AS

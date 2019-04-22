@@ -2,7 +2,7 @@
 
 
 GO
-ALTER ROLE [db_owner] ADD MEMBER [NICEPAK\Ananya.Suresh];
+
 
 
 GO

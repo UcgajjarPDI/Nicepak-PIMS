@@ -442,7 +442,6 @@
     <Build Include="MDM_STAGE\Tables\TEMP_ADDR_PARTS.sql" />
     <Build Include="Security\dbazone_monitor.sql" />
     <Build Include="Security\NICEPAK_Krunal.Trivedi.sql" />
-    <Build Include="Security\NICEPAK_Ananya.Suresh.sql" />
     <Build Include="Security\pdistdev.sql" />
     <Build Include="Security\NICEPAK_Sajal.Dutta.sql" />
     <Build Include="Security\NICEPAK_cdalal.sql" />
@@ -693,8 +692,10 @@
     <Build Include="TRC\Tables\SALES_TRACING_VAR_INV.sql" />
     <Build Include="TRC\Stored Procedures\spTRC_GET_ERR_EXC_CONTRACTS.sql" />
     <Build Include="TRC\Stored Procedures\spTRC_GET_ERR_EXC_BUYERS.sql" />
-    <Build Include="STAGE\Stored Procedures\spVar_Inv.sql" />
     <Build Include="EDI\Stored Procedures\spGenerate_EDI845_PRC_ACT.sql" />
     <Build Include="EDI\Stored Procedures\spGenerate_EDI845_CNT.sql" />
+    <Build Include="TRC\Tables\SALES_TRACING_VAR.sql" />
+    <Build Include="STAGE\Stored Procedures\spSALES_TRACING_VAR_INV.sql" />
+    <Build Include="STAGE\Stored Procedures\spSALES_TRACING_VAR.sql" />
   </ItemGroup>
 </Project>
