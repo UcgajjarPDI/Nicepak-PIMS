@@ -118,7 +118,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Reject">
                                 <ItemTemplate>
-                                    <asp:RadioButton ID="Reject" runat="server"
+                                    <asp:RadioButton ID="Reject" runat="server" AutoPostBack="true" 
                                         GroupName="re_ac_re" onclick="javascript:CheckOtherIsCheckedByGVIDMore(this);" Style="align-content: center;"
                                         Enabled='<%# IIf(Eval("Replacing_With").ToString <> "", "False", "True") %>' />
                                 </ItemTemplate>
@@ -126,7 +126,7 @@
                             <asp:TemplateField HeaderText="Accept">
                                 <ItemTemplate>
                                     <asp:RadioButton ID="Accept" runat="server" GroupName="re_ac_re" onclick="javascript:CheckOtherIsCheckedByGVIDMore(this);"
-                                        Style="text-align: center"
+                                        Style="text-align: center" AutoPostBack="true" 
                                         Enabled='<%# IIf(Eval("Replacing_With").ToString <> "", "False", "True") %>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
@@ -156,7 +156,7 @@
                 <asp:Button ID="btnSubmit" runat="server" Text="Submit"
                     Style="width: 100px; height: 25px; font-family: Helvetica; border: none; cursor: pointer;"
                     BackColor="#843c0c" Font-Size="Medium" ForeColor="White" BorderColor="#843C0C" BorderStyle="None"
-                    Visible="false" />
+                    Visible="false" OnClick="btnSubmit_Click" />
                 <asp:HiddenField ID="hfHidden" runat="server" />
                 <ajaxToolkit:ModalPopupExtender ClientIDMode="Static" ID="ModalPopupExtender1" runat="server" TargetControlID="hfHidden"
                     PopupControlID="Panel1" DropShadow="true"

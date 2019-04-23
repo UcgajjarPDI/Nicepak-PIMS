@@ -9,38 +9,38 @@
     </asp:ContentPlaceHolder>
     <link href="Styles/main.css" rel="stylesheet" media="screen" />
     <script type="text/javascript">
-        //$(document).ready(function () {
+        $(document).ready(function () {
 
-        //    $(".account").click(function () {
-        //        var X = $(this).attr('id');
-        //        if (X == 1) {
-        //            $(".submenu").hide();
-        //            $(this).attr('id', '0');
-        //        }
-        //        else {
-        //            $(".submenu").show();
-        //            $(this).attr('id', '1');
-        //        }
+            $(".account").click(function () {
+                var X = $(this).attr('id');
+                if (X == 1) {
+                    $(".submenu").hide();
+                    $(this).attr('id', '0');
+                }
+                else {
+                    $(".submenu").show();
+                    $(this).attr('id', '1');
+                }
 
-        //    });
+            });
 
-        //    //Mouse click on sub menu
-        //    $(".submenu").mouseup(function () {
-        //        return false
-        //    });
+            //Mouse click on sub menu
+            $(".submenu").mouseup(function () {
+                return false
+            });
 
-        //    //Mouse click on my account link
-        //    $(".account").mouseup(function () {
-        //        return false
-        //    });
+            //Mouse click on my account link
+            $(".account").mouseup(function () {
+                return false
+            });
 
 
-        //    //Document Click
-        //    $(document).mouseup(function () {
-        //        $(".submenu").hide();
-        //        $(".account").attr('id', '');
-        //    });
-        //});
+            //Document Click
+            $(document).mouseup(function () {
+                $(".submenu").hide();
+                $(".account").attr('id', '');
+            });
+        });
     </script>
     <style>
         footer {
