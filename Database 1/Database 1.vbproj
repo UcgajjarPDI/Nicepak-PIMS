@@ -141,6 +141,7 @@
     <Content Include="Control\SearchContract.aspx" />
     <Content Include="EDI_845_CONTRACT.aspx" />
     <Content Include="EDI_845_PRC_AUTH.aspx" />
+    <Content Include="ExpiredContractRecon.aspx" />
     <Content Include="ExpiredContract.aspx" />
     <Content Include="Exception_Recon.aspx" />
     <Content Include="GPOAdminFee.aspx" />
@@ -265,6 +266,13 @@
     </Compile>
     <Compile Include="EDI_845_PRC_AUTH.aspx.vb">
       <DependentUpon>EDI_845_PRC_AUTH.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="ExpiredContractRecon.aspx.designer.vb">
+      <DependentUpon>ExpiredContractRecon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExpiredContractRecon.aspx.vb">
+      <DependentUpon>ExpiredContractRecon.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="ExpiredContract.aspx.designer.vb">

@@ -120,7 +120,7 @@
                 <a href="#">Sales Tracing</a>
                 <ul>
                     <li><a href="CurrentMonthSales.aspx">Sales Tracing Summary</a></li>
-                    <li><a href="Exception_Recon.aspx">Exception Recon Report</a></li>
+                    <li><a href="ExpiredContractRecon.aspx">Expired Contract </a></li>
                     <li><a href="Rebate_Recon.aspx">Rebate Recon Report</a></li>
                 </ul>
             </li>
