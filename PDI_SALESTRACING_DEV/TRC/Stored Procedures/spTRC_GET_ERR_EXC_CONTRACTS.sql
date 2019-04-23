@@ -1,23 +1,17 @@
-﻿CREATE PROCEDURE [TRC].[spTRC_GET_ERR_EXC_CONTRACTS]
-		 @vSales_Period VARCHAR(10), 
-		 @vDIST_ID      VARCHAR(20) = NULL,
-		@contractId      VARCHAR(20) = NULL,
-		@buyersNm  varchar(100)= null
+﻿CREATE PROCEDURE [TRC].[spTRC_GET_ERR_EXC_CONTRACTS] @vSales_Period VARCHAR(10)  = NULL, 
+                                                    @vDIST_ID      VARCHAR(20)  = NULL, 
+                                                    @contractId    VARCHAR(20)  = NULL, 
+                                                    @buyersNm      VARCHAR(100) = NULL
 AS
     BEGIN
         SELECT DISTINCT 
-               S.UPD_CNT_ID
-        FROM [PDI_SALESTRACING_DEV].[STAGE].[SALES_TRACING_CURR] S
-             JOIN [PDI_SALESTRACING_DEV].[STAGE].[DIM_CONTRACT] C ON S.UPD_CNT_ID = C.CONTRACT_NO
-                                                                     AND C.CURRENT_INDICATOR = 'Y'
-             JOIN PDI_SALESTRACING_DEV.REF.LKUP_CD L ON S.ERR_CD = L.LKUP_CD
-                                                        AND L.LKUP_DOMAIN_CD = 'SLS_TRC_CALC'
-                                                        AND L.CD_TYP = 'ERROR'
-             LEFT JOIN PDI_SALESTRACING_DEV.STAGE.TRC_CNT_CORR_XREF X ON S.TRC_CNT_ID = X.TRC_CNT_ID
-                                                                         AND S.UPD_PROD_ID = X.PROD_ID
-        WHERE S.RBT_CALC_STAT = 'E'--  S.Err_Cd = 'EXC'
-              AND S.SALES_PERIOD = ISNULL(@vSales_Period, S.SALES_PERIOD)
-              AND S.DIST_ID = ISNULL(@vDIST_ID, S.DIST_ID)
-			  AND C.GROUP_NAME = ISNULL(@buyersNm, C.GROUP_NAME)
-
+               X.TRC_CNT_ID AS UPD_CNT_ID
+        FROM STAGE.TRC_CNT_CORR_XREF X
+             JOIN CNT.[CONTRACT] C ON X.TRC_CNT_ID = C.CNT_NR
+                                      AND C.REC_STAT_CD = 'A'
+        WHERE RECON_STAT_CD = 'P'
+              AND RECON_TYP = 'EXC'
+              AND C.BUYER_GRP_NM = ISNULL(@buyersNm, C.BUYER_GRP_NM)
+              AND X.TRC_CNT_ID = ISNULL(@contractId, X.TRC_CNT_ID)
+        ORDER BY X.TRC_CNT_ID DESC;
     END;

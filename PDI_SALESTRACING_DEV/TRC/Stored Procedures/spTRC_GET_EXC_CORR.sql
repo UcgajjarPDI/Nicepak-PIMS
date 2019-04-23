@@ -8,7 +8,8 @@ AS
         D.CONTRACT_NO, 
         C.ITEMID, 
 		 CONVERT(char(10), C.[Exp Date],126) AS EXP_DT, 
-        'Description' AS CNT_DES
+        'Description' AS CNT_DES,
+		D.TIER_LEVEL
         FROM PDI_SALESTRACING_DEV.STAGE.CONT_PRICE C
              JOIN [PDI_SALESTRACING_DEV].[STAGE].[DIM_CONTRACT] D ON C.[Contract ID] = D.CONTRACT_NO
                                                                      AND D.CURRENT_INDICATOR = 'Y'

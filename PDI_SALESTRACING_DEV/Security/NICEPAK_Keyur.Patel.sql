@@ -1,0 +1,2 @@
+﻿CREATE USER [NICEPAK\Keyur.Patel] FOR LOGIN [NICEPAK\Keyur.Patel];
+

@@ -697,5 +697,8 @@
     <Build Include="TRC\Tables\SALES_TRACING_VAR.sql" />
     <Build Include="STAGE\Stored Procedures\spSALES_TRACING_VAR_INV.sql" />
     <Build Include="STAGE\Stored Procedures\spSALES_TRACING_VAR.sql" />
+    <Build Include="Security\NICEPAK_Keyur.Patel.sql" />
+    <Build Include="TRC\Stored Procedures\spReplaceExpiredContracts.sql" />
+    <Build Include="TRC\Stored Procedures\spEraseReplacedContract.sql" />
   </ItemGroup>
 </Project>

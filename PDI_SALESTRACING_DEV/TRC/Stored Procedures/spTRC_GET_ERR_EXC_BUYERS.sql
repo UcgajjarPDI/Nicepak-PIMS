@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [TRC].[spTRC_GET_ERR_EXC_BUYERS]
-		 @vSales_Period VARCHAR(10), 
+		 @vSales_Period VARCHAR(10) =null, 
 		 @vDIST_ID      VARCHAR(20) = NULL,
 		@contractId      VARCHAR(20) = NULL
 AS

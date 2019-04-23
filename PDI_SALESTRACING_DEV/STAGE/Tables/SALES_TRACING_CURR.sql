@@ -74,6 +74,9 @@
     [DIST_EXP_DT]       INT           NULL,
     [TRC_CNT_EXP_DT]    DATE          NULL,
     [TRC_PROD_DESC]     VARCHAR (255) NULL,
-    [LOAD_ID]           INT           NULL
+    [LOAD_ID]           INT           NULL,
+    [RECON_STAT_CD]     CHAR (1)      DEFAULT ('N') NULL
 );
+
+
 

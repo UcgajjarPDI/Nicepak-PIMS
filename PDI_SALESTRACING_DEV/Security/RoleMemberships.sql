@@ -28,3 +28,7 @@ ALTER ROLE [db_owner] ADD MEMBER [NICEPAK\Utkarsh.Gajjar];
 GO
 ALTER ROLE [db_datareader] ADD MEMBER [NICEPAK\Sajal.Dutta];
 
+
+GO
+ALTER ROLE [db_owner] ADD MEMBER [NICEPAK\Keyur.Patel];
+
