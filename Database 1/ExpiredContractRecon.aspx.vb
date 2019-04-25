@@ -19,7 +19,6 @@ Public Class ExpiredContractRecon
 
     End Sub
 
-
     Private Sub getexp_cont()
         Dim CS As String = ConfigurationManager.ConnectionStrings("Con2").ConnectionString
 
@@ -329,12 +328,11 @@ Public Class ExpiredContractRecon
     End Sub
 
     Private Sub SaveAllChanges()
-        Dim dt As DataTable = New DataTable()
-        dt.Columns.Add("UPD_CNT_ID", GetType(String))
-        dt.Columns.Add("UPD_PROD_ID", GetType(String))
-        dt.Columns.Add("IsReplaced", GetType(Boolean))
-        dt.Columns.Add("IsReject", GetType(Boolean))
-        dt.Columns.Add("IsAccept", GetType(Boolean))
+        Dim dtReconStat As DataTable = New DataTable()
+        dtReconStat.Columns.Add("UPD_CNT_ID", GetType(String))
+        dtReconStat.Columns.Add("UPD_PROD_ID", GetType(String))
+        dtReconStat.Columns.Add("ReconStat", GetType(String))
+
 
         For Each row As GridViewRow In gd1.Rows
             Dim UPD_CNT_ID As String = row.Cells(0).Controls.OfType(Of Label)().FirstOrDefault().Text
@@ -343,31 +341,41 @@ Public Class ExpiredContractRecon
             Dim IsReject As Boolean = DirectCast(row.FindControl("Reject"), RadioButton).Checked
             Dim IsAccept As Boolean = DirectCast(row.FindControl("Accept"), RadioButton).Checked
 
-            Dim nrown = dt.NewRow()
+            Dim nrown = dtReconStat.NewRow()
             nrown.Item("UPD_CNT_ID") = UPD_CNT_ID
             nrown.Item("UPD_PROD_ID") = UPD_PROD_ID
 
             If Not String.IsNullOrEmpty(ReplacingWith) Then
-                nrown.Item("IsReplaced") = True
-                dt.Rows.Add(nrown)
+                nrown.Item("ReconStat") = "C"
+                dtReconStat.Rows.Add(nrown)
             End If
             If IsReject Then
-                nrown.Item("IsReject") = True
-                dt.Rows.Add(nrown)
+                nrown.Item("ReconStat") = "R"
+                dtReconStat.Rows.Add(nrown)
             End If
             If IsAccept Then
-                nrown.Item("IsAccept") = True
-                dt.Rows.Add(nrown)
+                nrown.Item("ReconStat") = "A"
+                dtReconStat.Rows.Add(nrown)
             End If
         Next
-        Dim CS As String = ConfigurationManager.ConnectionStrings("Con1").ConnectionString
-        Using conn As New SqlConnection(CS)
-
-
-        End Using
+        If dtReconStat.Rows.Count > 0 Then
+            Dim CS As String = ConfigurationManager.ConnectionStrings("Con1").ConnectionString
+            Using conn As New SqlConnection(CS)
+                Using cmd As New SqlCommand("TRC.spUpdateContractReconStat", conn)
+                    cmd.CommandType = CommandType.StoredProcedure
+                    Dim CompanyIds As SqlParameter = New SqlParameter("@reconStat", SqlDbType.Structured) With {.TypeName = "TRC.ContractReconStat", .Value = dtReconStat}
+                    CompanyIds.Direction = ParameterDirection.Input
+                    cmd.Parameters.Add(CompanyIds)
+                    conn.Open()
+                    cmd.ExecuteNonQuery()
+                    conn.Close()
+                End Using
+            End Using
+        End If
     End Sub
 
     Protected Sub btnSubmit_Click(sender As Object, e As EventArgs)
         SaveAllChanges()
     End Sub
+
 End Class

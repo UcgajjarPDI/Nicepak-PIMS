@@ -112,21 +112,20 @@
                                     <asp:ImageButton ID="imgErase" runat="server" ClientIDMode="Static"
                                         ImageUrl="~/img/edit1.png" CommandName="Erase" CommandArgument='<%# Container.DataItemIndex %>'
                                         Width="20px" Height="20px" Visible='<%# IIf(Eval("Replacing_With").ToString <> "", "True", "False") %>'
-                                        OnClientClick="return confirm('Are you sure you want to erase replaced contract?');"
-                                        />
+                                        OnClientClick="return confirm('Are you sure you want to erase replaced contract?');" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Reject">
-                                <ItemTemplate>
+                                    <itemtemplate>
                                     <asp:RadioButton ID="Reject" runat="server" AutoPostBack="true" 
                                         GroupName="re_ac_re" onclick="javascript:CheckOtherIsCheckedByGVIDMore(this);" Style="align-content: center;"
                                         Enabled='<%# IIf(Eval("Replacing_With").ToString <> "", "False", "True") %>' />
-                                </ItemTemplate>
+                                </itemtemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Accept">
                                 <ItemTemplate>
                                     <asp:RadioButton ID="Accept" runat="server" GroupName="re_ac_re" onclick="javascript:CheckOtherIsCheckedByGVIDMore(this);"
-                                        Style="text-align: center" AutoPostBack="true" 
+                                        Style="text-align: center" AutoPostBack="true"
                                         Enabled='<%# IIf(Eval("Replacing_With").ToString <> "", "False", "True") %>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
