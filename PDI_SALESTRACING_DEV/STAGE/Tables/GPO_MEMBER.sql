@@ -1,5 +1,7 @@
 ﻿CREATE TABLE [STAGE].[GPO_MEMBER] (
+    [PDI_GPO_MMBR_ID]       INT           IDENTITY (1, 1) NOT NULL,
     [GPO_CMPNY_ID]          INT           NULL,
+    [GPO_NM]                VARCHAR (255) NULL,
     [SRC_GPO_MEMBER_ID]     VARCHAR (50)  NULL,
     [SRC_GPO_MEMBER_ALT_ID] VARCHAR (50)  NULL,
     [MMBR_NM]               VARCHAR (255) NULL,
@@ -21,10 +23,13 @@
     [GPO_MEMBER_PARENT_NM]  VARCHAR (255) NULL,
     [GPO_MEMBER_LIC_NR]     VARCHAR (50)  NULL,
     [MMBR_SGMNT]            VARCHAR (100) NULL,
-    [GPO_NM]                VARCHAR (255) NULL,
     [CURRENT TIMESTAMP]     VARCHAR (50)  DEFAULT (getdate()) NOT NULL,
-    [PRCS_IN]               CHAR (1)      CONSTRAINT [D_GPO_MEMBER_PRCS_IN] DEFAULT ('P') NOT NULL
+    [PRCS_IN]               CHAR (1)      DEFAULT ('P') NOT NULL,
+    [UPD_ADDR1]             VARCHAR (255) NULL,
+    [UPD_ADDR2]             VARCHAR (255) NULL
 );
+
+
 
 
 

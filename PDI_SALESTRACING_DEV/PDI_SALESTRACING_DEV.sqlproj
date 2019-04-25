@@ -119,6 +119,7 @@
     <Folder Include="EDI\Stored Procedures\" />
     <Folder Include="dbo\User Defined Types\" />
     <Folder Include="dbo\Sequences\" />
+    <Folder Include="TRC\User Defined Types\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="CMPNY\Tables\COMPANY_DATA_SOURCE.sql" />
@@ -700,5 +701,8 @@
     <Build Include="Security\NICEPAK_Keyur.Patel.sql" />
     <Build Include="TRC\Stored Procedures\spReplaceExpiredContracts.sql" />
     <Build Include="TRC\Stored Procedures\spEraseReplacedContract.sql" />
+    <Build Include="TRC\Stored Procedures\spUpdateContractReconStat.sql" />
+    <Build Include="STAGE\Stored Procedures\spGPO_MMBR_LAUNDRY.sql" />
+    <Build Include="TRC\User Defined Types\ContractReconStat.sql" />
   </ItemGroup>
 </Project>
