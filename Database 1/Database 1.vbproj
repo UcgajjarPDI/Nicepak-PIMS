@@ -150,6 +150,7 @@
     <Content Include="img\buyer_icon.png" />
     <Content Include="img\Cancle.PNG" />
     <Content Include="img\edit1.png" />
+    <Content Include="img\Eraser.png" />
     <Content Include="img\Go.jpg" />
     <Content Include="img\line_chart.JPG" />
     <Content Include="img\loader.gif" />

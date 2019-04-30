@@ -316,7 +316,7 @@ Public Class Exception_Recon
         Session("exp_prod") = productid.ToString()
 
 
-        Lb1.Text = CType(row.FindControl("bu_gp"), Label).Text 'Session("exp_grp") = groupname.ToString()
+        Lb1.Text = CType(row.FindControl("bu_gp"), Label).Text
         Lb2.Text = Session("exp_prod").ToString()
 
         popup_exp_cont1()

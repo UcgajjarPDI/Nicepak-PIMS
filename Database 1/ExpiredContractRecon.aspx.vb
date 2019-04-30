@@ -11,12 +11,16 @@ Public Class ExpiredContractRecon
             Dim Main_Menu As Label = Master.FindControl("Main_Menu")
             Page_name.Text = "Expired Contract "
             Main_Menu.Text = "Sales Tracing"
-            Session("sp_salesperiod") = Nothing
             getExpiredBuyersGroups()
             getExpiredContracts()
             getexp_cont()
         End If
 
+        If (Session("exp_con") <> Nothing) Then
+
+            rdoApplyToAll.Text = String.Format("Apply to Product {0} only", Session("exp_prod"))
+            rdoApplyToThis.Text = String.Format("Apply to all Products in Contract {0}.", Session("exp_con"))
+        End If
     End Sub
 
     Private Sub getexp_cont()
@@ -138,17 +142,21 @@ Public Class ExpiredContractRecon
         Session("exp_grp") = groupname.ToString()
         Session("exp_prod") = productid.ToString()
 
-        If e.CommandName = "select" Then
-            Lb1.Text = CType(row.FindControl("bu_gp"), Label).Text 'Session("exp_grp") = groupname.ToString()
-            Lb2.Text = Session("exp_prod").ToString()
 
+
+        If e.CommandName = "select" Then
             popup_exp_cont1()
             popup_exp_cont2()
+
             ModalPopupExtender1.Show()
+
+            lblCnt.Text = contractid.ToString()
+            lblProd.Text = productid.ToString()
         ElseIf e.CommandName = "Erase" Then
             EraseReplacedContract()
             getexp_cont()
         End If
+
 
     End Sub
 
@@ -297,7 +305,7 @@ Public Class ExpiredContractRecon
         getexp_cont()
     End Sub
 
-    Protected Sub pop1_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles pop1.RowCommand
+    Protected Sub pop1_RowCommand(sender As Object, e As GridViewCommandEventArgs)
         Try
             If e.CommandName = "select" Then
                 Dim contractID As String = Convert.ToString(e.CommandArgument)
@@ -313,7 +321,7 @@ Public Class ExpiredContractRecon
         End Try
     End Sub
 
-    Protected Sub pop2_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles pop2.RowCommand
+    Protected Sub pop2_RowCommand(sender As Object, e As GridViewCommandEventArgs)
         Try
             Dim contractID As String = Convert.ToString(e.CommandArgument)
             Dim newRowIndex As Integer = 0
@@ -333,28 +341,17 @@ Public Class ExpiredContractRecon
         dtReconStat.Columns.Add("UPD_PROD_ID", GetType(String))
         dtReconStat.Columns.Add("ReconStat", GetType(String))
 
-
         For Each row As GridViewRow In gd1.Rows
             Dim UPD_CNT_ID As String = row.Cells(0).Controls.OfType(Of Label)().FirstOrDefault().Text
             Dim UPD_PROD_ID As String = row.Cells(1).Controls.OfType(Of Label)().FirstOrDefault().Text
-            Dim ReplacingWith As String = row.Cells(5).Controls.OfType(Of Label)().FirstOrDefault().Text
-            Dim IsReject As Boolean = DirectCast(row.FindControl("Reject"), RadioButton).Checked
-            Dim IsAccept As Boolean = DirectCast(row.FindControl("Accept"), RadioButton).Checked
+            Dim ActionVal As String = row.Cells(7).Controls.OfType(Of Label)().FirstOrDefault().Text
 
             Dim nrown = dtReconStat.NewRow()
             nrown.Item("UPD_CNT_ID") = UPD_CNT_ID
             nrown.Item("UPD_PROD_ID") = UPD_PROD_ID
+            nrown.Item("ReconStat") = ""
 
-            If Not String.IsNullOrEmpty(ReplacingWith) Then
-                nrown.Item("ReconStat") = "C"
-                dtReconStat.Rows.Add(nrown)
-            End If
-            If IsReject Then
-                nrown.Item("ReconStat") = "R"
-                dtReconStat.Rows.Add(nrown)
-            End If
-            If IsAccept Then
-                nrown.Item("ReconStat") = "A"
+            If Not String.IsNullOrEmpty(ActionVal) Then
                 dtReconStat.Rows.Add(nrown)
             End If
         Next
@@ -365,6 +362,8 @@ Public Class ExpiredContractRecon
                     cmd.CommandType = CommandType.StoredProcedure
                     Dim CompanyIds As SqlParameter = New SqlParameter("@reconStat", SqlDbType.Structured) With {.TypeName = "TRC.ContractReconStat", .Value = dtReconStat}
                     CompanyIds.Direction = ParameterDirection.Input
+                    Dim UserId As SqlParameter = cmd.Parameters.AddWithValue("@UserID", Session("userId").ToString)
+                    UserId.Direction = ParameterDirection.Input
                     cmd.Parameters.Add(CompanyIds)
                     conn.Open()
                     cmd.ExecuteNonQuery()
@@ -378,4 +377,55 @@ Public Class ExpiredContractRecon
         SaveAllChanges()
     End Sub
 
+    Private Sub SaveTempChanges()
+        Dim ContractID = Session("exp_con").ToString()
+        Dim ProdId = Session("exp_prod").ToString()
+        Dim ApplyVal As Integer
+        Dim ActionVal As String
+        Dim ReplaceCNT As String = ""
+        ActionVal = IIf(rdoReplace.Checked, "REPLACE", IIf(rdoReject.Checked, "REJECT", "PASS"))
+        ApplyVal = IIf(rdoApplyToAll.Checked, 0, 1)
+        If (ActionVal = "REPLACE") Then
+            For Each row As GridViewRow In pop1.Rows
+                If row.RowType = DataControlRowType.DataRow Then
+                    Dim isChecked As Boolean = row.Cells(0).Controls.OfType(Of CheckBox)().FirstOrDefault().Checked
+                    If isChecked Then
+                        ReplaceCNT = row.Cells(2).Controls.OfType(Of Label)().FirstOrDefault().Text
+                    End If
+                End If
+            Next
+            If (ReplaceCNT = "") Then
+                For Each row As GridViewRow In pop2.Rows
+                    If row.RowType = DataControlRowType.DataRow Then
+                        Dim isChecked As Boolean = row.Cells(0).Controls.OfType(Of CheckBox)().FirstOrDefault().Checked
+                        If isChecked Then
+                            ReplaceCNT = row.Cells(2).Controls.OfType(Of Label)().FirstOrDefault().Text
+                        End If
+                    End If
+                Next
+            End If
+        End If
+
+        Dim CS As String = ConfigurationManager.ConnectionStrings("Con1").ConnectionString
+        Using conn As New SqlConnection(CS)
+            Using cmd As New SqlCommand("TRC.spTEMP_UPDATE_CONT_EXCPTN", conn)
+                cmd.CommandType = CommandType.StoredProcedure
+
+                cmd.Parameters.AddWithValue("@CNT_NR", ContractID)
+                cmd.Parameters.AddWithValue("@prod_ID", ProdId)
+                cmd.Parameters.AddWithValue("@RECON_ACTN", ActionVal)
+                cmd.Parameters.AddWithValue("@REPL_CNT", ReplaceCNT)
+                cmd.Parameters.AddWithValue("@Recon_Apply", ApplyVal)
+
+                conn.Open()
+                cmd.ExecuteNonQuery()
+                conn.Close()
+            End Using
+        End Using
+    End Sub
+
+    Protected Sub btnSubmitModel_Click(sender As Object, e As EventArgs) Handles btnSubmitModel.Click
+        SaveTempChanges()
+        getexp_cont()
+    End Sub
 End Class

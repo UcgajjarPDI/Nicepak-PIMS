@@ -95,6 +95,69 @@ Partial Public Class ExpiredContractRecon
     Protected WithEvents Panel1 As Global.System.Web.UI.WebControls.Panel
     
     '''<summary>
+    '''lblCnt control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblCnt As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''lblProd control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblProd As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''rdoReplace control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rdoReplace As Global.System.Web.UI.WebControls.RadioButton
+    
+    '''<summary>
+    '''rdoReject control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rdoReject As Global.System.Web.UI.WebControls.RadioButton
+    
+    '''<summary>
+    '''rdoPass control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rdoPass As Global.System.Web.UI.WebControls.RadioButton
+    
+    '''<summary>
+    '''rdoApplyToThis control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rdoApplyToThis As Global.System.Web.UI.WebControls.RadioButton
+    
+    '''<summary>
+    '''rdoApplyToAll control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rdoApplyToAll As Global.System.Web.UI.WebControls.RadioButton
+    
+    '''<summary>
     '''pop1gd1 control.
     '''</summary>
     '''<remarks>
@@ -102,24 +165,6 @@ Partial Public Class ExpiredContractRecon
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents pop1gd1 As Global.System.Web.UI.UpdatePanel
-    
-    '''<summary>
-    '''Lb1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Lb1 As Global.System.Web.UI.WebControls.Label
-    
-    '''<summary>
-    '''Lb2 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Lb2 As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
     '''pop1 control.
@@ -156,4 +201,13 @@ Partial Public Class ExpiredContractRecon
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnCancel As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''btnSubmitModel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnSubmitModel As Global.System.Web.UI.WebControls.Button
 End Class
