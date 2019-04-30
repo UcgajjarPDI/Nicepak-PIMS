@@ -127,7 +127,6 @@
     <Build Include="CMPNY\Tables\ALT_CMPNY_NM.sql" />
     <Build Include="CNT_DEV\Tables\CNT_PROD.sql" />
     <Build Include="STG0\Tables\test_1.sql" />
-    <Build Include="CMPNY\Tables\ALT_CMPNY_ADDR.sql" />
     <Build Include="STG0\Tables\PDI_ASC_Overview.sql" />
     <Build Include="CNT\Tables\COMMUNICATION.sql" />
     <Build Include="SNDBX\Tables\TEST_DUP.sql" />
@@ -143,7 +142,6 @@
     <Build Include="STAGE\Tables\TEMP_DATA_LOAD_HIST_SUMMARY.sql" />
     <Build Include="STAGE\Tables\SALES_PERIOD.sql" />
     <Build Include="STAGE\Tables\DHC_COMPANY.sql" />
-    <Build Include="CMPNY\Tables\COMPANY_BKUP.sql" />
     <Build Include="STAGE\Tables\PRC_AUTH_EB.sql" />
     <Build Include="STAGE\Tables\DIM_PRODUCT.sql" />
     <Build Include="STG0\Tables\PDI_ASC_Affiliations.sql" />
@@ -439,7 +437,6 @@
     <Build Include="CMPNY\Tables\COMPANY_SUB_SEGMENT.sql" />
     <Build Include="CNT_DEV\Tables\CONTRACT.sql" />
     <Build Include="CMPNY\Tables\SHPTO.sql" />
-    <Build Include="CMPNY\Tables\CMPNY_CLIENT.sql" />
     <Build Include="MDM_STAGE\Tables\TEMP_ADDR_PARTS.sql" />
     <Build Include="Security\dbazone_monitor.sql" />
     <Build Include="Security\NICEPAK_Krunal.Trivedi.sql" />
@@ -704,5 +701,8 @@
     <Build Include="TRC\Stored Procedures\spUpdateContractReconStat.sql" />
     <Build Include="STAGE\Stored Procedures\spGPO_MMBR_LAUNDRY.sql" />
     <Build Include="TRC\User Defined Types\ContractReconStat.sql" />
+    <Build Include="CMPNY\Tables\ADDR.sql" />
+    <Build Include="TRC\Stored Procedures\spUPDATE_CONT_EXCPTN.sql" />
+    <Build Include="TRC\Stored Procedures\spTEMP_UPDATE_CONT_EXCPTN.sql" />
   </ItemGroup>
 </Project>

@@ -10,6 +10,9 @@
     [STE_NR]  VARCHAR (20)  NULL,
     [DIR_1]   VARCHAR (20)  NULL,
     [ADDR_1]  VARCHAR (255) NULL,
-    [ADDR_2]  VARCHAR (100) NULL
+    [ADDR_2]  VARCHAR (100) NULL,
+    [ZIP]     VARCHAR (10)  NULL
 );
+
+
 

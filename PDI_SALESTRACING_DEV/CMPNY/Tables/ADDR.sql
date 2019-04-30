@@ -1,4 +1,4 @@
-﻿CREATE TABLE [MDM_STAGE].[CMPNY_ADDR_PARTS] (
+﻿CREATE TABLE [CMPNY].[ADDR] (
     [CMPNY_ADDR_ID] INT           IDENTITY (1, 1) NOT NULL,
     [ST_NR]         VARCHAR (100) NULL,
     [ST_NM]         VARCHAR (255) NULL,
@@ -11,8 +11,7 @@
     [DIR_1]         VARCHAR (20)  NULL,
     [ADDR_1]        VARCHAR (255) NULL,
     [ADDR_2]        VARCHAR (100) NULL,
-    [GLN_NR]        VARCHAR (20)  NULL
+    [GLN_NR]        VARCHAR (20)  NULL,
+    [ZIP]           VARCHAR (10)  NULL
 );
-
-
 

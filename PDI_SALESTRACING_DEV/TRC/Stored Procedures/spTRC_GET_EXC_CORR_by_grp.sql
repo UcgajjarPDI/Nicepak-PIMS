@@ -18,7 +18,8 @@ AS
              AND (CN.GROUP_NAME = CO.GROUP_NAME
                   AND CN.CURRENT_INDICATOR = 'Y')
              AND C.[Contract ID] = CN.CONTRACT_NO
-             AND C.ITEMID = @vPROD_ID;
+             AND C.ITEMID = @vPROD_ID
+			 and  CN.CONTRACT_NO != @vCNT_ID
         --AND C.[Exp Date] > '2018-09-01'    -- Hard coded - should be earliest inv date @INVDATE from last page
 
     END;
